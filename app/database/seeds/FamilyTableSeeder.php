@@ -1,3 +1,4 @@
+<?php
 class FamilyTableSeeder extends Seeder {
 
     public function run()

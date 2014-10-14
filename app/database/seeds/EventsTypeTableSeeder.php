@@ -1,3 +1,4 @@
+<?php
 class EventsTypeTableSeeder extends Seeder {
 
     public function run()

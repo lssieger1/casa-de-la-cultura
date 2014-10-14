@@ -1,3 +1,4 @@
+<?php
 class ParticipantsTableSeeder extends Seeder {
 
     public function run()
