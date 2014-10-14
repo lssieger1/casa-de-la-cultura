@@ -14,8 +14,10 @@ class CreateEventsTable extends Migration {
 	{
 		Schema::create('events', function(Blueprint $table)
 		{
-			$table->increments('type_id')->unique();
-			$table->int('event_id')->unique();
+			$table->unsignedInteger('type_id');
+			//$table->foreign('type_id')->references('type_id')->on('eventType');
+			$table->integer('event_id')->unique();
+			$table->primary('event_id');
 			$table->date('date');
 			$table->longText('description');
 			$table->timestamps();
