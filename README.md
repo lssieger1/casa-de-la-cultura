@@ -1,3 +1,6 @@
+## Gettysburg College CS440 Capstone Fall 2014
+This is a website which was developed during Fall 2014 for the Gettysburg College Computer Science Captstone for Gettysburg College's Center for Public Service.
+
 ## Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)

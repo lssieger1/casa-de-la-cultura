@@ -1,4 +1,4 @@
-<!doctype html>
+<!--<!doctype html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -40,3 +40,17 @@
 	</div>
 </body>
 </html>
+
+-->
+
+@extends('layouts.master')
+
+@section('title')
+@parent
+Home
+@stop
+
+@section('content')
+<H1>Hello World!</H1>
+<p>This page is created using a master template.</p>
+@stop

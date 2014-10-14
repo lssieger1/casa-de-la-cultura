@@ -15,3 +15,12 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+
+Route::get('/events', function()
+{
+	return View::make('public/events');
+});
+
+Route::get('/signin', function() {
+	return View::make('public/signin');
+});
