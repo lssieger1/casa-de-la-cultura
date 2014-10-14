@@ -1,4 +1,4 @@
-class AttendanceTableSeeder extends Seeder {
+<?php class AttendanceTableSeeder extends Seeder {
 
     public function run()
     {
