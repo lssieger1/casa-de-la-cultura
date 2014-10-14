@@ -1,0 +1,17 @@
+class EventsTableSeeder extends Seeder {
+
+ public function run()
+    {
+        DB::table('events')->delete();
+
+        DB::table('events')->insert(array(
+         array('event_id' => 1, 'date'=> '20140531', 'description' => 'Play Soccer'),
+         array('event_id' => 2, 'date'=> '20140613', 'description' => 'Play Soccer Again'),
+         array('event_id' => 3, 'date'=> '20140614', 'description' => 'Come swimming'),
+         array('event_id' => 4, 'date'=> '20140629', 'description' => 'Take Pictures'),
+         array('event_id' => 5, 'date'=> '20140708', 'description' => 'Learn to speak English')
+         ));
+         
+    }
+    
+}
