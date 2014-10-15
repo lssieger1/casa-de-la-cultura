@@ -5,7 +5,7 @@
         DB::table('attendance')->delete();
 
         DB::table('attendance')->insert(array(
-         array('event_id'=>1,'part_id'=> 1,'timestamp'=>'20140802110030'),
+         array('event_id'=>1,'part_id'=> 1),
              array('event_id'=>1,'part_id'=> 2),
              array('event_id'=>3,'part_id'=> 3),
              array('event_id'=>5,'part_id'=> 4),

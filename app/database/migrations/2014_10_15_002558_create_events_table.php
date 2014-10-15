@@ -1,9 +1,10 @@
+
 <?php
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAttendanceTable extends Migration {
+class CreateEventsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,14 +13,15 @@ class CreateAttendanceTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('attendance', function(Blueprint $table)
+		Schema::create('events', function(Blueprint $table)
 		{
+			$table->unsignedInteger('type_id');
+			$table->foreign('type_id')->references('type_id')->on('eventType');
 			$table->integer('event_id')->unsigned();
 			$table->primary('event_id');
-			$table->foreign('event_id')->references('event_id')->on('events');
-			$table->integer('part_id');
+			$table->date('date');
+			$table->longText('description');
 			$table->timestamps();
-			
 		});
 	}
 
@@ -30,7 +32,7 @@ class CreateAttendanceTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('attendance');
+		Schema::drop('events');
 	}
 
 }

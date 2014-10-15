@@ -1,5 +1,5 @@
 <?php
-class EventsTypeTableSeeder extends Seeder {
+class EventTypeTableSeeder extends Seeder {
 
     public function run()
     {

@@ -14,7 +14,8 @@ class CreateParticipantsTable extends Migration {
 	{
 		Schema::create('participants', function(Blueprint $table)
 		{
-			$table->increments('part_id');
+			$table->integer('part_id')->unsigned();
+			$table->primary('part_id');
 			$table->string('fname');
 			$table->string('mname');
 			$table->string('lname');
@@ -23,7 +24,7 @@ class CreateParticipantsTable extends Migration {
 			$table->string('nationality');
 			$table->string('native_lang');
 			$table->string('other_lang');
-			$table->string('householdID');
+			$table->integer('householdID')->unsigned();
 			$table->string('phoneNo');
 			$table->string('email');
 			$table->string('schoolDistrict');
