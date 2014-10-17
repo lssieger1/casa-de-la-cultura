@@ -25,6 +25,10 @@ Route::get('/signin', function() {
 	return View::make('public/signin');
 });
 
+Route::get('/create', function() {
+	return View::make('admin/create');
+});
+
 Route::get('/query',function() {
 	$user = DB::table('users')->where('username', 'billybob')->first();
 

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
   <title>
     @section('title')
     @show
@@ -11,7 +12,8 @@
   <!-- CSS are placed here -->
   {{ HTML::style('css/bootstrap.css') }}
   {{ HTML::style('css/bootstrap-theme.css') }}
-  {{ HTML::style('css/grid.css') }}
+
+  @yield('style')
 
   <style>
   @section('styles')
@@ -23,41 +25,43 @@
   </head>
 
   <body>
-  <!-- Navbar -->
-  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-  <div class="container">
-  <div class="navbar-header">
-  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-  <span class="sr-only">Toggle navigation</span>
-  <span class="icon-bar"></span>
-  <span class="icon-bar"></span>
-  <span class="icon-bar"></span>
-  </button>
+    <!-- Navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
 
-  <a class="navbar-brand" href="{{{ URL::to('/') }}}">Casa de la Cultura</a>
-  </div>
-  <!-- Everything you want hidden at 940px or less, place within here -->
-  <div class="collapse navbar-collapse navbar-right">
-  <ul class="nav navbar-nav">
-  <li><a href="{{{ URL::to('/events') }}}">Past Events</a></li>
-  <li><a href="{{{ URL::to('/events') }}}">Upcoming Events</a></li>
-  <li><a href="{{{ URL::to('/signin') }}}">Sign In</a></li>
-  </ul>
-  </div>
-  </div>
-  </div> 
+          <a class="navbar-brand" href="{{{ URL::to('/') }}}">Casa de la Cultura</a>
+        </div>
+      <!-- Everything you want hidden at 940px or less, place within here -->
+      <div class="collapse navbar-collapse navbar-right">
+        <ul class="nav navbar-nav">
+          <li><a href="{{{ URL::to('/events') }}}">Past Events</a></li>
+          <li><a href="{{{ URL::to('/events') }}}">Upcoming Events</a></li>
+          <li><a href="{{{ URL::to('/query') }}}">Class Query</a></li>
+          <li><a href="{{{ URL::to('/create') }}}">New Event</a></li>
+          <li><a href="{{{ URL::to('/signin') }}}">Sign In</a></li>
+          </ul>
+        </div>
+      </div>
+    </div> 
 
-  <!-- Container -->
-  <div class="container">
+    <!-- Container -->
+    <div class="container">
 
-  <!-- Content -->
-  @yield('content')
+    <!-- Content -->
+    @yield('content')
 
-  </div>
+    </div>
 
-  <!-- Scripts are placed here -->
-  {{ HTML::script('js/jquery-1.11.1.min.js') }}
-  {{ HTML::script('js/bootstrap.min.js') }}
+    <!-- Scripts are placed here -->
+    {{ HTML::script('js/jquery-1.11.1.min.js') }}
+    {{ HTML::script('js/bootstrap.min.js') }}
 
   </body>
   </html>

@@ -5,6 +5,10 @@
 Events
 @stop
 
+@section('style')
+{{ HTML::style('css/grid.css') }}
+@stop
+
 @section('content')
 <h3>Public Events</h3>
 <p>
