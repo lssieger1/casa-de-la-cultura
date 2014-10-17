@@ -51,6 +51,6 @@ Home
 @stop
 
 @section('content')
-<H1>Hello World!</H1>
-<p>This page is created using a master template.</p>
+<H1>Hello Capstone!</H1>
+<p>This is the homepage for the site.</p>
 @stop
