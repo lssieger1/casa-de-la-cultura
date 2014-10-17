@@ -50,3 +50,10 @@ Route::get('/query',function() {
             ->get();
             var_dump($parts);
 });
+
+Route::post('public/events',
+			array(
+				'as' => 'events-created',
+				'uses' => 'EventsController@store'
+			)
+		);

@@ -13,7 +13,7 @@ Create a New Event
 <h1>
 	Create a New Event
 </h1>
-{{ Form::open() }}
+{{ Form::open(['route'=> 'events-created']) }}
 	<div>
 		{{ Form::label('name', 'Name: ') }}
 		{{ Form::text('name') }}
