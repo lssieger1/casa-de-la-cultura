@@ -20,14 +20,20 @@ Create a New Event
 	</div>
 	<div>
 		{{ Form::label('description', 'Description: ') }}
-		{{ Form::text('description') }}
+		{{ Form::textarea('description') }}
 	</div>
 	<div>
-		{{ Form::label('date', 'Date') }}
+		{{ Form::label('date', 'Date: ') }}
 		{{ Form::input('date', 'date') }}
 	</div>
 	<div>
 		<img src="/favicon.ico"\>
+	</div>
+
+	<div>
+		{{ Form::label('event', 'Event: ') }}
+		{{ Form::select('event', array()) }}
+		{{ Form::text('other', 'Other') }}
 	</div>
 
 	<div>
