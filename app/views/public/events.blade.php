@@ -18,65 +18,16 @@ Events
 <div class="row">
   <!-- Enter populate the values from the database within the div below. -->
   <!-- Use a for loop to make it cleaner. -->
+  <ul>
+  @foreach  ($eventNs as $eventN)
+ 
   <div class="col-xs-6 col-sm-3">
     <div>
-      <label>Event Name</label>
-      <p>This is the description of the event</p>
-      <label>1 March 2014</label>
+      <label> <li>{{ $id = $eventN->name }}</li></label>
+      <p> <li>{{ $eventN->description }}</li></p>
+      <label> <li>{{ $eventN->date }}</li></label>
     </div>
   </div>
-  <div class="col-xs-6 col-sm-3">
-    <div>
-      <label>Event Name</label>
-      <p>This is the description of the event</p>
-      <label>1 March 2014</label>
-    </div>
-  </div>
-  <div class="col-xs-6 col-sm-3">
-    <div>
-      <label>Event Name</label>
-      <p>This is the description of the event</p>
-      <label>1 March 2014</label>
-    </div>
-  </div>
-  <div class="col-xs-6 col-sm-3">
-    <div>
-      <label>Event Name</label>
-      <p>This is the description of the event</p>
-      <label>1 March 2014</label>
-    </div>
-  </div>
-  <div class="col-xs-6 col-sm-3">
-    <div>
-      <label>Event Name</label>
-      <p>This is the description of the event</p>
-      <label>1 March 2014</label>
-    </div>
-  </div>
-  <div class="col-xs-6 col-sm-3">
-    <div>
-      <label>Event Name</label>
-      <p>This is the description of the event</p>
-      <label>1 March 2014</label>
-    </div>
-  </div>
-
-  <!-- Add the extra clearfix for only the required viewport -->
-  <div class="clearfix visible-xs"></div>
-
-  <div class="col-xs-6 col-sm-3">
-    <div>
-      <label>Event Name</label>
-      <p>This is the description of the event</p>
-      <label>1 March 2014</label>
-    </div>
-  </div>
-  <div class="col-xs-6 col-sm-3">
-    <div>
-      <label>Event Name</label>
-      <p>This is the description of the event</p>
-      <label>1 March 2014</label>
-    </div>
-  </div>
-</div>
+    @endforeach
+  </ul>
 @stop

@@ -7,12 +7,12 @@ class EventsController extends BaseController{
 		$this->eventN = $eventN;
 	}
 
+	public function index(){
+		$eventNs = $this->eventN->all();
+		return View::make('public/events',['eventNs'=> $eventNs]);
+	}
 	public function show(){
 		return View::make('events');
-	}
-
-	public function create(){
-		return View::make('admin.create');
 	}
 
 	public function store(){
