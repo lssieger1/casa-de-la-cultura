@@ -17,22 +17,25 @@ Create a New Event
 	<div>
 		{{ Form::label('name', 'Name: ') }}
 		{{ Form::text('name') }}
+		{{ $errors->first('name') }}
 	</div>
 	<div>
 		{{ Form::label('description', 'Description: ') }}
 		{{ Form::textarea('description') }}
+		{{ $errors->first('description') }}
 	</div>
 	<div>
 		{{ Form::label('date', 'Date: ') }}
 		{{ Form::input('date', 'date') }}
+		{{ $errors->first('date') }}
 	</div>
 	<div>
 		<img src="/favicon.ico"\>
 	</div>
 
 	<div>
-		{{ Form::label('event', 'Event: ') }}
-		{{ Form::select('event', array()) }}
+		{{ Form::label('eventType', 'Event type: ') }}
+		{{ Form::select('eventType', array( EventType::all()->lists('type_name') )) }}
 		{{ Form::text('other', 'Other') }}
 	</div>
 

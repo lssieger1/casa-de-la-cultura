@@ -3,7 +3,7 @@
 class EventsController extends BaseController{
 	protected $eventN;
 
-	public function __construct(Event $eventN){
+	public function __construct(EventN $eventN){
 		$this->eventN = $eventN;
 	}
 
@@ -16,29 +16,18 @@ class EventsController extends BaseController{
 	}
 
 	public function store(){
-		$validation = Validator::make(Input::all(),EventN::$rules);
-		if($validation->fails()){
-			return Redirect::back()->withErrors($validation->messages());
+		
+		$input = Input::all();
+		if( ! $this->eventN->fill($input)->isValid() ){
+			return Redirect::back()->withErrors($this->eventN->messages);
 		}
-
-		// $valid = Validator::make(Input::all(),
-		// 	array(
-		// 		'name' => 'required|max:50',
-		// 		'description' => 'required',
-		// 		'date' => 'required|date',
-		// 	)
-		// );
-
-
-
-		// if($valid->fails()) {
-		// 	return 'Name, description and date cannot be blank';
-		// }
+		
 		
 		$eventN = new EventN;
 		$eventN->name = Input::get('name');
 		$eventN->description = Input::get('description');
 		$eventN->date = Input::get('date');
+		$eventN->type_id = Input::get('eventType');
 		$eventN->save();
 		
 			return 'Event created';
