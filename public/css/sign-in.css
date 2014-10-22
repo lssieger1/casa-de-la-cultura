@@ -1,7 +1,15 @@
 body {
   padding-top: 40px;
   padding-bottom: 40px;
-  background-color: #eee;
+  /*background-color: #eee;*/
+  /* nav bar color */
+  /*background:#2e2823;
+  color:#FFFFFF;*/
+  /*background:#f2f2f2;
+  color:#262626;*/
+  background:#716457;
+  border-top:1px solid #453c34;
+  color: #FFFFFF;*/
 }
 
 .form-signin {

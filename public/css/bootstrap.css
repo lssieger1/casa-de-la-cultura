@@ -12,6 +12,9 @@ html {
 }
 body {
   margin: 0;
+  background:#716457;
+  border-top:1px solid #453c34;
+  color: #FFFFFF;
 }
 article,
 aside,
@@ -114,6 +117,8 @@ optgroup,
 select,
 textarea {
   margin: 0;
+  /*max-width: 100px;*/
+  /*max-height: 100px;*/
   font: inherit;
   color: inherit;
 }
@@ -898,8 +903,9 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
-  color: #333;
-  background-color: #fff;
+  background:#716457;
+  border-top:1px solid #453c34;
+  color: #000000;
 }
 input,
 button,
@@ -5382,7 +5388,7 @@ button.close {
   bottom: 0;
   left: 0;
   z-index: 1050;
-  display: none;
+  display: block;
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
   outline: 0;

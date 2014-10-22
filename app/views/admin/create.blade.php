@@ -13,19 +13,22 @@ Create a New Event
 <h1>
 	Create a New Event
 </h1>
+<center>
 {{ Form::open(['route'=> 'events-created']) }}
 	<div>
-		{{ Form::label('name', 'Name: ') }}
-		{{ Form::text('name') }}
+		{{ Form::label('name', 'Name: ', array('class' => 'form-control')) }}
+		{{ Form::text('name', null, array('class' => 'form-control')) }}
 		{{ $errors->first('name') }}
 	</div>
 	<div>
-		{{ Form::label('description', 'Description: ') }}
-		{{ Form::textarea('description') }}
-		{{ $errors->first('description') }}
+		{{ Form::label('description', 'Description: ', array('class' => 'form-control')) }}
+		<br>
+		{{ Form::textarea('description', null, array('class' => 'form-control')) }}
+
 	</div>
 	<div>
-		{{ Form::label('date', 'Date: ') }}
+		{{ Form::label('date', 'Date: ', array('class' => 'form-control')) }}
+		<!-- {{ Form::selectMonth('month') }} -->
 		{{ Form::input('date', 'date') }}
 		{{ $errors->first('date') }}
 	</div>
@@ -34,17 +37,19 @@ Create a New Event
 	</div>
 
 	<div>
-		{{ Form::label('eventType', 'Event type: ') }}
-		{{ Form::select('eventType', array( EventType::all()->lists('type_name') )) }}
+		{{ Form::label('event', 'Event: ') }}
+		{{ Form::select('event', array(EventType::all()->lists('type_name')), array('class' => 'form-control')) }}
+
 		{{ Form::text('other', 'Other') }}
 	</div>
 
 	<div>
-		{{ Form::submit('Submit') }}
+		{{ Form::submit('Submit', array('class' => 'form-control')) }}
 	</div>
 <!-- <input type="text" class="form-control" placeholder="English as a Second Language" required autofocus>
 <input type="textarea" class="form-control" placeholder="Enter a description here" required>
-<input type="date" class="form-control" required>
- -->
+<input type="date" class="form-control" required> -->
+
 {{ Form::close() }}
+</center>
 @stop

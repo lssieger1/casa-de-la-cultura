@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <title>
-    @section('title')
+  <head>
+    <meta charset="UTF-8">
+    <title>
+      @section('title')
+      @show
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- CSS are placed here -->
+    <!-- {{ HTML::style('css/style.css') }} -->
+    {{ HTML::style('css/bootstrap.css') }}
+    {{ HTML::style('css/bootstrap-theme.css') }}
+    <!-- {{ HtML::style('css/prettyPhoto.css') }} -->
+
+    @yield('style')
+
+    <style>
+    @section('styles')
+    body {
+      padding-top: 60px;
+    }
     @show
-  </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-  <!-- CSS are placed here -->
-  {{ HTML::style('css/bootstrap.css') }}
-  {{ HTML::style('css/bootstrap-theme.css') }}
-
-  @yield('style')
-
-  <style>
-  @section('styles')
-  body {
-    padding-top: 60px;
-  }
-  @show
-  </style>
+    </style>
   </head>
 
   <body>
@@ -36,11 +38,12 @@
             <span class="icon-bar"></span>
           </button>
 
-          <a class="navbar-brand" href="{{{ URL::to('/') }}}">Casa de la Cultura</a>
+          <div class="logo"><a class="navbar-brand" href="{{{ URL::to('/') }}}"><img src="images/logo.png"/></a></div>
         </div>
-      <!-- Everything you want hidden at 940px or less, place within here -->
-      <div class="collapse navbar-collapse navbar-right">
-        <ul class="nav navbar-nav">
+
+        <!-- Everything you want hidden at 940px or less, place within here -->
+        <div class="collapse navbar-collapse navbar-right">
+          <ul class="nav navbar-nav">
           <li><a href="{{{ URL::to('/events') }}}">Past Events</a></li>
           <li><a href="{{{ URL::to('/events') }}}">Upcoming Events</a></li>
           <li><a href="{{{ URL::to('/query') }}}">Class Query</a></li>
@@ -61,7 +64,7 @@
 
     <!-- Scripts are placed here -->
     {{ HTML::script('js/jquery-1.11.1.min.js') }}
-    {{ HTML::script('js/bootstrap.min.js') }}
+    {{ HTML::script('js/bootstrap.js') }}
 
   </body>
-  </html>
+</html>
