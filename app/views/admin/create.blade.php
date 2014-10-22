@@ -14,7 +14,7 @@ Create a New Event
 	Create a New Event
 </h1>
 <center>
-{{ Form::open() }}
+{{ Form::open(['route'=> 'events-created']) }}
 	<div>
 		{{ Form::label('name', 'Name: ', array('class' => 'form-control')) }}
 		{{ Form::text('name', null, array('class' => 'form-control')) }}

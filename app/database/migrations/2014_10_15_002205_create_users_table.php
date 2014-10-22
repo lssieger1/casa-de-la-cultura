@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration {
 			$table->string('password');
 			$table->string('password_temp');
 			$table->string('phoneNo');
-			$table->integer('user_type');//enumerated
+			$table->integer('user_type');
 			$table->string('securityQue');
 			$table->string('securityAns');
 			$table->rememberToken();

@@ -21,7 +21,8 @@ class CreateFamilyTable extends Migration {
 			
 		});
 	}
-
+///////change to household table
+	/////foreign key set up--delete and update constraints
 	/**
 	 * Reverse the migrations.
 	 *
