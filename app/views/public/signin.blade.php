@@ -28,23 +28,46 @@
   </head>
 
   <body>
-
-    <div class="container">
-
+	
+  <!-- <div class="container"> 
       <form class="form-signin" role="form">
-        <h3 class="form-signin-heading">Administrator and Volunteer Sign In</h3>
+              <h3 class="form-signin-heading">Administrator and Volunteer Sign In</h3>
         <input type="text" class="form-control" placeholder="example123" required autofocus>
         <input type="password" class="form-control" placeholder="Password" required>
         <label class="checkbox">
           <input type="checkbox" value="remember-me"> Remember me
         </label>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      </form>
+        
+        
+      </form> -->
 
-    </div> <!-- /container -->
+	<!doctype html>
 
+<html>
 
+  <head>
+  
+     <meta charset="utf-8">
+     
+  </head>
+  
+  <body>
+  
+    {{ Form::open(['route' => 'sessions.store']) }}
+    <div>
+       {{ Form::label('username', 'Username: ') }}
+       {{ Form::text('username') }}
+    </div>
+    
+    <div>
+    	{{ Form::label('password', 'Password: ') }}
+    	{{ Form::password('password') }}
+    </div>
+    
+    <div> {{Form::submit('Login')}} </div>
+    {{ Form::close() }}
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+   <!-- <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
   </body>
 </html>

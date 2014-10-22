@@ -2,16 +2,27 @@
 
 class SessionsController extends BaseController{
 
+	public function create(){
+		return View::make('public.signin');
+	}	
+	 
 	public function store(){
-		if(Auth::attempt(Input::only('email','password'))){
-			return "Welcome " . Auth::user()->username;
+		if(Auth::attempt(Input::only('username','password'))){
+			if(Auth::user()->user_type == 1){
+				return View::make('admin.create');
+				return "Welcome " . Auth::user()->username;
+			}
+			return View::make('public.events');
 		}
-		return Redirect::back()->withInput();
+		else{
+			echo "Failed";
+			return Redirect::back()->withInput();
+		}
 	}
 
 	public function destroy(){
 		Auth::logout();
-		return Redirect::to('login');
+		return Redirect::to('public.signin');
 	}
 
 }

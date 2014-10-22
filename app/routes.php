@@ -22,13 +22,21 @@ Route::get('/', function()
 // });
 Route::get('/events','EventsController@index');
 
-Route::get('/signin', function() {
+/*-- Route::get('/signin', function() {
 	return View::make('public/signin');
-});
+}); */
+
+Route::get('signin', 'SessionsController@create');
+
+Route::get('signout', 'SessionsController@destroy');
 
 Route::get('/create', function() {
 	return View::make('admin/create');
 });
+
+Route::resource('sessions', 'SessionsController');
+
+
 
 Route::get('/query',function() {
 	$user = DB::table('eventtype')->where('type_name', 'swimming')->pluck('type_id');
