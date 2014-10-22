@@ -16,18 +16,24 @@ class EventsController extends BaseController{
 	}
 
 	public function store(){
-
-		$valid = Validator::make(Input::all(),
-			array(
-				'name' => 'required|max:50',
-				'description' => 'required',
-				'date' => 'required|date',
-			)
-		);
-
-		if($valid->fails()) {
-			return 'Name, description and date cannot be blank';
+		$validation = Validator::make(Input::all(),EventN::$rules);
+		if($validation->fails()){
+			return Redirect::back()->withErrors($validation->messages());
 		}
+
+		// $valid = Validator::make(Input::all(),
+		// 	array(
+		// 		'name' => 'required|max:50',
+		// 		'description' => 'required',
+		// 		'date' => 'required|date',
+		// 	)
+		// );
+
+
+
+		// if($valid->fails()) {
+		// 	return 'Name, description and date cannot be blank';
+		// }
 		
 		$eventN = new EventN;
 		$eventN->name = Input::get('name');
