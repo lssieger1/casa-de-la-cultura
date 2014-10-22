@@ -37,8 +37,8 @@ Create a New Event
 	</div>
 
 	<div>
-		{{ Form::label('event', 'Event: ') }}
-		{{ Form::select('event', array(EventType::all()->lists('type_name')), array('class' => 'form-control')) }}
+		{{ Form::label('eventType', 'Event Type: ') }}
+		{{ Form::select('eventType', EventType::all()->lists('type_name','type_id'), array('class' => 'form-control')) }}
 
 		{{ Form::text('other', 'Other') }}
 	</div>

@@ -30,25 +30,17 @@ Route::get('/create', function() {
 });
 
 Route::get('/query',function() {
-	$user = DB::table('users')->where('username', 'billybob')->first();
-
-	var_dump($user->username);
-
-	$event = DB::table('eventtype')->where('type_id', 1)->first();
-
-	var_dump($event->type_name);
-
-	$roles = DB::table('eventtype')->lists('type_name');
-	var_dump($roles);
+	$user = DB::table('eventtype')->where('type_name', 'swimming')->pluck('type_id');
+		print $user;
 
 	//select all pariticipants who attend event 1
-	$parts = DB::table('attendance')
-            ->join('participants', 'attendance.part_id', '=', 'participants.part_id')
-            ->join('events', 'attendance.event_id', '=', 'events.event_id')
-            -> where('events.event_id','=',1)
-            ->select('events.description', 'participants.fname', 'participants.lname')
-            ->get();
-            var_dump($parts);
+	// $parts = DB::table('attendance')
+ //            ->join('participants', 'attendance.part_id', '=', 'participants.part_id')
+ //            ->join('events', 'attendance.event_id', '=', 'events.event_id')
+ //            -> where('events.event_id','=',1)
+ //            ->select('events.description', 'participants.fname', 'participants.lname')
+ //            ->get();
+ //            var_dump($parts);
 });
 
 Route::post('public/events',

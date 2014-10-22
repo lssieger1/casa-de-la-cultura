@@ -27,9 +27,13 @@ class EventsController extends BaseController{
 		$eventN->name = Input::get('name');
 		$eventN->description = Input::get('description');
 		$eventN->date = Input::get('date');
+		
+		
 		$eventN->type_id = Input::get('eventType');
+		//$eventN->type_id = DB::table('eventtype')->where('type_name', $typeName)->pluck('type_id');
+
 		$eventN->save();
 		
-			return 'Event created';
+			return 'Created';
 		}
 	}
