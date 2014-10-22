@@ -16,6 +16,8 @@ Events
   with an additional item at the bottom of each item which will take them to the attendance page.
 </p>
 <div class="row">
+  <!-- Enter populate the values from the database within the div below. -->
+  <!-- Use a for loop to make it cleaner. -->
   <div class="col-xs-6 col-sm-3">
     <div>
       <label>Event Name</label>
