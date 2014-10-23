@@ -12,7 +12,7 @@ class SessionsController extends BaseController{
 				return View::make('admin.create');
 				return "Welcome " . Auth::user()->username;
 			}
-			return View::make('public.events');
+			return Redirect::to('/events');
 		}
 		else{
 			echo "Failed";

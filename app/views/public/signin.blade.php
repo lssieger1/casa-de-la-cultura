@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Signin Template for Bootstrap</title>
+    <title>Sign in</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -28,46 +28,21 @@
   </head>
 
   <body>
-	
-  <!-- <div class="container"> 
-      <form class="form-signin" role="form">
-              <h3 class="form-signin-heading">Administrator and Volunteer Sign In</h3>
-        <input type="text" class="form-control" placeholder="example123" required autofocus>
-        <input type="password" class="form-control" placeholder="Password" required>
-        <label class="checkbox">
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        
-        
-      </form> -->
-
-	<!doctype html>
-
-<html>
-
-  <head>
-  
-     <meta charset="utf-8">
-     
-  </head>
-  
-  <body>
-  
-    {{ Form::open(['route' => 'sessions.store']) }}
-    <div>
-       {{ Form::label('username', 'Username: ') }}
-       {{ Form::text('username') }}
+    <div class="container">
+      {{ Form::open(['route' => 'sessions.store', 'class' => 'form-signin']) }}
+      <h3 class="form-signin-heading">
+        Administrator and Volunteer Sign In
+      </h3>
+      {{ Form::text('username', 'example123', array('class' => 'form-control', 'required' => 'required', 'autofocus' => 'autofocus')) }}
+      {{ Form::password('password', array('placeholder' => 'password', 'class' => 'form-control', 'required' => 'required')) }}
+      <div>
+        {{ Form::checkbox('remember_me', 'Remember me') }}
+        {{ Form::label('remember_me', "Remember me") }}
+      </div>
+      {{Form::submit('Login', array('class' => 'btn btn-lg btn-primary btn-block'))}} 
+      {{ Form::close() }}
     </div>
-    
-    <div>
-    	{{ Form::label('password', 'Password: ') }}
-    	{{ Form::password('password') }}
-    </div>
-    
-    <div> {{Form::submit('Login')}} </div>
-    {{ Form::close() }}
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-   <!-- <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
+    <!--<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
   </body>
 </html>
