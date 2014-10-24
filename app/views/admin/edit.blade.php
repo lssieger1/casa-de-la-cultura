@@ -11,7 +11,7 @@ Create a New Event
 
 @section('content')
 <h1>
-	Create a New Event
+	Edit an Event
 </h1>
 <center>
 {{ Form::open(['route'=> 'events-created']) }}

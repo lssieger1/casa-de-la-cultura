@@ -34,6 +34,14 @@ Route::get('/create', function() {
 	return View::make('admin/create');
 });
 
+Route::get('/edit', function() {
+	return View::make('admin/edit');
+});
+
+Route::get('/check', function() {
+	return View::make('volunteer/attendance');
+});
+
 Route::resource('sessions', 'SessionsController');
 
 
