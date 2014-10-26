@@ -47,8 +47,8 @@
           <li><a href="{{{ URL::to('/events') }}}">Past Events</a></li>
           <li><a href="{{{ URL::to('/events') }}}">Upcoming Events</a></li>
           <li><a href="{{{ URL::to('/query') }}}">Class Query</a></li>
-          <li><a href="{{{ URL::to('/create') }}}">New Event</a></li>
-          <li><a href="{{{ URL::to('/edit') }}}">Edit Event</a></li>
+          <li><a href="#createEventModal" data-toggle="modal">New Event</a></li>
+          <li><a href="#editEventModal" data-toggle="modal">Edit Event</a></li>
           <li><a href="{{{ URL::to('/signin') }}}">Sign In</a></li>
           </ul>
         </div>
@@ -64,8 +64,11 @@
     </div>
 
     <!-- Scripts are placed here -->
-    {{ HTML::script('js/jquery-1.11.1.min.js') }}
-    {{ HTML::script('js/bootstrap.min.js') }}
+    {{ HTML::script('js/jquery-1.11.1.js') }}
+    {{ HTML::script('js/bootstrap.js') }}
 
+
+    @include('admin.edit')
+    @include('admin.create')
   </body>
 </html>

@@ -30,16 +30,12 @@ Route::get('signin', 'SessionsController@create');
 
 Route::get('signout', 'SessionsController@destroy');
 
-Route::get('/create', function() {
-	return View::make('admin/create');
-});
-
-Route::get('/edit', function() {
-	return View::make('admin/edit');
-});
-
 Route::get('/check', function() {
 	return View::make('volunteer/attendance');
+});
+
+Route::get('register', function() {
+	return View::make('volunteer/register');
 });
 
 Route::resource('sessions', 'SessionsController');
