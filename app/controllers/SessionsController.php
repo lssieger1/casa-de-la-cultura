@@ -12,10 +12,11 @@ class SessionsController extends BaseController{
 				return View::make('admin.create');
 				return "Welcome " . Auth::user()->username;
 			}
-			return Redirect::to('/events');
+			return Redirect::to('/check');
 		}
 		else{
 			echo "Failed";
+			//Session::flash('loginError','Invalid credentials. Plase try again.');
 			return Redirect::back()->withInput();
 		}
 	}

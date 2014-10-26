@@ -16,9 +16,9 @@ Create a New Event
 <center>
 {{ Form::open(['route'=> 'events-created']) }}
 	<div>
-		{{ Form::label('name', 'Name: ', array('class' => 'form-control')) }}
-		{{ Form::text('name', null, array('class' => 'form-control')) }}
-		{{ $errors->first('name') }}
+		{{ Form::label('location', 'Location: ', array('class' => 'form-control')) }}
+		{{ Form::text('location', null, array('class' => 'form-control')) }}
+		{{ $errors->first('location') }}
 	</div>
 	<div>
 		{{ Form::label('description', 'Description: ', array('class' => 'form-control')) }}
@@ -38,7 +38,7 @@ Create a New Event
 
 	<div>
 		{{ Form::label('eventType', 'Event Type: ') }}
-		{{ Form::select('eventType', EventType::all()->lists('type_name','type_id'), array('class' => 'form-control')) }}
+		{{ Form::select('eventType', EventType::all()->lists('type_name'), array('class' => 'form-control')) }}
 
 		{{ Form::text('other', 'Other') }} <!-- validation needed if Other is selected to make sure this is filled in -->
 		{{ $errors->first('other') }}

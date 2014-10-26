@@ -19,13 +19,14 @@ Events
   <!-- Enter populate the values from the database within the div below. -->
   <!-- Use a for loop to make it cleaner. -->
   <ul>
-  @foreach  ($eventNs as $eventN)
+
+  @foreach  ($eventLists as $eventList)
  
   <div class="col-xs-6 col-sm-3">
     <div>
-      <label> <li>{{ $id = $eventN->name }}</li></label>
-      <p> <li>{{ $eventN->description }}</li></p>
-      <label> <li>{{ $eventN->date }}</li></label>
+      <label> {{ $eventList->name}}</label>
+      <p> {{ $eventList->description }}</p>
+      <label> {{ $eventList->date }}</label>
     </div>
   </div>
     @endforeach

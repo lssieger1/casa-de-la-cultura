@@ -1,15 +1,17 @@
 <?php
 
 class EventsController extends BaseController{
-	protected $eventN;
+	protected $eventList;
 
-	public function __construct(EventN $eventN){
-		$this->eventN = $eventN;
+	public function __construct(EventList $eventList){
+		$this->eventList = $eventList;
 	}
 
 	public function index(){
-		$eventNs = $this->eventN->all();
-		return View::make('public/events',['eventNs'=> $eventNs]);
+		$eventLists = $this->eventList->all();
+		//check if the date is past or not
+
+		return View::make('public/events',['eventLists'=> $eventLists]);
 	}
 	public function show(){
 		return View::make('events');
@@ -18,22 +20,21 @@ class EventsController extends BaseController{
 	public function store(){
 		
 		$input = Input::all();
-		if( ! $this->eventN->fill($input)->isValid() ){
-			return Redirect::back()->withErrors($this->eventN->messages);
+		if( ! $this->eventList->fill($input)->isValid() ){
+			return Redirect::back()->withErrors($this->eventList->messages);
 		}
 		
 		
-		$eventN = new EventN;
-		$eventN->name = Input::get('name');
-		$eventN->description = Input::get('description');
-		$eventN->date = Input::get('date');
+		$eventList = new EventList;
+		$eventList->location = Input::get('location');
+		$type_id = Input::get('eventType') +1;
+		$eventList->type_id = $type_id;
+		$eventList->name = DB::table('eventtype')->where('type_id', $type_id)->pluck('type_name');
+		$eventList->description = Input::get('description');
+		$eventList->date = Input::get('date');	
+	
+		$eventList->save();
 		
-		
-		$eventN->type_id = Input::get('eventType');
-		//$eventN->type_id = DB::table('eventtype')->where('type_name', $typeName)->pluck('type_id');
-
-		$eventN->save();
-		
-			return 'Created';
+			return View::make('/events');
 		}
 	}

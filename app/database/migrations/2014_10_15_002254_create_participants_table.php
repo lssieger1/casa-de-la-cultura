@@ -18,6 +18,7 @@ class CreateParticipantsTable extends Migration {
 			$table->string('fname');
 			$table->string('mname');
 			$table->string('lname');
+			$table->string('gender');
 			$table->date('dob');
 			$table->string('pob');
 			$table->string('nationality');
