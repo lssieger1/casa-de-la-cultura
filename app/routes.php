@@ -30,6 +30,7 @@ Route::get('signin', 'SessionsController@create');
 
 Route::get('signout', 'SessionsController@destroy');
 
+
 Route::get('/create', function() {
 	return View::make('admin/create');
 });
@@ -43,6 +44,7 @@ Route::get('/check', 'UsersController@show');//function() //{
 	// return View::make('volunteer/attendance');
 	// }
 //
+
 Route::resource('sessions', 'SessionsController');
 
 
