@@ -44,7 +44,7 @@
         <!-- Everything you want hidden at 940px or less, place within here -->
         <div class="collapse navbar-collapse navbar-right">
           <ul class="nav navbar-nav">
-          <li><a href="{{{ URL::to('/events') }}}">Past Events</a></li>
+          <li><a href="{{{ URL::to('/pastEvents') }}}">Past Events</a></li>
           <li><a href="{{{ URL::to('/events') }}}">Upcoming Events</a></li>
           <li><a href="{{{ URL::to('/query') }}}">Class Query</a></li>
           <li><a href="#createEventModal" data-toggle="modal">New Event</a></li>

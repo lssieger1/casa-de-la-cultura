@@ -8,9 +8,11 @@ class EventsController extends BaseController{
 	}
 
 	public function index(){
-		$eventLists = $this->eventList->all();
-		//check if the date is past or not
-
+		$eventLists = EventList::where('date', '>=', new DateTime('today'))->get();
+		return View::make('public/events',['eventLists'=> $eventLists]);
+	}
+	public function showPastEvents(){
+		$eventLists = EventList::where('date', '<', new DateTime('today'))->get();
 		return View::make('public/events',['eventLists'=> $eventLists]);
 	}
 	public function show(){
@@ -35,6 +37,6 @@ class EventsController extends BaseController{
 	
 		$eventList->save();
 		
-			return View::make('/events');
+			return Redirect::to('/events')->with('message', 'Event created');
 		}
 	}
