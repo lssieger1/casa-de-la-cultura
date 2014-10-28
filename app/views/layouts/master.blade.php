@@ -50,6 +50,7 @@
           <li><a href="#createEventModal" data-toggle="modal">New Event</a></li>
           <li><a href="#editEventModal" data-toggle="modal">Edit Event</a></li>
           <li><a href="{{{ URL::to('/signin') }}}">Sign In</a></li>
+          <li><a href="{{{ URL::to('/events') }}}">Sign Out</a></li>
           </ul>
         </div>
       </div>

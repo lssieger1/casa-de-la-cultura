@@ -28,13 +28,13 @@ Route::get('signin', 'SessionsController@create');
 Route::get('signout', 'SessionsController@destroy');
 
 
-Route::get('/create', function() {
-	return View::make('admin/create');
-});
-
 // Route::get('/edit', function() {
 // 	return View::make('admin/edit');
 // });
+
+Route::get('aevents', function() {
+	return View::make('admin/events');
+});
 
 Route::get('/check', 'UsersController@show');//function() //{
 	// if(Auth::check()){

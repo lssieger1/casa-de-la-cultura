@@ -36,7 +36,6 @@ class EventsController extends BaseController{
 		$eventList->date = Input::get('date');	
 	
 		$eventList->save();
-		
-			return Redirect::to('/events')->with('message', 'Event created');
-		}
+		return Redirect::to('/events')->with('message', 'Event created');
 	}
+}
