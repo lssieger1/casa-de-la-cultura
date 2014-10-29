@@ -10,40 +10,31 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-
+//public
 Route::get('/', function()
 {
 	return View::make('hello');
 });
-
-
 Route::get('/events','EventsController@index');
 Route::get('/pastEvents','EventsController@showPastEvents');
-/*-- Route::get('/signin', function() {
-	return View::make('public/signin');
-}); */
-
 Route::get('signin', 'SessionsController@create');
-
 Route::get('signout', 'SessionsController@destroy');
+
+//volunteer
+Route::resource('sessions', 'SessionsController');
 Route::get('attendance',function(){
 	return View::make('volunteer.attendance');
 });
 
-// Route::get('/edit', function() {
-// 	return View::make('admin/edit');
-// });
-
+//admin
 Route::get('aevents', 'EventsController@showAdminEvents');
-
-Route::get('/check', 'UsersController@show');//function() //{
-	// if(Auth::check()){
-	// return View::make('volunteer/attendance');
-	// }
-//
-
-Route::resource('sessions', 'SessionsController');
-
+Route::post('public/events',
+			array(
+				'as' => 'events-created',
+				'uses' => 'EventsController@store'
+			)
+		);
+Route::get('/check', 'UsersController@show');
 
 
 Route::get('/query',function() {
@@ -60,9 +51,4 @@ Route::get('/query',function() {
  //            var_dump($parts);
 });
 
-Route::post('public/events',
-			array(
-				'as' => 'events-created',
-				'uses' => 'EventsController@store'
-			)
-		);
+

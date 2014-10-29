@@ -33,7 +33,7 @@ class EventsController extends BaseController{
 		
 		$eventList = new EventList;
 		$eventList->location = Input::get('location');
-		$type_id = Input::get('eventType') +1;
+		$type_id = Input::get('eventType') ;
 		$eventList->type_id = $type_id;
 		$eventList->name = DB::table('eventtype')->where('type_id', $type_id)->pluck('type_name');
 		$eventList->description = Input::get('description');
