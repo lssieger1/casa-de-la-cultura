@@ -34,9 +34,7 @@ Route::get('attendance',function(){
 // 	return View::make('admin/edit');
 // });
 
-Route::get('aevents', function() {
-	return View::make('admin/events');
-});
+Route::get('aevents', 'EventsController@showAdminEvents');
 
 Route::get('/check', 'UsersController@show');//function() //{
 	// if(Auth::check()){

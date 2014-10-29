@@ -15,6 +15,10 @@ class EventsController extends BaseController{
 		$eventLists = EventList::where('date', '<', new DateTime('today'))->get();
 		return View::make('public/events',['eventLists'=> $eventLists]);
 	}
+	public function showAdminEvents(){
+		$eventLists = $this->eventList->all();
+		return View::make('admin/events',['eventLists'=> $eventLists]);
+	}
 	public function show(){
 		return View::make('events');
 	}

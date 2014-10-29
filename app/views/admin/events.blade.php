@@ -24,15 +24,16 @@ Admin Homepage
 			</tr>
 		</thead>
 		<tbody>
+			@foreach  ($eventLists as $eventList)			
 			<tr>
 				<td>
-					This is 
+					{{ $eventList->name}}  
 				</td>
 				<td>
-					where the
+					{{ $eventList->date}}
 				</td>
 				<td>
-					event info will be
+					{{ $eventList->description}}
 				</td>
 				<td>
 					<button class="btn btn-primary">Update</button>
@@ -40,38 +41,8 @@ Admin Homepage
 					<button class="btn btn-primary">Delete</button>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					Linking the  
-				</td>
-				<td>
-					buttons may be
-				</td>
-				<td>
-					a little fun
-				</td>
-				<td>
-					<button class="btn btn-primary">Update</button>
-					<button class="btn btn-primary">Attendance</button>
-					<button class="btn btn-primary">Delete</button>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					This is 
-				</td>
-				<td>
-					where the
-				</td>
-				<td>
-					event info will be
-				</td>
-				<td>
-					<button class="btn btn-primary">Update</button>
-					<button class="btn btn-primary">Attendance</button>
-					<button class="btn btn-primary">Delete</button>
-				</td>
-			</tr>
+			@endforeach 
+
 		</tbody>
 	</table>
 </div>
