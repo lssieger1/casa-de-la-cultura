@@ -26,7 +26,9 @@ Route::get('/pastEvents','EventsController@showPastEvents');
 Route::get('signin', 'SessionsController@create');
 
 Route::get('signout', 'SessionsController@destroy');
-
+Route::get('attendance',function(){
+	return View::make('volunteer.attendance');
+});
 
 // Route::get('/edit', function() {
 // 	return View::make('admin/edit');

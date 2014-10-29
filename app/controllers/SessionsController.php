@@ -9,10 +9,10 @@ class SessionsController extends BaseController{
 	public function store(){
 		if(Auth::attempt(Input::only('username','password'))){
 			if(Auth::user()->user_type == 1){
-				return View::make('admin.create');
+				return View::make('admin.events');
 				return "Welcome " . Auth::user()->username;
 			}
-			return Redirect::to('/check');
+			return Redirect::to('attendance');
 		}
 		else{
 			echo "Failed";
@@ -23,7 +23,7 @@ class SessionsController extends BaseController{
 
 	public function destroy(){
 		Auth::logout();
-		return Redirect::to('public.signin');
+		return Redirect::to('signin');
 	}
 
 }
