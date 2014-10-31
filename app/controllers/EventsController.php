@@ -48,4 +48,9 @@ class EventsController extends BaseController{
 		$eventList = EventList::find($event_id);
 		$eventList->delete();
 	}
+	//for test
+	public function edit(){
+		$eventList = EventList::find(1);
+		return View::make('admin/edit',['eventList'=> $eventList]);
+	}
 }

@@ -68,4 +68,10 @@ Route::get('/query',function() {
  //            var_dump($parts);
 });
 
-
+//testtttt
+Route::post('admin/edit',
+			array(
+				'as' => 'part-edited',
+				'uses' => 'EventsController@edit'
+			)
+		);
