@@ -11,6 +11,7 @@
 |
 */
 //public
+
 Route::get('/', function()
 {
 	return View::make('hello');
@@ -18,7 +19,13 @@ Route::get('/', function()
 Route::get('/events','EventsController@index');
 Route::get('/pastEvents','EventsController@showPastEvents');
 Route::get('signin', 'SessionsController@create');
-Route::get('signout', 'SessionsController@destroy');
+
+
+
+// Authenticated group
+
+
+
 
 //volunteer
 Route::resource('sessions', 'SessionsController');
@@ -26,6 +33,8 @@ Route::get('attendance',function(){
 	return View::make('volunteer.attendance');
 });
 
+Route::group(array('before' => 'auth|role'), function() {
+Route::get('signout', 'SessionsController@destroy');
 //admin
 Route::get('aevents', 'EventsController@showAdminEvents');
 Route::post('public/events',
@@ -35,6 +44,8 @@ Route::post('public/events',
 			)
 		);
 Route::get('/check', 'UsersController@show');
+
+});
 
 
 Route::get('/query',function() {

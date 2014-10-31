@@ -48,6 +48,16 @@ Route::filter('auth', function()
 	}
 });
 
+Route::filter('role', function(){
+	// if(Auth::user()->user_type != 1){
+	// 	return Redirect::to('attendance');
+	// }
+	$roles = ['1', '2']; 
+	if (!in_array(Auth::user()->user_type, $roles)) { 
+		return Redirect::to('/'); 
+	}
+});
+
 
 Route::filter('auth.basic', function()
 {

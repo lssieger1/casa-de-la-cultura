@@ -42,4 +42,10 @@ class EventsController extends BaseController{
 		$eventList->save();
 		return Redirect::to('/events')->with('message', 'Event created');
 	}
+
+	public function destroy(){
+		//$event_id //????
+		$eventList = EventList::find($event_id);
+		$eventList->delete();
+	}
 }
