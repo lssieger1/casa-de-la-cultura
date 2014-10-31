@@ -38,7 +38,10 @@ Admin Homepage
 				<td>
 					<button class="btn btn-primary">Update</button>
 					<button class="btn btn-primary">Attendance</button>
-					<button action = "EventsController.php@destroy" name = "delete" value = "{{$eventList->event_id}}" class="btn btn-primary">Delete</button>
+					{{ Form::open(['url'=> '/delete' ]) }}
+					<button name = "/delete"  class="btn btn-primary">Delete</button>
+					 <input type="hidden" name="event_id" value = "{{$eventList->event_id}}"> 
+					{{ Form::close()}}
 				</td>
 			</tr>
 			@endforeach 

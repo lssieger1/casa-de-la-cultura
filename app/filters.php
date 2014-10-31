@@ -54,7 +54,7 @@ Route::filter('role', function(){
 	// }
 	$roles = ['1', '2']; 
 	if (!in_array(Auth::user()->user_type, $roles)) { 
-		return Redirect::to('/'); 
+		return Redirect::to('events'); 
 	}
 });
 

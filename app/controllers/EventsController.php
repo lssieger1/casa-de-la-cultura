@@ -44,13 +44,14 @@ class EventsController extends BaseController{
 	}
 
 	public function destroy(){
-		$event_id = Input::get('delete');
+		$event_id = Input::get('event_id');
 		$eventList = EventList::find($event_id);
 		$eventList->delete();
 	}
 	//for test
 	public function edit(){
+		//$eventList = DB::table('events')->where('event_id', 2);
 		$eventList = EventList::find(1);
-		return View::make('admin/edit',['eventList'=> $eventList]);
+		return View::make('admin/edit',compact('eventList'));
 	}
 }

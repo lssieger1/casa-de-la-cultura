@@ -54,6 +54,9 @@ Route::get('/check', 'UsersController@show');
 });
 
 
+Route::post('/delete', 'EventsController@destroy');
+
+
 Route::get('/query',function() {
 	$user = DB::table('eventtype')->where('type_name', 'swimming')->pluck('type_id');
 		print $user;
@@ -69,7 +72,7 @@ Route::get('/query',function() {
 });
 
 //testtttt
-Route::post('admin/edit',
+Route::get('admin/edit',
 			array(
 				'as' => 'part-edited',
 				'uses' => 'EventsController@edit'

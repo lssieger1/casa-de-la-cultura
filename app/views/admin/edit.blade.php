@@ -35,7 +35,7 @@
 			</div>
 			<div>
 				{{ Form::label('description', 'Description: ', array('class' => 'form-control')) }}
-				{{ Form::textarea('description', $eventList->description, array('class' => 'form-control', 'resize' => 'none')) }}
+				{{ Form::textarea('description', 'test', array('class' => 'form-control', 'resize' => 'none')) }}
 			</div>
 			<div>
 				{{ Form::submit('Submit', array('class' => 'form-control btn-primary')) }}
