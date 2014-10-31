@@ -44,7 +44,7 @@ class EventsController extends BaseController{
 	}
 
 	public function destroy(){
-		//$event_id //????
+		$event_id = Input::get('delete');
 		$eventList = EventList::find($event_id);
 		$eventList->delete();
 	}

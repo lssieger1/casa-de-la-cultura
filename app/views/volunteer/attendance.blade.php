@@ -29,15 +29,16 @@ Attendance
 			</tr>
 		</thead>
 		<tbody>
+			@foreach  ($participants as $participant)			
 			<tr>
 				<td>
-					This is 
+					{{ $participant->fname}}{{ $participant->lname}}  
 				</td>
 				<td>
-					where the
+					{{ $participant->dob}}
 				</td>
 				<td>
-					user info will be
+					{{ $participant->phoneNo}}
 				</td>
 				<td>
 					<button class="btn btn-primary"> 
@@ -45,38 +46,8 @@ Attendance
 					</button>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					Linking the  
-				</td>
-				<td>
-					buttons may be
-				</td>
-				<td>
-					a little fun
-				</td>
-				<td>
-					<button class="btn btn-primary"> 
-						Update
-					</button>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					This is 
-				</td>
-				<td>
-					where the
-				</td>
-				<td>
-					user info will be
-				</td>
-				<td>
-					<button class="btn btn-primary"> 
-						Update
-					</button>
-				</td>
-			</tr>
+			@endforeach 
+			
 		</tbody>
 	</table>
 </div>

@@ -38,7 +38,7 @@ Admin Homepage
 				<td>
 					<button class="btn btn-primary">Update</button>
 					<button class="btn btn-primary">Attendance</button>
-					<button class="btn btn-primary">Delete</button>
+					<button action = "EventsController.php@destroy" name = "delete" value = "{{$eventList->event_id}}" class="btn btn-primary">Delete</button>
 				</td>
 			</tr>
 			@endforeach 

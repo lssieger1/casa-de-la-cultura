@@ -22,6 +22,7 @@ class CreateParticipantsTable extends Migration {
 			$table->date('dob');
 			$table->string('pob');
 			$table->string('nationality');
+			$table->string('address');
 			$table->string('native_lang');
 			$table->string('other_lang');
 			$table->integer('householdID')->unsigned();

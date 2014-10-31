@@ -1,23 +1,23 @@
-{{ Form::open() }}
+{{ Form::open(['route'=> 'participants-created']) }}
 	<div>
 		<div>
-			{{ Form::label('firstName', 'First Name') }}
-			{{ Form::text('firstName') }}
+			{{ Form::label('fname', 'First Name') }}
+			{{ Form::text('fname') }}
 		</div>
 		<div>
-			{{ Form::label('middleName', 'Middle Name')}}
-			{{ Form::text('middleName') }}
+			{{ Form::label('mname', 'Middle Name')}}
+			{{ Form::text('mname') }}
 		</div>
 		<div>
-			{{ Form::label('lastName', 'Last Name') }}
-			{{ Form::text('lastName') }}
+			{{ Form::label('lname', 'Last Name') }}
+			{{ Form::text('lname') }}
 		</div>
 		<div>
 			{{ Form::label('gender', 'Gender') }}
 			{{ Form::select('gender', array("Male", "Female", "Other")) }}
 		</div>	
 		<div>
-			{{ Form::label('dateOfBirth', 'Date of Birth') }}
+			{{ Form::label('dob', 'Date of Birth') }}
 			{{ Form::input('date', 'date') }}
 		</div>
 		<div>
@@ -29,19 +29,19 @@
 			{{ Form::text('address') }}
 		</div>
 		<div>
-			{{ Form::label('nativeLanguage', 'Native Language') }}
+			{{ Form::label('native_lang', 'Native Language') }}
 			{{ Form::text('nativeLanguage') }}
 		</div>
 		<div>
-			{{ Form::label('otherLanguages', 'Other Lanuages') }}
+			{{ Form::label('other_lang', 'Other Lanuages') }}
 			{{ Form::text('otherLanguages') }}
 		</div>
 		<div>
-			{{ Form::label('familyMember', 'Family Member') }}
+			{{ Form::label('houseHoldID', 'Family Member') }}
 			{{ Form::text('familyMember') }}
 		</div>
 		<div>
-			{{ Form::label('phoneNumber', 'Phone Number') }}
+			{{ Form::label('phoneNo', 'Phone Number') }}
 			{{ Form::text('phoneNumber') }}
 		</div>
 		<div>

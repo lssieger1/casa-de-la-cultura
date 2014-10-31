@@ -29,8 +29,15 @@ Route::get('signin', 'SessionsController@create');
 
 //volunteer
 Route::resource('sessions', 'SessionsController');
-Route::get('attendance',function(){
-	return View::make('volunteer.attendance');
+Route::get('attendance','ParticipantsController@show');
+Route::post('public/events',
+			array(
+				'as' => 'participants-created',
+				'uses' => 'ParticipantsController@store'
+			)
+		);
+Route::get('register', function(){
+	return View::make('volunteer/register');
 });
 
 Route::group(array('before' => 'auth|role'), function() {
@@ -44,7 +51,6 @@ Route::post('public/events',
 			)
 		);
 Route::get('/check', 'UsersController@show');
-
 });
 
 
