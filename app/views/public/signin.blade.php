@@ -30,16 +30,16 @@
   <body>
     <div class="container">
       {{ Form::open(['route' => 'sessions.store', 'class' => 'form-signin']) }}
-      <h3 class="form-signin-heading">
-        Administrator and Volunteer Sign In
-      </h3>
-      {{ Form::text('username', 'example123', array('class' => 'form-control', 'required' => 'required', 'autofocus' => 'autofocus')) }}
-      {{ Form::password('password', array('placeholder' => 'password', 'class' => 'form-control', 'required' => 'required')) }}
-      <div>
-        {{ Form::checkbox('remember_me', 'Remember me') }}
-        {{ Form::label('remember_me', "Remember me") }}
-      </div>
-      {{Form::submit('Login', array('class' => 'btn btn-lg btn-primary btn-block'))}} 
+        <h3 class="form-signin-heading">
+          Administrator and Volunteer Sign In
+        </h3>
+        {{ Form::text('username', Input::old('username'), array('placeholder' => 'username', 'class' => 'form-control', 'required' => 'required', 'autofocus' => 'autofocus')) }}
+        {{ Form::password('password', array('placeholder' => 'password', 'class' => 'form-control', 'required' => 'required')) }}
+        <div>
+          {{ Form::checkbox('remember_me', 'Remember me') }}
+          {{ Form::label('remember_me', "Remember me") }}
+        </div>
+        {{Form::submit('Login', array('class' => 'btn btn-lg btn-primary btn-block'))}} 
       {{ Form::close() }}
     </div>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->

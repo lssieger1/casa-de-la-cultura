@@ -15,7 +15,7 @@
 				{{ Form::label('eventType', 'Event Type: ') }}
 				{{ Form::select('eventType', EventType::all()->lists('type_name','type_id'), array('class' => 'form-control')) }}
 
-				{{ Form::text('other', 'Other') }} <!-- validation needed if Other is selected to make sure this is filled in -->
+				{{ Form::text('other', null, array('placeholder' => 'Other', 'class' => 'form-control')) }} <!-- validation needed if Other is selected to make sure this is filled in -->
 				{{ $errors->first('other') }}
 			</div>
 			<div>
@@ -35,17 +35,17 @@
 			</div>
 			<div>
 				{{ Form::label('description', 'Description: ', array('class' => 'form-control')) }}
-				{{ Form::textarea('description', 'test', array('class' => 'form-control', 'resize' => 'none')) }}
+				{{ Form::textarea('description', 'Enter a description...', array('class' => 'form-control', 'resize' => 'none')) }}
 			</div>
 			<div>
 				{{ Form::submit('Submit', array('class' => 'form-control btn-primary')) }}
 			</div>
 		{{ Form::close() }}
       </div>
-      <div class="modal-footer">
+<!--       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+      </div> -->
     </div><!--/.modal-content -->
   </div><!--/.modal-dialog-->
 </div><!-- /.modal -->

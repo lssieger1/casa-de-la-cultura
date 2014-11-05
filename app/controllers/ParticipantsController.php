@@ -17,7 +17,7 @@ class ParticipantsController extends BaseController{
 	public function store(){	
 		$input = Input::all();
 		if( ! $this->participant->fill($input)->isValid() ){
-			return Redirect::back()->withErrors($this->eventList->messages);
+			return Redirect::back()->withErrors($this->participant->messages);
 		}
 		
 		$participant = new Participant;

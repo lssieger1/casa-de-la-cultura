@@ -44,19 +44,18 @@
         <!-- Everything you want hidden at 940px or less, place within here -->
         <div class="collapse navbar-collapse navbar-right">
           <ul class="nav navbar-nav">
-          <li><a href="{{{ URL::to('/pastEvents') }}}">Past Events</a></li>
-          <li><a href="{{{ URL::to('/events') }}}">Upcoming Events</a></li>
-          <li><a href="{{{ URL::to('/query') }}}">Class Query</a></li>
-          @if(Auth::check())
-            @if(Auth::user()->user_type == 1)
-            <li><a href="#createEventModal" data-toggle="modal">New Event</a></li>
-            <li><a href="#editEventModal" data-toggle="modal">Edit Event</a></li>
-            @endif    
-            <li><a href="{{{ URL::to('/signout') }}}">Sign Out</a></li>
-          @else
-          <li><a href="{{{ URL::to('/signin') }}}">Sign In</a></li>
-          @endif
-          
+            <li><a href="{{{ URL::to('/pastEvents') }}}">Past Events</a></li>
+            <li><a href="{{{ URL::to('/events') }}}">Upcoming Events</a></li>
+            <li><a href="{{{ URL::to('/query') }}}">Class Query</a></li>
+            @if(Auth::check())
+              @if(Auth::user()->user_type == 1)
+                <li><a href="#createEventModal" data-toggle="modal">New Event</a></li>
+              @endif    
+              <li><a href="#registerParticipantModal" data-toggle="modal">Register</a></li>
+              <li><a href="{{{ URL::to('/signout') }}}">Sign Out</a></li>
+            @else
+              <li><a href="{{{ URL::to('/signin') }}}">Sign In</a></li>
+            @endif
           </ul>
         </div>
       </div>
@@ -67,15 +66,14 @@
 
     <!-- Content -->
     @yield('content')
-
     </div>
+
+    <!-- Modals -->
+    @include('volunteer.register')
+    @include('admin.create')
 
     <!-- Scripts are placed here -->
     {{ HTML::script('js/jquery-1.11.1.js') }}
     {{ HTML::script('js/bootstrap.js') }}
-
-
-    @include('admin.edit')
-    @include('admin.create')
   </body>
 </html>

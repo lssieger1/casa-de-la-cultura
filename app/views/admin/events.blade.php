@@ -36,20 +36,23 @@ Admin Homepage
 					{{ $eventList->description}}
 				</td>
 				<td>
-					<button class="btn btn-primary">Update</button>
+					<button class="btn btn-primary" data-target="#editEventModal" data-toggle="modal">Update</a></li>
 					{{ Form::open(['url'=> '/attendance' ]) }}
 					<button name = "/attendance" class="btn btn-primary">Attendance</button>
 					<input type="hidden" name="event_id" value = "{{$eventList->event_id}}"> 
 					{{ Form::close()}}
+
 					{{ Form::open(['url'=> '/delete' ]) }}
-					<button name = "/delete"  class="btn btn-primary">Delete</button>
+					<button name = "delete" class="btn btn-primary">Delete</button>
 					 <input type="hidden" name="event_id" value = "{{$eventList->event_id}}"> 
 					{{ Form::close()}}
 				</td>
 			</tr>
 			@endforeach 
-
 		</tbody>
 	</table>
 </div>
+
+<!-- Modals -->
+@include('admin.edit')
 @stop
