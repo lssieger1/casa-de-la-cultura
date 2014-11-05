@@ -20,7 +20,7 @@ class CreateParticipantsTable extends Migration {
 			$table->string('lname');
 			$table->string('gender');
 			$table->date('dob');
-			$table->string('pob');
+			//$table->string('pob');
 			$table->string('nationality');
 			$table->string('address');
 			$table->string('native_lang');
@@ -28,7 +28,7 @@ class CreateParticipantsTable extends Migration {
 			$table->integer('householdID')->unsigned();
 			$table->string('phoneNo');
 			$table->string('email');
-			$table->string('schoolDistrict');
+			
 			$table->timestamps();
 		});
 	}

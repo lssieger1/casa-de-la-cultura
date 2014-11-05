@@ -48,16 +48,16 @@ Route::filter('auth', function()
 	}
 });
 
-Route::filter('role', function(){
-	// if(Auth::user()->user_type != 1){
-	// 	return Redirect::to('attendance');
-	// }
-	$roles = ['1', '2']; 
-	if (!in_array(Auth::user()->user_type, $roles)) { 
+Route::filter('admin', function(){
+	if (Auth::user()->user_type != 1) { 
 		return Redirect::to('events'); 
 	}
 });
-
+Route::filter('volunteer', function(){
+	if (Auth::user()->user_type != 2) { 
+		return Redirect::to('events'); 
+	}
+});
 
 Route::filter('auth.basic', function()
 {

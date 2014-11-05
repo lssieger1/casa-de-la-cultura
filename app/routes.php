@@ -19,31 +19,34 @@ Route::get('/', function()
 Route::get('/events','EventsController@index');
 Route::get('/pastEvents','EventsController@showPastEvents');
 Route::get('signin', 'SessionsController@create');
-
+Route::resource('sessions', 'SessionsController');
 
 
 // Authenticated group
-
-
-
-
+Route::group(array('before' => 'auth'), function() {
 //volunteer
-Route::resource('sessions', 'SessionsController');
-Route::get('attendance','ParticipantsController@show');
-Route::post('public/events',
+Route::post('register',
 			array(
 				'as' => 'participants-created',
 				'uses' => 'ParticipantsController@store'
 			)
 		);
+Route::post('attendance','ParticipantsController@show');
 Route::get('register', function(){
 	return View::make('volunteer/register');
 });
-
-Route::group(array('before' => 'auth|role'), function() {
+//take attendance
+Route::post('/takeAttendance', 'AttendanceController@store');
+//sign out
 Route::get('signout', 'SessionsController@destroy');
-//admin
+
+//admin 
+Route::group(array('before' => 'admin'), function() {
+
+
+//admin main page
 Route::get('aevents', 'EventsController@showAdminEvents');
+//admin create event
 Route::post('public/events',
 			array(
 				'as' => 'events-created',
@@ -51,30 +54,28 @@ Route::post('public/events',
 			)
 		);
 Route::get('/check', 'UsersController@show');
-});
-
-
-Route::post('/delete', 'EventsController@destroy');
-
-
-Route::get('/query',function() {
-	$user = DB::table('eventtype')->where('type_name', 'swimming')->pluck('type_id');
-		print $user;
-
-	//select all pariticipants who attend event 1
-	// $parts = DB::table('attendance')
- //            ->join('participants', 'attendance.part_id', '=', 'participants.part_id')
- //            ->join('events', 'attendance.event_id', '=', 'events.event_id')
- //            -> where('events.event_id','=',1)
- //            ->select('events.description', 'participants.fname', 'participants.lname')
- //            ->get();
- //            var_dump($parts);
-});
-
-//testtttt
+//admin edit event
 Route::get('admin/edit',
 			array(
 				'as' => 'part-edited',
 				'uses' => 'EventsController@edit'
 			)
 		);
+//admin delete event
+Route::post('/delete', 'EventsController@destroy');
+});
+
+//admin check attendance
+Route::get('/showAttendance', 'AttendanceController@show');
+});
+
+
+
+
+Route::get('/query',function() {
+	$user = DB::table('eventtype')->where('type_name', 'swimming')->pluck('type_id');
+		print $user;
+
+});
+
+

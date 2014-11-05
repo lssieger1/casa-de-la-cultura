@@ -41,9 +41,12 @@ Attendance
 					{{ $participant->phoneNo}}
 				</td>
 				<td>
-					<button class="btn btn-primary"> 
-						Update
-					</button>
+					{{ Form::open(['url'=> '/takeAttendance' ]) }}
+					<input type="hidden" name="part_id" value = "{{$participant->part_id}}">
+					<input type="hidden" name="event_id" value = "<?php echo $event_id ?>">  
+					<button name = "/takeAttendance"  class="btn btn-primary">Update</button>				 
+					{{ Form::close()}}
+
 				</td>
 			</tr>
 			@endforeach 

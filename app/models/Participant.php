@@ -1,21 +1,13 @@
 <?php
 //layer
 //what is model? knowledge of our domain
-use Illuminate\Auth\UserTrait;
-use Illuminate\Auth\UserInterface;
-use Illuminate\Auth\Reminders\RemindableTrait;
-use Illuminate\Auth\Reminders\RemindableInterface;
 
-class Participant extends Eloquent implements UserInterface, RemindableInterface {
-	
-
-	use UserTrait, RemindableTrait;
-	
+class Participant extends Eloquent{
 	public $timestamps = false;
 
 	public static $rules =[
-		//'lname' => 'required',
-		//'fname' => 'required'
+		'lname' => 'required',
+		'fname' => 'required'
 	];
 
 	public $messages;
@@ -25,8 +17,9 @@ class Participant extends Eloquent implements UserInterface, RemindableInterface
 	 * @var string
 	 */
 	protected $table = 'participants';
-	protected $fillable = ['fname','mname','lname','dob','gender','nationality','address','native_lang','other_lang','houseHoldID','phoneNo','email','schoolDistrict'];
-
+	protected $fillable = ['fname','mname','lname','gender','dob','nationality','address',
+	'native_lang','other_lang','houseHoldID','phoneNo','email'];
+	protected $primaryKey = 'part_id';
 
 	public function isValid(){
 		$validation = Validator::make($this->attributes, static::$rules);

@@ -37,7 +37,10 @@ Admin Homepage
 				</td>
 				<td>
 					<button class="btn btn-primary">Update</button>
-					<button class="btn btn-primary">Attendance</button>
+					{{ Form::open(['url'=> '/attendance' ]) }}
+					<button name = "/attendance" class="btn btn-primary">Attendance</button>
+					<input type="hidden" name="event_id" value = "{{$eventList->event_id}}"> 
+					{{ Form::close()}}
 					{{ Form::open(['url'=> '/delete' ]) }}
 					<button name = "/delete"  class="btn btn-primary">Delete</button>
 					 <input type="hidden" name="event_id" value = "{{$eventList->event_id}}"> 

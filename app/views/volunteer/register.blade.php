@@ -18,7 +18,7 @@
 		</div>	
 		<div>
 			{{ Form::label('dob', 'Date of Birth') }}
-			{{ Form::input('date', 'date') }}
+			{{ Form::input('date','date') }}
 		</div>
 		<div>
 			{{ Form::label('nationality', 'Nationality') }}
@@ -30,19 +30,19 @@
 		</div>
 		<div>
 			{{ Form::label('native_lang', 'Native Language') }}
-			{{ Form::text('nativeLanguage') }}
+			{{ Form::text('native_lang') }}
 		</div>
 		<div>
 			{{ Form::label('other_lang', 'Other Lanuages') }}
-			{{ Form::text('otherLanguages') }}
+			{{ Form::text('other_lang') }}
 		</div>
 		<div>
 			{{ Form::label('houseHoldID', 'Family Member') }}
-			{{ Form::text('familyMember') }}
+			{{ Form::text('houseHoldID') }}
 		</div>
 		<div>
 			{{ Form::label('phoneNo', 'Phone Number') }}
-			{{ Form::text('phoneNumber') }}
+			{{ Form::text('phoneNo') }}
 		</div>
 		<div>
 			{{ Form::label('email', 'Email') }}
