@@ -30,7 +30,6 @@ class EventsController extends BaseController{
 			return Redirect::back()->withErrors($this->eventList->messages);
 		}
 		
-		
 		$eventList = new EventList;
 		$eventList->location = Input::get('location');
 		$type_id = Input::get('eventType') ;
@@ -47,6 +46,7 @@ class EventsController extends BaseController{
 		$event_id = Input::get('event_id');
 		$eventList = EventList::find($event_id);
 		$eventList->delete();
+		return Redirect::back();
 	}
 	//for test
 	public function edit(){

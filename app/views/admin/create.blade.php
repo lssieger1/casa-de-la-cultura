@@ -1,4 +1,3 @@
-
 <!-- Modal -->
 <div id="createEventModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="createEventModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -16,7 +15,7 @@
 				{{ Form::label('eventType', 'Event Type: ') }}
 				{{ Form::select('eventType', EventType::all()->lists('type_name','type_id'), array('class' => 'form-control')) }}
 
-				{{ Form::text('other', 'Other') }} <!-- validation needed if Other is selected to make sure this is filled in -->
+				{{ Form::text('other', null, array('placeholder' => 'Other', 'class' => 'form-control')) }} <!-- validation needed if Other is selected to make sure this is filled in -->
 				{{ $errors->first('other') }}
 			</div>
 			<div>
