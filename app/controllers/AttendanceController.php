@@ -17,7 +17,8 @@ class AttendanceController extends BaseController{
 		$part_id = Input::get('part_id');
 		$attendance->part_id = $part_id;
 		$attendance->save();
-		//return Redirect::to('attendance');
-		return Redirect::to('aevents');
+		// return Redirect::to('attendance');
+		// return Redirect::to('aevents');
+		return Redirect::back();
 	}
 }

@@ -36,7 +36,8 @@ Admin Homepage
 					{{ $eventList->description}}
 				</td>
 				<td>
-					<button class="btn btn-primary" data-target="#editEventModal" data-toggle="modal">Update</a></li>
+					<button data-eventList-id="{{$eventList}}" class="btn btn-primary" data-target="#editEventModal" data-toggle="modal">Update</a></li>
+					
 					{{ Form::open(['url'=> '/attendance' ]) }}
 					<button name = "/attendance" class="btn btn-primary">Attendance</button>
 					<input type="hidden" name="event_id" value = "{{$eventList->event_id}}"> 
@@ -55,4 +56,11 @@ Admin Homepage
 
 <!-- Modals -->
 @include('admin.edit')
+
+<script>
+	$(#editEventModal).on('show.bs.modal' function(e) {
+	     var eventTest = $(e.relatedTarget).data('eventList-id');
+	     $(e.currentTarget).find('input[name="description"]').val(bookId);
+	});
+</script>
 @stop

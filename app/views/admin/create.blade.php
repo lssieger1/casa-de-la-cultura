@@ -21,7 +21,8 @@
 			<div>
 				{{ Form::label('date', 'Date: ', array('class' => 'form-control')) }}
 				<!-- {{ Form::selectMonth('month') }} -->
-				{{ Form::input('date', 'date') }}
+				<!-- {{ Form::input('date', 'date') }} -->
+				<input name="eventDate" type="text" id="datepicker" class="form-control"/>
 				{{ $errors->first('date') }}
 			</div>
 			<div>
@@ -50,3 +51,8 @@
   </div><!--/.modal-dialog-->
 </div><!-- /.modal-->
 
+<script type="text/javascript">
+	$(document).ready(function() {
+		$( "#datepicker" ).datepicker({dateFormat: "dd MM yy"});
+	});
+</script>

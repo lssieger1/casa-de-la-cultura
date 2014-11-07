@@ -34,8 +34,9 @@
 				<img src="/favicon.ico"\>
 			</div>
 			<div>
-				{{ Form::label('description', 'Description: ', array('class' => 'form-control')) }}
-				{{ Form::textarea('description', 'Enter a description...', array('class' => 'form-control', 'resize' => 'none')) }}
+				{{ Form::label('description2', 'Description: ', array('class' => 'form-control')) }}
+				<!-- <input type="text" id="description" name="description" value=""> -->
+				{{ Form::textarea('description', null, array('class' => 'form-control', 'resize' => 'none')) }}
 			</div>
 			<div>
 				{{ Form::submit('Submit', array('class' => 'form-control btn-primary')) }}
@@ -48,4 +49,4 @@
       </div> -->
     </div><!--/.modal-content -->
   </div><!--/.modal-dialog-->
-</div><!-- /.modal -->
+</div><!-- /.modal-->

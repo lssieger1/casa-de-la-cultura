@@ -13,6 +13,7 @@
     <!-- {{ HTML::style('css/style.css') }} -->
     {{ HTML::style('css/bootstrap.css') }}
     {{ HTML::style('css/bootstrap-theme.css') }}
+    {{ HTML::style('css/jquery-ui.css') }}
     <!-- {{ HtML::style('css/prettyPhoto.css') }} -->
 
     @yield('style')
@@ -73,7 +74,8 @@
     @include('admin.create')
 
     <!-- Scripts are placed here -->
-    {{ HTML::script('js/jquery-1.11.1.js') }}
+    {{ HTML::script('//code.jquery.com/jquery-1.10.2.js') }}
+    {{ HTML::script('js/jquery-ui.js') }}
     {{ HTML::script('js/bootstrap.js') }}
   </body>
 </html>

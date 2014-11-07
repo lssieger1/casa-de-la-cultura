@@ -4,14 +4,20 @@
 Attendance
 @stop
 
+@section('style')
+{{ HTML::style('//cdn.datatables.net/1.10.3/css/jquery.dataTables.min.css') }}
+{{ HTML::style('css/sb-admin-2.css') }}
+{{ HTML::script('//cdn.datatables.net/1.10.3/js/jquery.dataTables.min.js') }}
+@stop
+
 @section('content')
 <p> This is where the attendance will be taken, by displaying all of the participants</p>
 
 <!-- Still trying to decide what table format to use 
         you can safely start working on displaying the 
         participants. -->
-<div class="table-responsive">
-	<table class="table table-bordered table-striped">
+ <div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover" id="attendanceTable">
 		<thead>
 			<tr>
 				<th>
@@ -32,7 +38,7 @@ Attendance
 			@foreach  ($participants as $participant)			
 			<tr>
 				<td>
-					{{ $participant->fname}}{{ $participant->lname}}  
+					{{ $participant->fname}} {{ $participant->lname}}  
 				</td>
 				<td>
 					{{ $participant->dob}}
@@ -42,11 +48,10 @@ Attendance
 				</td>
 				<td>
 					{{ Form::open(['url'=> '/takeAttendance' ]) }}
-					<input type="hidden" name="part_id" value = "{{$participant->part_id}}">
-					<input type="hidden" name="event_id" value = "<?php echo $event_id ?>">  
-					<button name = "/takeAttendance"  class="btn btn-primary">Update</button>				 
-					{{ Form::close()}}
-
+						<input type="hidden" name="part_id" value = "{{$participant->part_id}}">
+						<input type="hidden" name="event_id" value = "<?php echo $event_id ?>">  
+						<button name = "/takeAttendance"  class="btn btn-primary">Update</button>				 
+					{{ Form::close() }}
 				</td>
 			</tr>
 			@endforeach 
@@ -55,4 +60,9 @@ Attendance
 	</table>
 </div>
 
+<script>
+$(document).ready(function() {
+	$('#attendanceTable').dataTable();
+});
+</script>
 @stop
