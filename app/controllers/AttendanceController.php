@@ -12,10 +12,14 @@ class AttendanceController extends BaseController{
 	}
 
 	public function store(){
+
 		$attendance = new Attendance;
 		$attendance->event_id = Input::get('event_id');
 		$part_id = Input::get('part_id');
 		$attendance->part_id = $part_id;
+		if( ! $this->attendance->isValid() ){
+			return Redirect::back()->withErrors($this->attendance->messages);
+		}
 		$attendance->save();
 		// return Redirect::to('attendance');
 		// return Redirect::to('aevents');

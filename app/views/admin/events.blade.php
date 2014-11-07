@@ -36,7 +36,7 @@ Admin Homepage
 					{{ $eventList->description}}
 				</td>
 				<td>
-					<button data-eventList-id="{{$eventList}}" class="btn btn-primary" data-target="#editEventModal" data-toggle="modal">Update</a></li>
+					<button data-eventList-id="{{$eventList->event_id}}" class="btn btn-primary" data-target="#editEventModal" data-toggle="modal">Update</a></li>
 					
 					{{ Form::open(['url'=> '/attendance' ]) }}
 					<button name = "/attendance" class="btn btn-primary">Attendance</button>
@@ -60,7 +60,7 @@ Admin Homepage
 <script>
 	$(#editEventModal).on('show.bs.modal' function(e) {
 	     var eventTest = $(e.relatedTarget).data('eventList-id');
-	     $(e.currentTarget).find('input[name="description"]').val(bookId);
+	     $(e.currentTarget).find('input[name="description"]').val(eventTest);
 	});
 </script>
 @stop

@@ -13,7 +13,21 @@ class Attendance extends Eloquent {
 	 * @var string
 	 */
 	protected $table = 'attendance';
-	//protected $primaryKey = 'event_id', 'part_id';
+	protected $primaryKey = array('event_id', 'part_id');
+	public static $rules =[
+		'event_id' => 'required',
+		'part_id' => 'required'
+	];
 
+	public $messages;
+	public function isValid(){
+		$validation = Validator::make($this->attributes, static::$rules);
+
+		if($validation->passes()){
+			return true;
+		}
+		$this->messages = $validation->messages();
+		return false;
+	}
 
 }
