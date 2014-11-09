@@ -33,15 +33,12 @@ Admin Homepage
 					{{ $eventList->date}}
 				</td>
 				<td>
-					{{ $eventList->description}}
+					{{ $eventList->description}}{{$eventList->event_id}}
 				</td>
 				<td>
-					<button data-eventList-id="{{$eventList->event_id}}" class="btn btn-primary" data-target="#editEventModal" data-toggle="modal">Update</a></li>
+					<button data-eventList-id="{{$eventList->event_id}}" class="btn btn-primary" data-target="#editEventModal" data-toggle="modal">Update</button></li>
 					
-					{{ Form::open(['url'=> '/attendance' ]) }}
-					<button name = "/attendance" class="btn btn-primary">Attendance</button>
-					<input type="hidden" name="event_id" value = "{{$eventList->event_id}}"> 
-					{{ Form::close()}}
+					<a href = "attendance/{{$eventList->event_id}}" class="btn btn-primary">Attendance</a>
 
 					{{ Form::open(['url'=> '/delete' ]) }}
 					<button name = "delete" class="btn btn-primary">Delete</button>

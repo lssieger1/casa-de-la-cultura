@@ -49,6 +49,7 @@ Route::filter('auth', function()
 });
 
 Route::filter('admin', function(){
+	
 	if (Auth::user()->user_type != 1) { 
 		return Redirect::to('events'); 
 	}

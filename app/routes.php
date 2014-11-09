@@ -31,8 +31,14 @@ Route::post('register',
 				'uses' => 'ParticipantsController@store'
 			)
 		);
-Route::get('attendance','ParticipantsController@show');
-Route::post('attendance','ParticipantsController@show');
+//>>
+Route::get('attendance/{event_id}', 
+	array(
+		'as' => 'takingAttendance',
+		'uses' => 'ParticipantsController@show' )
+);
+
+
 Route::get('register', function(){
 	return View::make('volunteer/register');
 });

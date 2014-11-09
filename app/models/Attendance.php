@@ -13,7 +13,7 @@ class Attendance extends Eloquent {
 	 * @var string
 	 */
 	protected $table = 'attendance';
-	protected $primaryKey = array('event_id', 'part_id');
+	
 	public static $rules =[
 		'event_id' => 'required',
 		'part_id' => 'required'

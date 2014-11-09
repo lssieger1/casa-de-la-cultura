@@ -4,6 +4,7 @@
 
 class EventList extends Eloquent {
 	
+	//belongsTo();
 	
 	public $timestamps = false;
 
