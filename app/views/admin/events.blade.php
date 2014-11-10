@@ -35,10 +35,10 @@ Admin Homepage
 					{{ $eventList->name }}  
 				</td>
 				<td>
-					{{ $eventList->date }} {{ $eventList->location }}
+					<?php echo date("d F Y", strtotime($eventList->date)) ?> {{ $eventList->location }}
 				</td>
 				<td>
-					{{ $eventList->description}} {{$eventList->event_id}}
+					{{ $eventList->description}}
 				</td>
 				<td>
 					<button data-eventList-id="{{$eventList->event_id}}" class="btn btn-primary" data-target="#editEventModal" data-toggle="modal">Update</button></li>

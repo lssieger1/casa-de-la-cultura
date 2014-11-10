@@ -32,5 +32,4 @@ class EventList extends Eloquent {
 		$this->messages = $validation->messages();
 		return false;
 	}
-
 }
