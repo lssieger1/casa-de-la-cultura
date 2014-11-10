@@ -14,6 +14,7 @@
     {{ HTML::style('css/bootstrap.css') }}
     {{ HTML::style('css/bootstrap-theme.css') }}
     {{ HTML::style('css/jquery-ui.css') }}
+    {{ HTML::style('//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css') }}
     <!-- {{ HtML::style('css/prettyPhoto.css') }} -->
 
     @yield('style')
@@ -64,9 +65,8 @@
 
     <!-- Container -->
     <div class="container">
-
-    <!-- Content -->
-    @yield('content')
+      <!-- Content -->
+      @yield('content')
     </div>
 
     <!-- Modals -->
@@ -77,5 +77,15 @@
     {{ HTML::script('//code.jquery.com/jquery-1.10.2.js') }}
     {{ HTML::script('js/jquery-ui.js') }}
     {{ HTML::script('js/bootstrap.js') }}
+    {{ HTML::script('js/jquery.dataTables.js') }}
+    {{ HTML::script('js/dataTables.bootstrap.js') }}
+    <script>
+      $(document).ready(function() {
+        $('#adminEvents').dataTable();
+      });
+      $(document).ready(function() {
+        $('#attendanceTable').dataTable();
+      });
+    </script>
   </body>
 </html>

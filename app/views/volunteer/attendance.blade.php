@@ -5,9 +5,7 @@ Attendance
 @stop
 
 @section('style')
-{{ HTML::style('//cdn.datatables.net/1.10.3/css/jquery.dataTables.min.css') }}
-{{ HTML::style('css/sb-admin-2.css') }}
-{{ HTML::script('//cdn.datatables.net/1.10.3/js/jquery.dataTables.min.js') }}
+{{ HTML::style('css/dataTables.bootstrap.css') }}
 @stop
 
 @section('content')
@@ -59,10 +57,4 @@ Attendance
 		</tbody>
 	</table>
 </div>
-
-<script>
-$(document).ready(function() {
-	$('#attendanceTable').dataTable();
-});
-</script>
 @stop

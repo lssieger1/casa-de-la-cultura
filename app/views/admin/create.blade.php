@@ -21,8 +21,7 @@
 			<div>
 				{{ Form::label('date', 'Date: ', array('class' => 'form-control')) }}
 				<!-- {{ Form::selectMonth('month') }} -->
-				<!-- {{ Form::input('date', 'date') }} -->
-				<input name="eventDate" type="text" id="datepicker" class="form-control"/>
+				{{ Form::input('date', 'date') }}
 				{{ $errors->first('date') }}
 			</div>
 			<div>
@@ -51,8 +50,9 @@
   </div><!--/.modal-dialog-->
 </div><!-- /.modal-->
 
+{{ HTML::script('//code.jquery.com/jquery-1.10.2.js') }}
 <script type="text/javascript">
 	$(document).ready(function() {
-		$( "#datepicker" ).datepicker({dateFormat: "dd MM yy"});
+		$( "#date" ).datepicker({dateFormat: "dd MM yy"});
 	});
 </script>

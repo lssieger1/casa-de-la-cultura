@@ -4,9 +4,14 @@
 Admin Homepage
 @stop
 
+@section('style')
+{{ HTML::style('css/dataTables.bootstrap.css') }}
+<!-- {{ HTML::style('css/sb-admin-2.css') }} -->
+@stop
+
 @section('content')
 <div class="table-responsive">
-	<table class="table table-bordered table-striped">
+	<table class="table table-bordered table-striped" id="adminEvents">
 		<thead>
 			<tr>
 				<th>
@@ -27,13 +32,13 @@ Admin Homepage
 			@foreach  ($eventLists as $eventList)			
 			<tr>
 				<td>
-					{{ $eventList->name}}  
+					{{ $eventList->name }}  
 				</td>
 				<td>
-					{{ $eventList->date}}
+					{{ $eventList->date }} {{ $eventList->location }}
 				</td>
 				<td>
-					{{ $eventList->description}}{{$eventList->event_id}}
+					{{ $eventList->description}} {{$eventList->event_id}}
 				</td>
 				<td>
 					<button data-eventList-id="{{$eventList->event_id}}" class="btn btn-primary" data-target="#editEventModal" data-toggle="modal">Update</button></li>
@@ -54,6 +59,7 @@ Admin Homepage
 <!-- Modals -->
 @include('admin.edit')
 
+{{ HTML::script('jquery-1.11.1.js') }}
 <script>
 	$(#editEventModal).on('show.bs.modal' function(e) {
 	     var eventTest = $(e.relatedTarget).data('eventList-id');
