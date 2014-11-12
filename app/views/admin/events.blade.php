@@ -41,8 +41,11 @@ Admin Homepage
 					{{ $eventList->description}}
 				</td>
 				<td>
+
+					{{ Form::open(['url'=> 'admin/edit' ]) }}
 					<button data-eventList-id="{{$eventList->event_id}}" class="btn btn-primary" data-target="#editEventModal" data-toggle="modal">Update</button></li>
-					
+					<input type="hidden" name="event_id" value = "{{$eventList->event_id}}"> 
+					{{ Form::close()}}
 					<a href = "attendance/{{$eventList->event_id}}" class="btn btn-primary">Attendance</a>
 
 					{{ Form::open(['url'=> '/delete' ]) }}

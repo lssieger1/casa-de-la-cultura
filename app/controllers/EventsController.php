@@ -50,9 +50,8 @@ class EventsController extends BaseController{
 	}
 	//for test
 	public function edit(){
-		//$eventList = DB::table('events')->where('event_id', 2);
-		$eventList = EventList::find(1);
-		return View::make('admin/edit',compact('eventList'));
+		$eventList = EventList::find(Input::get('event_id'));
+		return View::make('admin/edit',['eventList'=> $eventList]);//compact('eventList'));
 	}
 
 }

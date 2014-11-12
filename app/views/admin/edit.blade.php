@@ -10,7 +10,7 @@
         </h4>
       </div>
       <div class="modal-body">
-		{{ Form::open(['route'=> 'part-edited']) }}
+		{{ Form::open(['route'=> 'event-edited']) }}
 			<div>
 				{{ Form::label('eventType', 'Event Type: ') }}
 				{{ Form::select('eventType', EventType::all()->lists('type_name','type_id'), array('class' => 'form-control')) }}
@@ -26,7 +26,7 @@
 			</div>
 			<div>
 				{{ Form::label('location', 'Location: ', array('class' => 'form-control')) }}
-				{{ Form::text('location', null, array('class' => 'form-control')) }}
+				{{ Form::text('location', $eventList->location, array('class' => 'form-control')) }}
 				{{ $errors->first('location') }}
 			</div>
 			<div>
@@ -36,7 +36,7 @@
 			<div>
 				{{ Form::label('description2', 'Description: ', array('class' => 'form-control')) }}
 				<!-- <input type="text" id="description" name="description" value=""> -->
-				{{ Form::textarea('description', null, array('class' => 'form-control', 'resize' => 'none')) }}
+				{{ Form::textarea('description', $eventList->description, array('class' => 'form-control', 'resize' => 'none')) }}
 			</div>
 			<div>
 				{{ Form::submit('Submit', array('class' => 'form-control btn-primary')) }}
