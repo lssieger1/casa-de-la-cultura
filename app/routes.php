@@ -79,10 +79,3 @@ Route::get('/showAttendance', 'AttendanceController@show');
 
 
 
-Route::get('/query',function() {
-	$user = DB::table('eventtype')->where('type_name', 'swimming')->pluck('type_id');
-		print $user;
-
-});
-
-

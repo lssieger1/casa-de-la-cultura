@@ -3,7 +3,14 @@
 //what is model? knowledge of our domain
 
 class Attendance extends Eloquent {
-	
+	public function participant()
+	{
+    return $this->belongsTo('Participant','part_id');
+	}
+	public function eventList()
+	{
+    return $this->belongsTo('EventList','event_id');
+	}
 	
 	public $timestamps = false;
 

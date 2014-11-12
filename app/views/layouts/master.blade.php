@@ -48,7 +48,6 @@
           <ul class="nav navbar-nav">
             <li><a href="{{{ URL::to('/pastEvents') }}}">Past Events</a></li>
             <li><a href="{{{ URL::to('/events') }}}">Upcoming Events</a></li>
-            <li><a href="{{{ URL::to('/query') }}}">Class Query</a></li>
             @if(Auth::check())
               @if(Auth::user()->user_type == 1)
                 <li><a href="#createEventModal" data-toggle="modal">New Event</a></li>

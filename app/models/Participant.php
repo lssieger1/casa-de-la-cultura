@@ -3,6 +3,12 @@
 //what is model? knowledge of our domain
 
 class Participant extends Eloquent{
+
+	public function events()
+    {
+        return $this->hasMany('Attendance','part_id');
+    }
+
 	public $timestamps = false;
 
 	public static $rules =[

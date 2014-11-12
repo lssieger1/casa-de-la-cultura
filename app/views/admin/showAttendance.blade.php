@@ -13,6 +13,9 @@ Admin Homepage
 					Event ID
 				</th>
 				<th>
+					Event Date
+				</th>
+				<th>
 					Participant
 				</th>
 			</tr>
@@ -23,6 +26,9 @@ Admin Homepage
 			<tr>
 				<td>
 					{{ $attendance->event_id}}  
+				</td>
+				<td>
+					{{ $attendance->eventList->date}}  
 				</td>
 				<td>
 					<?php

@@ -25,7 +25,10 @@ class EventType extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $table = 'eventtype';
 	protected $fillable = ['type_name'];
-
+    public function events()
+    {
+        return $this->hasMany('EventList', 'type_id');
+    }
 
 	public function isValid(){
 		$validation = Validator::make($this->attributes, static::$rules);

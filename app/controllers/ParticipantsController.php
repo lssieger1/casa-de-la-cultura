@@ -21,7 +21,7 @@ class ParticipantsController extends BaseController{
 		$participant = new Participant;
 		$participant->fill($input);
 		$participant->save();
-		return Redirect::to('/attendance')->with('message', 'New participant created');
+		return Redirect::back()->with('message', 'New participant created');
 	}
 
 }

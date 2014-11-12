@@ -4,8 +4,16 @@
 
 class EventList extends Eloquent {
 	
-	//belongsTo();
-	
+	public function eventType()
+	{
+    return $this->belongsTo('EventType', 'type_id');
+	}
+	public function events()
+    {
+        return $this->hasMany('Attendance','event_id');
+    }
+    
+
 	public $timestamps = false;
 
 	public static $rules =[
