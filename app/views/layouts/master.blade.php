@@ -75,6 +75,15 @@
     <!-- Scripts are placed here -->
     {{ HTML::script('//code.jquery.com/jquery-1.10.2.js') }}
     {{ HTML::script('js/jquery-ui.js') }}
+
+<script>
+  $(#editEventModal).on('show.bs.modal' function(e) {
+       var eventTest = $(e.relatedTarget).id;
+       alert("eventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTest");
+       $(e.currentTarget).find('input[name="description"]').val(eventTest);
+  });
+</script>
+
     {{ HTML::script('js/bootstrap.js') }}
     {{ HTML::script('js/jquery.dataTables.js') }}
     {{ HTML::script('js/dataTables.bootstrap.js') }}

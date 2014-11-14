@@ -49,9 +49,18 @@ class EventsController extends BaseController{
 		return Redirect::back();
 	}
 	//for test
-	public function edit(){
-		$eventList = EventList::find(Input::get('event_id'));
-		return View::make('admin/edit',['eventList'=> $eventList]);//compact('eventList'));
+	public function edit($id){
+		//$eventList = DB::table('events')->where('event_id', 2);
+		/*$event_id = Input::get('event_id');
+		$eventList = EventList::find($event_id);
+		return View::make('admin/edit', compact('eventList'));*/
+		$eventList = EventList::findOrFail($id);
+
+		return View::make('admin/edit', compact('eventList'));
+	}
+
+	public function update($id){
+
 	}
 
 }

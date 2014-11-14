@@ -62,12 +62,18 @@ Route::post('public/events',
 		);
 Route::get('/check', 'UsersController@show');
 //admin edit event
-Route::post('admin/edit',
+
+//Route::post('admin/edit',
+
+Route::get('admin/edit/{id}',
 			array(
 				'as' => 'event-edited',
 				'uses' => 'EventsController@edit'
+		
 			)
 		);
+
+Route::resource('admin', 'EventsController');
 //admin delete event
 Route::post('/delete', 'EventsController@destroy');
 });
@@ -75,6 +81,7 @@ Route::post('/delete', 'EventsController@destroy');
 //admin check attendance
 Route::get('/showAttendance', 'AttendanceController@show');
 });
+
 
 
 
