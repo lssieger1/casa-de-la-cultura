@@ -44,12 +44,24 @@ Attendance
 				<td>
 					{{ $participant->phoneNo}}
 				</td>
+				<?php $part_id = $participant->part_id;
+					  
+					  $records =  DB::table('attendance')->where('part_id', '=', $part_id)
+					  										->where('event_id', '=', $event_id)
+					  										->get();
+
+				?>
 				<td>
+					@if($records== null)
+					
 					{{ Form::open(['url'=> '/takeAttendance' ]) }}
 						<input type="hidden" name="part_id" value = "{{$participant->part_id}}">
 						<input type="hidden" name="event_id" value = "<?php echo $event_id ?>">  
 						<button name = "/takeAttendance"  class="btn btn-primary">Update</button>				 
 					{{ Form::close() }}
+					@else
+						<button name = "/takeAttendance"  class="btn btn-primary" type="button" disabled>Update</button>
+					@endif
 				</td>
 			</tr>
 			@endforeach 
