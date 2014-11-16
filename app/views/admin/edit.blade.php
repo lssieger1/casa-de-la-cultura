@@ -12,9 +12,7 @@
         </h4>
       </div>
       <div class="modal-body">
-<<<<<<< Updated upstream
-		{{ Form::open(['route'=> 'event-edited']) }}
-=======
+		<!-- {{ Form::open(['route'=> 'event-edited']) }} -->
 
       	<button id="{{$eventList->event_id}}" data-eventList-id="{{$eventList->event_id}}" class="btn btn-primary" data-target="#editEventModal" data-toggle="modal"
       		onClick="mytest(this);">Update</button></li>
@@ -31,12 +29,11 @@
 
 
 		<!-- $MSG=$_GET["theId"]; -->
-		<?php echo $eventList->event_id; ?>
+		<!--?php echo $eventList->event_id; ?>
 		{{ Form::open() }}
 			<!-- <button name = "edit" class="btn btn-primary">Edit</button>
 					 <input type="hidden" name="event_id" value = "{{$eventList->event_id}}"> --> 
 
->>>>>>> Stashed changes
 			<div>
 				
 

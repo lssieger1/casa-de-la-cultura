@@ -68,8 +68,9 @@ Admin Homepage
 <script type="text/javascript">
 	$(document).on( "click", '.edit_button',function(e) {
 
-        
-        var id = $(this).data('eventList-id');
+        var clickedElement = e.target;
+        //var id = $(this).data('eventList');
+        var id = clickedElement.id;
         // var description = $(this).data('description');
         // var location = $(this).data('location');
 
