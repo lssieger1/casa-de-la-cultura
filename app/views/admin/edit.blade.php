@@ -32,8 +32,6 @@ Edit Event
 		<img src="/favicon.ico"\>
 	</div>
 	<div>
-		{{ Form::label('location', 'Location:') }}
-		{{ Form::text('location', $eventList->location) }}
 		{{ Form::label('description2', 'Description: ', array('class' => 'form-control')) }}
 		<!-- <input type="text" id="description" name="description" value=""> -->
 		{{ Form::textarea('description', $eventList->description, array('class' => 'form-control', 'resize' => 'none')) }}
