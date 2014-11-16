@@ -12,7 +12,7 @@ class SessionsController extends BaseController{
 				return Redirect::to('aevents');
 				return "Welcome " . Auth::user()->username;
 			}
-			return Redirect::to('attendance');
+			return Redirect::to('events');
 		}
 		else{
 			echo "Failed";

@@ -26,7 +26,7 @@ Events
     <div>
       <label> {{ $eventList->name}}</label>
       <p> {{ $eventList->description }}</p>
-      <label> {{ $eventList->date }}</label>
+      <label> {{ $eventList->get_date() }}</label>
     </div>
   </div>
     @endforeach

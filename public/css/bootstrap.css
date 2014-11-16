@@ -14,6 +14,7 @@ body {
   margin: 0;
   background:#716457;
   border-top:1px solid #453c34;
+  padding-top: 85px;
   color: #FFFFFF;
 }
 article,
@@ -3774,7 +3775,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar {
   position: relative;
-  min-height: 50px;
+  min-height: 75px;
   margin-bottom: 20px;
   border: 1px solid transparent;
 }

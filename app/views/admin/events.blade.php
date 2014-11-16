@@ -35,7 +35,7 @@ Admin Homepage
 					{{ $eventList->name }}  
 				</td>
 				<td>
-					<?php echo date("d F Y", strtotime($eventList->date)) ?> {{ $eventList->location }}
+					{{ $eventList->get_date() }} <br><br> {{ $eventList->location }}
 				</td>
 				<td>
 					{{ $eventList->description}}

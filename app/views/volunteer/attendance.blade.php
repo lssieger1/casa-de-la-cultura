@@ -36,7 +36,7 @@ Attendance
 					{{ $participant->fname}} {{ $participant->lname}}  
 				</td>
 				<td>
-					{{ $participant->dob}}
+					{{ $participant->get_dob()}}
 				</td>
 				<td>
 					{{ $participant->phoneNo}}

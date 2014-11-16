@@ -26,7 +26,10 @@ Events
     <div>
       <label> {{ $eventList->name}}</label>
       <p> {{ $eventList->description }}</p>
-      <label> {{ $eventList->date }}</label>
+      <label> {{ $eventList->get_date() }}</label>
+      @if(Auth::check())
+        <br><a href = "attendance/{{$eventList->event_id}}" class="btn btn-primary">Attendance</a>
+      @endif
     </div>
   </div>
     @endforeach
