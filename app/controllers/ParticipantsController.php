@@ -20,6 +20,15 @@ class ParticipantsController extends BaseController{
 		}		
 		$participant = new Participant;
 		$participant->fill($input);
+		if(Input::get('gender') === 0){
+			$participant->gender = 'Male';
+		}
+		elseif (Input::get('gender') === 1){
+			$participant->gender = 'Female';
+		}
+		else{
+			$participant->gender = 'Other';
+		}
 		$participant->save();
 		return Redirect::back()->with('message', 'New participant created');
 	}
