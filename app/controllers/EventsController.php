@@ -49,11 +49,13 @@ class EventsController extends BaseController{
 		return Redirect::back();
 	}
 	//for test
-	public function edit($id){
+	public function edit(){
 		//$eventList = DB::table('events')->where('event_id', 2);
 		/*$event_id = Input::get('event_id');
 		$eventList = EventList::find($event_id);
 		return View::make('admin/edit', compact('eventList'));*/
+		$id = Input::get('hidden_id');
+		echo "$id testingx<br><br><br><br><br>fasd";
 		$eventList = EventList::findOrFail($id);
 
 		return View::make('admin/edit', compact('eventList'));

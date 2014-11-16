@@ -37,4 +37,7 @@ class Participant extends Eloquent{
 		return false;
 	}
 
+	public function get_dob() {
+		return date('d F Y', strtotime($this->dob));
+	}
 }

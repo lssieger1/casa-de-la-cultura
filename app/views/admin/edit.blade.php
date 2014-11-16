@@ -12,47 +12,24 @@
         </h4>
       </div>
       <div class="modal-body">
-		<!-- {{ Form::open(['route'=> 'event-edited']) }} -->
-
-      	<button id="{{$eventList->event_id}}" data-eventList-id="{{$eventList->event_id}}" class="btn btn-primary" data-target="#editEventModal" data-toggle="modal"
-      		onClick="mytest(this);">Update</button></li>
-					
-					<!-- <a href = "attendance/{{$eventList->event_id}}" class="btn btn-primary">Attendance</a> -->
-
-   		<script>
-			onClick='mytest(this)';
-			function mytest(clickedElement){
-				var theId = clickedElement.id;
-				alert(theId);
-				}
-		</script>
-
-
-		<!-- $MSG=$_GET["theId"]; -->
-		<!--?php echo $eventList->event_id; ?>
-		{{ Form::open() }}
-			<!-- <button name = "edit" class="btn btn-primary">Edit</button>
-					 <input type="hidden" name="event_id" value = "{{$eventList->event_id}}"> --> 
-
+      	<input type="hidden" class="event-edit-hidden" id="hidden-id"/>
+		{{ Form::open(['route'=> 'event-edited']) }}
 			<div>
-				
-
-					 
 				{{ Form::label('eventType', 'Event Type: ') }}
 				{{ Form::select('eventType', EventType::all()->lists('type_name','type_id'), array('class' => 'form-control')) }}
 
-				{{ Form::text('other', null, array('placeholder' => 'Other', 'class' => 'form-control event-edit-description')) }} <!-- validation needed if Other is selected to make sure this is filled in -->
+				{{ Form::text('other', null, array('placeholder' => 'Other', 'class' => 'form-control')) }} <!-- validation needed if Other is selected to make sure this is filled in -->
 				{{ $errors->first('other') }}
 			</div>
 			<div>
 				{{ Form::label('date2', 'Date: ', array('class' => 'form-control')) }}
 				<!-- {{ Form::selectMonth('month') }} -->
 				{{ Form::input('date', 'date2') }}
-				{{ $errors->first('date') }}
+				{{ $errors->first('date2') }}
 			</div>
 			<div>
-				{{ Form::label('location', 'Location: ', array('class' => 'form-control')) }}
-				{{ Form::text('location', $eventList->location, array('class' => 'form-control')) }}
+				{{ Form::label('editLocation', 'Location: ', array('class' => 'form-control')) }}
+				{{ Form::text('editLocation', Input::old('location'), array('class' => 'form-control event-edit-location')) }}
 				{{ $errors->first('location') }}
 			</div>
 			<div>
@@ -60,11 +37,9 @@
 				<img src="/favicon.ico"\>
 			</div>
 			<div>
-				{{ Form::label('location', 'Location:') }}
-				{{ Form::text('location', $eventList->location) }}
-				{{ Form::label('description2', 'Description: ', array('class' => 'form-control')) }}
+				{{ Form::label('editDescription', 'Description: ', array('class' => 'form-control')) }}
 				<!-- <input type="text" id="description" name="description" value=""> -->
-				{{ Form::textarea('description', $eventList->description, array('class' => 'form-control', 'resize' => 'none')) }}
+				{{ Form::textarea('editDescription', Input::old('description'), array('class' => 'form-control event-edit-description', 'resize' => 'none')) }}
 			</div>
 			<div>
 				{{ Form::submit('Submit', array('class' => 'form-control btn-primary')) }}

@@ -12,8 +12,7 @@ class EventList extends Eloquent {
     {
         return $this->hasMany('Attendance','event_id');
     }
-    
-
+	
 	public $timestamps = false;
 
 	public static $rules =[
@@ -39,5 +38,9 @@ class EventList extends Eloquent {
 		}
 		$this->messages = $validation->messages();
 		return false;
+	}
+
+	public function get_date() {
+		return date('d F Y', strtotime($this->date));
 	}
 }
