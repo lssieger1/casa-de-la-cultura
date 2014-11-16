@@ -39,7 +39,7 @@ class EventsController extends BaseController{
 		$eventList->date = date("Y-m-d", strtotime(Input::get('date')));	
 	
 		$eventList->save();
-		return Redirect::to('/events')->with('message', 'Event created');
+		return Redirect::back()->with('message', 'Event created');
 	}
 
 	public function destroy(){

@@ -10,12 +10,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <!-- CSS are placed here -->
-    <!-- {{ HTML::style('css/style.css') }} -->
     {{ HTML::style('css/bootstrap.css') }}
     {{ HTML::style('css/bootstrap-theme.css') }}
     {{ HTML::style('css/jquery-ui.css') }}
     {{ HTML::style('//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css') }}
-    <!-- {{ HtML::style('css/prettyPhoto.css') }} -->
+    {{ HTML::style('css/prettyPhoto.css') }}
 
     @yield('style')
 
