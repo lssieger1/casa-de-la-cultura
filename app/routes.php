@@ -63,12 +63,11 @@ Route::post('public/events',
 Route::get('/check', 'UsersController@show');
 //admin edit event
 
-Route::post('admin/edit',
-// Route::get('admin/edit/{id}',
+//Route::post('admin/edit',
+Route::get('edit/{event_id}',
 			array(
-				'as' => 'event-edited',
-				'uses' => 'EventsController@edit'
-		
+				'as' => 'event-tobe-edited',
+				'uses' => 'EventsController@edit'	
 			)
 		);
 

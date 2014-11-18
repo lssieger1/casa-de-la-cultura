@@ -17,8 +17,7 @@ class EventList extends Eloquent {
 	public $timestamps = false;
 
 	public static $rules =[
-		'location' => 'required',
-		'date' => 'required'
+		'location' => 'required'
 	];
 
 	public $messages;

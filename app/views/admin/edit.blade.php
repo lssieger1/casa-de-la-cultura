@@ -5,10 +5,11 @@ Edit Event
 @stop
 
 @section('content')
-{{ Form::open(['route'=> 'event-edited']) }}
+
+
 	<!-- <button name = "edit" class="btn btn-primary">Edit</button>
 			 <input type="hidden" name="event_id" value = "{{$eventList->event_id}}"> --> 
-
+{{ Form::model($eventList, array('route' => array('admin.update', $eventList->event_id), 'method' => 'PUT')) }}
 	<div>	 
 		{{ Form::label('eventType', 'Event Type: ') }}
 		{{ Form::select('eventType', EventType::all()->lists('type_name','type_id'), array('class' => 'form-control')) }}
@@ -17,14 +18,14 @@ Edit Event
 		{{ $errors->first('other') }}
 	</div>
 	<div>
-		{{ Form::label('date2', 'Date: ', array('class' => 'form-control')) }}
+		{{ Form::label('date', 'Date: ', array('class' => 'form-control')) }}
 		<!-- {{ Form::selectMonth('month') }} -->
-		{{ Form::input('date', 'date2') }}
+		{{ Form::input('date', 'date') }}
 		{{ $errors->first('date') }}
 	</div>
 	<div>
 		{{ Form::label('location', 'Location: ', array('class' => 'form-control')) }}
-		{{ Form::text('location', $eventList->location, array('class' => 'form-control')) }}
+		{{ Form::text('location', null, array('class' => 'form-control')) }}
 		{{ $errors->first('location') }}
 	</div>
 	<div>
@@ -34,7 +35,7 @@ Edit Event
 	<div>
 		{{ Form::label('description2', 'Description: ', array('class' => 'form-control')) }}
 		<!-- <input type="text" id="description" name="description" value=""> -->
-		{{ Form::textarea('description', $eventList->description, array('class' => 'form-control', 'resize' => 'none')) }}
+		{{ Form::textarea('description', null, array('class' => 'form-control', 'resize' => 'none')) }}
 	</div>
 	<div>
 		{{ Form::submit('Submit', array('class' => 'form-control btn-primary')) }}

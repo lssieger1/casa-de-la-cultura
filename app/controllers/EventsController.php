@@ -49,17 +49,17 @@ class EventsController extends BaseController{
 		return Redirect::back();
 	}
 	//for test
-	public function edit(){
-		$eventList = EventList::findOrFail(Input::get('event_id'));
+	public function edit($event_id){
+		$eventList = EventList::findOrFail($event_id);
 		return View::make('admin/edit',['eventList'=> $eventList]);
 	}
 
-	public function update($id){
+	public function update($event_id){
 		$input = Input::all();
 		if( ! $this->eventList->fill($input)->isValid() ){
 			return Redirect::back()->withErrors($this->eventList->messages);
 		}
-		$eventList = EventList::find($id);
+		$eventList = EventList::find($event_id);
 		$eventList->location = Input::get('location');
 		$type_id = Input::get('eventType') ;
 		$eventList->type_id = $type_id;
@@ -68,7 +68,7 @@ class EventsController extends BaseController{
 		$eventList->date = date("Y-m-d", strtotime(Input::get('date')));	
 	
 		$eventList->save();
-		return Redirect::back()->with('message', 'Event edited');
+		return Redirect::to('aevents');
 	}
 
 }
