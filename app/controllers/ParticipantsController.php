@@ -29,6 +29,8 @@ class ParticipantsController extends BaseController{
 		else{
 			$participant->gender = 'Other';
 		}
+		$participant->dob = date("Y-m-d", strtotime(Input::get('registerDateOfBirth')));
+
 		$participant->save();
 		return Redirect::back()->with('message', 'New participant created');
 	}

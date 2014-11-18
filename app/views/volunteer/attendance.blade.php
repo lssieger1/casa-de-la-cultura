@@ -12,7 +12,7 @@ Attendance
 <p> This is where the attendance will be taken, by displaying all of the participants</p>
 
  <div class="table-responsive">
-    <table class="table table-striped table-bordered table-hover" id="attendanceTable">
+    <table class="table table-striped table-bordered" id="attendanceTable">
 		<thead>
 			<tr>
 				<th>
@@ -25,40 +25,39 @@ Attendance
 					PHONE NUMBER
 				</th>
 				<th>
-					CHECK INFO
+					VERIFY INFO
 				</th>
 			</tr>
 		</thead>
 		<tbody>
 			@foreach  ($participants as $participant)	
-			<?php $part_id = $participant->part_id;
-					  
+				<?php 
+					$part_id = $participant->part_id;	  
 					$records =  DB::table('attendance')->where('part_id', '=', $part_id)
-				  										->where('event_id', '=', $event_id)
-				  										->get();
+				  									   ->where('event_id', '=', $event_id)
+				  									   ->get();
 				?>
 				@if($records== null)					
-			<tr>
-				<td>
-					{{ $participant->fname}} {{ $participant->lname}}  
-				</td>
-				<td>
-					{{ $participant->get_dob()}}
-				</td>
-				<td>
-					{{ $participant->phoneNo}}
-				</td>
-					
-				<td>
-					<!--button name = "/takeAttendance"  class="btn btn-primary" type="button" disabled>Update</button>-->
-					{{ Form::open(['url'=> '/takeAttendance' ]) }}
-							<input type="hidden" name="part_id" value = "{{$participant->part_id}}">
-							<input type="hidden" name="event_id" value = "<?php echo $event_id ?>">  
-							<button name = "/takeAttendance"  class="btn btn-primary">Update</button>				 
-					{{ Form::close() }}		
-				</td>
-			</tr>
-			@endif
+					<tr>
+						<td>
+							{{ $participant->fname }} {{ $participant->lname }}  
+						</td>
+						<td>
+							{{ $participant->get_dob() }}
+						</td>
+						<td>
+							{{ $participant->phoneNo }}
+						</td>
+						<td>
+							<!--button name = "/takeAttendance"  class="btn btn-primary" type="button" disabled>Update</button>-->
+							{{ Form::open(['url'=> '/takeAttendance']) }}
+									<input type="hidden" name="part_id" value = "{{$participant->part_id}}">
+									<input type="hidden" name="event_id" value = "<?php echo $event_id ?>">  
+									<button name = "/takeAttendance"  class="btn btn-primary">Verify</button>				 
+							{{ Form::close() }}		
+						</td>
+					</tr>
+				@endif
 			@endforeach 
 		</tbody>
 	</table>

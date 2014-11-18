@@ -36,7 +36,7 @@
             <span class="icon-bar"></span>
           </button>
 
-          <div class="logo"><a class="navbar-brand" href="{{{ URL::to('/') }}}"><img src="images/logo.png"/></a></div>
+          <div class="logo"><a class="navbar-brand" href="{{{ URL::to('/') }}}"><img src="{{ URL::asset('assets/images/logo.png') }}"/></a></div>
         </div>
 
         <!-- Everything you want hidden at 940px or less, place within here -->

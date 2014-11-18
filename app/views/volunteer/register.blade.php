@@ -1,6 +1,7 @@
 
 <!-- Modal -->
-<div id="registerParticipantModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="registerParticipantModalLabel" aria-hidden="true">
+<div id="registerParticipantModal" class="modal fade" tabindex="-1" role="dialog" 
+		aria-labelledby="registerParticipantModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -29,8 +30,8 @@
 					{{ Form::select('gender', array("Male", "Female", "Other")) }}
 				</div>	
 				<div>
-					{{ Form::label('dob', 'Date of Birth', array('class' => 'form-control')) }}
-					{{ Form::input('date', 'dob') }}
+					{{ Form::label('registerDateOfBirth', 'Date of Birth', array('class' => 'form-control')) }}
+					{{ Form::input('date', 'registerDateOfBirth') }}
 				</div>
 				<div>
 					{{ Form::label('nationality', 'Nationality', array('class' => 'form-control')) }}
@@ -66,11 +67,16 @@
 			</div>
 		{{ Form::close() }}
       </div>
-<!--       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div> -->
     </div><!--/.modal-content -->
   </div><!--/.modal-dialog-->
 </div><!-- /.modal -->
+
+{{ HTML::script('//code.jquery.com/jquery-1.10.2.js') }}
+<script type="text/javascript">
+	$(document).ready(function() {
+		$( "#registerDateOfBirth" ).datepicker({//changeMonth: true,
+											    //changeYear: true,
+											    dateFormat: "dd MM yy"});
+	});
+</script>
 
