@@ -24,8 +24,8 @@ Verify Information
 			{{ Form::select('gender', array("Male", "Female", "Other")) }}
 		</div>	
 		<div>
-			{{ Form::label('dob', 'Date of Birth', array('class' => 'form-control')) }}
-			{{ Form::input('date', 'dob') }}
+			{{ Form::label('updateDateOfBirth', 'Date of Birth', array('class' => 'form-control')) }}
+			{{ Form::input('date', 'updateDateOfBirth') }}
 		</div>
 		<div>
 			{{ Form::label('nationality', 'Nationality', array('class' => 'form-control')) }}
@@ -56,8 +56,18 @@ Verify Information
 			{{ Form::email('email', null, array('class' => 'form-control')) }}
 		</div>
 		<div>
-			{{ Form::submit('Register', array('class' => 'form-control btn-primary')) }}
+			{{ Form::submit('Confirm and Mark', array('class' => 'form-control btn-primary')) }}
 		</div>
 	</div>
 {{ Form::close() }}
+
+{{ HTML::script('//code.jquery.com/jquery-1.10.2.js') }}
+<script type="text/javascript">
+	$(document).ready(function() {
+		$( "#updateDateOfBirth" ).datepicker({//changeMonth: true,
+											  //changeYear: true,
+											  dateFormat: "dd MM yy"});
+	});
+</script>
+
 @stop

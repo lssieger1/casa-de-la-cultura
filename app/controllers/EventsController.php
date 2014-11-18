@@ -36,7 +36,7 @@ class EventsController extends BaseController{
 		$eventList->type_id = $type_id;
 		$eventList->name = DB::table('eventtype')->where('type_id', $type_id)->pluck('type_name');
 		$eventList->description = Input::get('description');
-		$eventList->date = date("Y-m-d", strtotime(Input::get('date')));	
+		$eventList->date = date("Y-m-d", strtotime(Input::get('date')));
 	
 		$eventList->save();
 		return Redirect::back()->with('message', 'Event created');
