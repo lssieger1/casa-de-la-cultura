@@ -11,7 +11,10 @@ class Attendance extends Eloquent {
 	{
     return $this->belongsTo('EventList','event_id');
 	}
-	
+	public function eventType()
+	{
+		return $this->belongsTo('EventType','type_id');
+	}
 	public $timestamps = false;
 
 	/**

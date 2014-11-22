@@ -25,9 +25,14 @@ class EventType extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $table = 'eventtype';
 	protected $fillable = ['type_name'];
+	protected $primaryKey = 'type_id';
     public function events()
     {
         return $this->hasMany('EventList', 'type_id');
+    }
+    public function eventTypes()
+    {
+        return $this->hasMany('Attendance', 'type_id');
     }
 
 	public function isValid(){

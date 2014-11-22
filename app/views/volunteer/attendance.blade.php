@@ -32,12 +32,15 @@ Attendance
 		<tbody>
 			@foreach  ($participants as $participant)	
 				<?php 
-					$part_id = $participant->part_id;	  
-					$records =  DB::table('attendance')->where('part_id', '=', $part_id)
+					$part_id = $participant->part_id;
+					$type_id = EventList::find($event_id)->first()->type_id;
+				    $taken =  DB::table('attendance')->where('part_id', '=', $part_id)
+				  									   ->where('type_id', '=', $type_id)
 				  									   ->where('event_id', '=', $event_id)
-				  									   ->get();
+				  									   ->first();
+
 				?>
-				@if($records== null)					
+									
 					<tr>
 						<td>
 							{{ $participant->fname }} {{ $participant->lname }}  
@@ -48,17 +51,22 @@ Attendance
 						<td>
 							{{ $participant->phoneNo }}
 						</td>
+
 						<td>
-							<!--button name = "/takeAttendance"  class="btn btn-primary" type="button" disabled>Update</button>-->
+						@if($taken != null)	
 							{{ Form::open(['url'=> '/takeAttendance']) }}
 									<input type="hidden" name="part_id" value = "{{$participant->part_id}}">
 									<input type="hidden" name="event_id" value = "<?php echo $event_id ?>">  
-									<button name = "/takeAttendance"  class="btn btn-primary">Verify</button>				 
-							{{ Form::close() }}		
-						</td>
+									<button name = "/takeAttendance"  class="btn btn-primary">Take Attendance</button>				 
+							{{ Form::close() }}	
+						@else
+						<button type="button" disabled>Attendance Taken!</button>
+						@endif
+						</td>		 						
+						
 					</tr>
-				@endif
-			@endforeach 
+				
+			@endforeach
 		</tbody>
 	</table>
 </div>

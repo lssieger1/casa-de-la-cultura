@@ -19,9 +19,9 @@ Edit Event
 		{{ $errors->first('other') }}
 	</div>
 	<div>
-		{{ Form::label('editEventDate', 'Date: ', array('class' => 'form-control')) }}
+		{{ Form::label('date', 'Date: ', array('class' => 'form-control')) }}
 		<!-- {{ Form::selectMonth('month') }} -->
-		{{ Form::input('date', 'editEventDate') }}
+		{{ Form::input('date', 'date') }}
 		{{ $errors->first('editEventDate') }}
 	</div>
 	<div>

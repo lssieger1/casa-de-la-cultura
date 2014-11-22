@@ -12,12 +12,13 @@ class AttendanceController extends BaseController{
 	}
 
 	public function store(){
-
 		$attendance = new Attendance;
-		$attendance->event_id = Input::get('event_id');
+		$event_id = Input::get('event_id');
+		$attendance->event_id = $event_id;
 		$part_id = Input::get('part_id');
 		$attendance->part_id = $part_id;
-
+		$type_id = EventList::find($event_id)->first()->type_id;
+		$attendance->type_id = $type_id;
 		$attendance->save();
 		Session::flash('message','Attendance taken');
 		return Redirect::back()->with('message', 'Attendance taken');

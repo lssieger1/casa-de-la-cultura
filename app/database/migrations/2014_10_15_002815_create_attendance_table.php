@@ -14,6 +14,8 @@ class CreateAttendanceTable extends Migration {
 	{
 		Schema::create('attendance', function(Blueprint $table)
 		{
+			$table->integer('type_id')->unsigned();
+			$table->foreign('type_id')->references('type_id')->on('eventType');
 			$table->integer('event_id')->unsigned();
 			$table->foreign('event_id')->references('event_id')->on('events')
 					->onDelete('cascade')
