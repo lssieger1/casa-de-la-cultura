@@ -33,14 +33,21 @@ Attendance
 			@foreach  ($participants as $participant)	
 				<?php 
 					$part_id = $participant->part_id;
-					$type_id = EventList::find($event_id)->first()->type_id;
-				    $taken =  DB::table('attendance')->where('part_id', '=', $part_id)
+					$type_id = DB::table('events')->where('event_id', '=', $event_id)
+				  									   ->pluck('type_id');
+					//people who attended this type of event
+				    $takenAttendance =  DB::table('attendance')->where('part_id', '=', $part_id)
 				  									   ->where('type_id', '=', $type_id)
-				  									   ->where('event_id', '=', $event_id)
+				  									   ->get();
+
+				    $records = DB::table('attendance')->where('part_id', '=', $part_id)
+				  									   ->where('type_id', '=', $type_id)
+				  									   ->where('event_id','=',$event_id)
 				  									   ->first();
+				  									   
 
 				?>
-									
+					@if($takenAttendance != null)				
 					<tr>
 						<td>
 							{{ $participant->fname }} {{ $participant->lname }}  
@@ -51,9 +58,8 @@ Attendance
 						<td>
 							{{ $participant->phoneNo }}
 						</td>
-
 						<td>
-						@if($taken != null)	
+						@if($records == null)	
 							{{ Form::open(['url'=> '/takeAttendance']) }}
 									<input type="hidden" name="part_id" value = "{{$participant->part_id}}">
 									<input type="hidden" name="event_id" value = "<?php echo $event_id ?>">  
@@ -65,6 +71,7 @@ Attendance
 						</td>		 						
 						
 					</tr>
+					@endif
 				
 			@endforeach
 		</tbody>

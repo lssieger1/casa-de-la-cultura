@@ -11,6 +11,7 @@
         <h4 class="modal-title" id="registerParticipantModalLabel">New Participant</h4>
       </div>
       <div class="modal-body">
+
 		{{ Form::open(['route'=> 'participants-created']) }}
 			<div>
 				<div>
@@ -62,7 +63,7 @@
 					{{ Form::email('email', null, array('class' => 'form-control')) }}
 				</div>
 				<div>
-					{{ Form::submit('Register', array('class' => 'form-control btn-primary')) }}
+					{{ Form::submit('Register', array('class' => 'form-control btn-primary')) }} 
 				</div>
 			</div>
 		{{ Form::close() }}
