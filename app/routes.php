@@ -80,7 +80,10 @@ Route::post('/delete', 'EventsController@destroy');
 Route::get('/showAttendance', 'AttendanceController@show');
 });
 
-
+//admin queries
+Route::get('/query', function() {
+	return View::make('admin/query');
+});
 
 
 
