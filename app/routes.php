@@ -85,5 +85,10 @@ Route::get('/query', function() {
 	return View::make('admin/query');
 });
 
-
+Route::post('/runQuery',
+			array(
+				'as' => 'runQuery',
+				'uses' => 'UsersController@runQuery'	
+			)
+		);
 

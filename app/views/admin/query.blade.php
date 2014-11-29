@@ -7,7 +7,7 @@ Run Queries
 @section('content')
 
 // two columns
-{{ Form::open() }}
+{{ Form::open(['route'=> 'runQuery']) }}
 <div class="panel">
 	<div class="panel-title">
 		Enter query filters:
@@ -76,8 +76,12 @@ Run Queries
 			{{ Form::label('email', 'Email: ') }}
 			{{ Form::text('email', null) }}
 		</div>
+		<div>
+				{{ Form::submit('Submit', array('class' => 'form-control btn-primary')) }}
+			</div>
 	</div>
 </div>
+
 // right side entering retrieval shown
 <div class="panel">
 	<div class="panel-title">

@@ -23,4 +23,13 @@
 				//return View::make('public/admin',['currentUser'=> $currentUser]);
 			}
 
+			public function runQuery(){
+				$eventType = Input::get("eventType");
+
+				$results = DB::select( DB::raw("SELECT * FROM eventtype WHERE type_name = :eventType"), array(
+  				 'eventType' => $eventType));
+
+				return $results;//View::make('admin/showResults',['results'=> $results]);
+			}
+
 		}
