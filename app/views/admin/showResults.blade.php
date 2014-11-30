@@ -13,10 +13,10 @@
 			</tr>
 		</thead>
 		<tbody>
+			<?php var_dump($results);?>
 			@foreach($results as $result)
-		     <tr><td>{{$result->type_name}}</td></tr>
-		    <tr> <td>{{$result->type_id}}</td></tr>
-		     @endforeach
+				<tr><td>{{$result->fname}}</td></tr>
+			@endforeach
 		     
 		</tbody>
 	</table>
