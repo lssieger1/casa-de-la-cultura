@@ -14,7 +14,7 @@
 		{{ Form::open(['route'=> 'events-created']) }}	
 			<div>
 				{{ Form::label('eventType', 'Event Type: ') }}
-				{{ Form::select('eventType', EventType::all()->lists('type_name','type_id'),
+				{{ Form::select('eventType', EventType::all()->lists('type_name','type_id') + array('other' => 'Other'),
 							 array('class' => 'form-control')) }}
 				{{ Form::text('other', null, array('placeholder' => 'Other', 'class' => 'form-control')) }}
 				 <!-- validation needed if Other is selected to make sure this is filled in -->

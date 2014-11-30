@@ -7,11 +7,14 @@ Edit Event
 @section('content')
 	<!-- <button name = "edit" class="btn btn-primary">Edit</button>
 			 <input type="hidden" name="event_id" value = "{{$eventList->event_id}}"> --> 
-{{ Form::model($eventList, array('route' => array('admin.update', $eventList->event_id), 'method' => 'PUT')) }}
+
+	{{ Form::model($eventList, array('route' => array('admin.update', $eventList->event_id), 'method' => 'PUT')) }}
 	<div>	 
 		{{ Form::label('eventType', 'Event Type: ') }}
-		{{ Form::select('eventType', EventType::all()->lists('type_name','type_id'), 
-						array('class' => 'form-control')) }}
+
+		{{ Form::select('name', EventType::all()->lists('type_name','type_id') + array("other" => "Other"),
+			array('class' => 'form-control')) }}
+
 
 		{{ Form::text('other', null, array('placeholder' => 'Other',
 											'class' => 'form-control event-edit-description')) }} 
