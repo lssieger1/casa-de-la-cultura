@@ -38,13 +38,14 @@ Admin Homepage
 					{{ $eventList->get_date() }} <br><br> {{ $eventList->location }}
 				</td>
 				<td>
-					{{ $eventList->description}}
+					{{ $eventList->description }}
 				</td>
 				<td>
-					
-					<a href = "edit/{{$eventList->event_id}}" class="btn btn-primary">Update</a>
-					<a href = "attendance/{{$eventList->event_id}}" class="btn btn-primary">Attendance</a>
 					{{ Form::open(['url'=> '/delete' ]) }}
+						<a href = "edit/{{$eventList->event_id}}" class="btn btn-primary">Update</a>
+						<span> </span>
+						<a href = "attendance/{{$eventList->event_id}}" class="btn btn-primary">Attendance</a>
+						<span> </span>
 						<button name = "delete" class="btn btn-primary">Delete</button>
 						<input type="hidden" name="event_id" value = "{{$eventList->event_id}}"> 
 					{{ Form::close() }}

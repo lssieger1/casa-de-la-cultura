@@ -41,6 +41,6 @@ class EventList extends Eloquent {
 	}
 
 	public function get_date() {
-		return date('d F Y', strtotime($this->date));
+		return date('d M Y', strtotime($this->date));
 	}
 }

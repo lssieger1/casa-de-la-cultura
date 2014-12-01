@@ -22,13 +22,15 @@ Events
 
   @foreach  ($eventLists as $eventList)
  
-  <div class="col-xs-6 col-sm-3">
+  <div class="col-xs-8 col-sm-3">
     <div>
       <label> {{ $eventList->name}}</label>
       <p> {{ $eventList->description }}</p>
       <label> {{ $eventList->get_date() }}</label>
       @if(Auth::check())
         <br><a href = "attendance/{{$eventList->event_id}}" class="btn btn-primary">Attendance</a>
+         <!-- needs to be linked to showAttendance?? -->
+        <a href = "attendance/{{$eventList->event_id}}" class="btn btn-primary">View Attendance</a>
       @endif
     </div>
   </div>

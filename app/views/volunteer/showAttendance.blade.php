@@ -29,9 +29,6 @@ Attendance
 				<th>
 					ADDRESS
 				</th>
-				<th>
-					LOG OR UPDATE
-				</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -49,50 +46,25 @@ Attendance
 				  									   ->where('type_id', '=', $type_id)
 				  									   ->where('event_id','=',$event_id)
 				  									   ->first();
+				  									   
+
 				?>
-				@if($takenAttendance != null)				
-				<tr>
-					<td>
-						{{ $participant->fname }} {{ $participant->lname }}  
-					</td>
-					<td>
-						{{ $participant->get_dob() }}
-					</td>
-					<td>
-						{{ $participant->phoneNo }}
-					</td>
-					<td>
-						{{ $participant->address }} {{ $participant->city }} {{ $participant->state }}
-					</td>
-					<td>
-						<table>
-							<tr>
-								<td>
-									@if($records == null)	
-										{{ Form::open(['url'=> '/takeAttendance']) }}
-												<input type="hidden" name="part_id" value = "{{ $participant->part_id }}">
-												<input type="hidden" name="event_id" value = "{{ $event_id }}">  
-												<button name="takeAttendance"  class="btn btn-primary">Take Attendance</button>				 
-										{{ Form::close() }}	
-									@else
-									<button type="button" disabled>Attendance Taken!</button>
-									@endif
-								</td>
-								<td>
-								<span>&nbsp;</span>
-								</td>
-								<td>
-									{{ Form::open() }}
-											<input type="hidden" name="part_id" value = "{{ $participant->part_id }}">
-											<input type="hidden" name="event_id" value = "{{ $event_id }}">  
-											<button name="updateParticipant"  class="btn btn-primary">Update Info</button>	
-									{{ Form::close() }}
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-				@endif
+					@if($takenAttendance != null)				
+					<tr>
+						<td>
+							{{ $participant->fname }} {{ $participant->lname }}  
+						</td>
+						<td>
+							{{ $participant->get_dob() }}
+						</td>
+						<td>
+							{{ $participant->phoneNo }}
+						</td>
+						<td>
+							{{ $participant->address }} {{ $participant->city }} {{ $participant->state }}
+						</td>						
+					</tr>
+					@endif
 			@endforeach
 		</tbody>
 	</table>
