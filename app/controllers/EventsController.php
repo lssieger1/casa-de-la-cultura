@@ -61,11 +61,12 @@ class EventsController extends BaseController{
 		}
 		$eventList = EventList::find($event_id);
 		$eventList->location = Input::get('location');
-		$type_id = Input::get('eventType') ;
+		$type_id = Input::get('eventtype') ;
 		$eventList->type_id = $type_id;
 		$eventList->name = DB::table('eventtype')->where('type_id', $type_id)->pluck('type_name');
 		$eventList->description = Input::get('description');
 		$eventList->date = date("Y-m-d", strtotime(Input::get('date')));	
+
 	
 		$eventList->save();
 		return Redirect::to('aevents');
