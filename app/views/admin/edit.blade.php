@@ -12,8 +12,8 @@ Edit Event
 	<div>	 
 		{{ Form::label('eventType', 'Event Type: ') }}
 
-		{{ Form::select('eventType', (EventType::all()->lists('type_name','type_id') + array("other" => "Other")),
-			array('class' => 'form-control')) }}
+		{{ Form::select('eventType', (EventType::all()->lists('type_name','type_id') + 
+			array($eventList->size => "Other")), array('class' => 'form-control')) }}
 
 
 		{{ Form::text('other', null, array('placeholder' => 'Other',
