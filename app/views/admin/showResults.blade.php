@@ -4,21 +4,44 @@
 			<table class="table table-bordered table-striped" id="adminEvents">
 				<thead>
 					<tr>
-						<th>
-							NAME (TYPE)
-						</th>
-						<th>
-							DATE AND LOCATION
-						</th>
+						<?php					
+						for($r = 0; $r< count($a); $r++){
+							print "<th>";
+							if($a[$r] === "native_lang"){
+								print "language";
+							}else{
+							print $a[$r];
+						}
+							print "</th>";
+						}			
+					?>
 					</tr>
 				</thead>
 				<tbody>
-					<?php var_dump($results);?>
+					<?php 
+					//for test purpose
+					var_dump($results);
+					?>
+
 					@foreach($results as $result)
-						<tr><td>{{$result->fname}}</td></tr>
-					@endforeach    
+					<tr>
+					<?php					
+						for($i = 0; $i< count($a); $i++){
+							print "<td>";
+							print $result->$a[$i];
+							print "</td>";
+						}			
+					?>
+					</tr>
+					@endforeach  
 				</tbody>
 			</table>
 		</div>
 	</body>
 </html>
+<!-- 
+register delete event type
+view attendance
+run query
+
+-->

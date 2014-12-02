@@ -66,9 +66,6 @@
 					{{ Form::label('eventType', 'eventType', array('class' => 'form-control')) }}
 					{{ Form::text('eventType', null, array('class' => 'form-control')) }}
 				</div>
-				<div>
-					{{ Form::submit('Register', array('class' => 'form-control btn-primary')) }} 
-				</div>
 			</div>
 		{{ Form::close() }}
       </div>

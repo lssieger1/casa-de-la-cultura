@@ -21,7 +21,7 @@ Run Queries
 					// better way than hard-coding?
 					<div>
 						{{ Form::label('eventType', 'Event Type: ', array('class' => 'form-control')) }}
-						{{ Form::select('eventType', EventType::all()->lists('type_name','type_id'), array('class' => 'form-control')) }}
+						{{ Form::select('eventType', (EventType::all()->lists('type_name','type_id')+ array("None","None")), array('class' => 'form-control')) }}
 					</div>
 					<div>
 						{{ Form::label('date', 'Event Date: ', array('class' => 'form-control')) }}
@@ -33,7 +33,7 @@ Run Queries
 					</div>
 					<div>
 						{{ Form::label('gender', 'Gender: ', array('class' => 'form-control')) }}
-						{{ Form::select('gender', array("Male", "Female", "Other"), array('class' => 'form-control')) }}
+						{{ Form::select('gender', array("None","Male", "Female", "Other"), array('class' => 'form-control')) }}
 					</div>
 					<div>
 						{{ Form::label('firstName', 'First Name: ', array('class' => 'form-control')) }}
@@ -79,9 +79,6 @@ Run Queries
 					<div>
 						{{ Form::label('email', 'Email: ', array('class' => 'form-control')) }}
 						{{ Form::email('email', null, array('class' => 'form-control')) }}
-					</div>
-					<div class='panel-footer'>
-						{{ Form::submit('Submit', array('class' => 'form-control btn-primary')) }}
 					</div>
 				</div>
 			</div>
@@ -152,6 +149,9 @@ Run Queries
 					<div>
 						{{ Form::checkbox('emailCB', 'emailCB') }}
 						{{ Form::label('emailCB', 'Email') }}
+					</div>
+					<div class='panel-footer'>
+					{{ Form::submit('Submit', array('class' => 'form-control btn-primary')) }}
 					</div>
 				</div>
 			</div>

@@ -77,7 +77,7 @@ Route::post('/delete', 'EventsController@destroy');
 });
 
 //admin check attendance
-Route::get('/showAttendance', 'AttendanceController@show');
+Route::get('/showAttendance/{event_id}', 'AttendanceController@show');
 });
 
 //admin queries

@@ -47,7 +47,7 @@ Admin Homepage
 						<a href = "attendance/{{$eventList->event_id}}" class="btn btn-primary">Attendance</a>
 						<span> </span>
 						<!-- proper link? -->
-						<a href = "attendance/{{$eventList->event_id}}" class="btn btn-primary">View Attendance</a>
+						<a href = "showAttendance/{{$eventList->event_id}}" class="btn btn-primary">View Attendance</a>
 						<span> </span>
 						<button name = "delete" class="btn btn-primary" onclick="if(!confirm('Are you sure to delete this item?')){return false;};">Delete</button>
 						<input type="hidden" name="event_id" value = "{{$eventList->event_id}}"> 
