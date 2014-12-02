@@ -31,9 +31,10 @@
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
+            <!--span class="icon-bar"></span>
             <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+            <span class="icon-bar"></span-->
+            <font color="white">Menu</font>
           </button>
 
           <div class="logo"><a class="navbar-brand" href="{{{ URL::to('/') }}}"><img src="{{ URL::asset('assets/images/logo.png') }}"/></a></div>
