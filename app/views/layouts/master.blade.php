@@ -40,9 +40,11 @@
           @if(Auth::check())
             @if(Auth::user()->user_type == 1)
                <div class="logo"><a class="navbar-brand" href="{{{ URL::to('/aevents') }}}"><img src="{{ URL::asset('assets/images/logo.png') }}"/></a></div>
-            @else
-               <div class="logo"><a class="navbar-brand" href="{{{ URL::to('/events') }}}"><img src="{{ URL::asset('assets/images/logo.png') }}"/></a></div>
+             @else
+                <div class="logo"><a class="navbar-brand" href="{{{ URL::to('/events') }}}"><img src="{{ URL::asset('assets/images/logo.png') }}"/></a></div>
             @endif
+          @else
+            <div class="logo"><a class="navbar-brand" href="{{{ URL::to('/events') }}}"><img src="{{ URL::asset('assets/images/logo.png') }}"/></a></div>
           @endif
         </div>
 

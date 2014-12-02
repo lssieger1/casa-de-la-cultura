@@ -12,7 +12,7 @@ Edit Event
 	<div>	 
 		{{ Form::label('eventType', 'Event Type: ') }}
 
-		{{ Form::select('name', EventType::all()->lists('type_name','type_id') + array("other" => "Other"),
+		{{ Form::select('eventType', (EventType::all()->lists('type_name','type_id') + array("other" => "Other")),
 			array('class' => 'form-control')) }}
 
 

@@ -10,7 +10,7 @@ Attendance
 
 @section('content')
 <p> This is where the attendance will be taken, by displaying all of the participants</p>
-<div>
+<div class="pull-right">
 	<button class="btn-sm btn-primary" id="browse">Browse</button>
 </div>
  <div class="table-responsive">
