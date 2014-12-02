@@ -52,7 +52,7 @@ Attendance
 					@if($takenAttendance != null)				
 					<tr>
 						<td>
-							{{ $participant->fname }} {{ $participant->lname }}  
+							{{ $participant->fname }} {{ $participant->mname }} {{ $participant->lname }}
 						</td>
 						<td>
 							{{ $participant->get_dob() }}

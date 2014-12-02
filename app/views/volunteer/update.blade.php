@@ -1,7 +1,7 @@
 @extends('layout.master')
 
 @section('title')
-Verify Information
+Update Information
 @stop
 
 @content

@@ -29,8 +29,7 @@ Events
       <label> {{ $eventList->get_date() }}</label>
       @if(Auth::check())
         <br><a href = "attendance/{{$eventList->event_id}}" class="btn btn-primary">Attendance</a>
-         <!-- needs to be linked to showAttendance?? -->
-        <a href = "attendance/{{$eventList->event_id}}" class="btn btn-primary">View Attendance</a>
+        <a href = "showAttendance/{{$eventList->event_id}}" class="btn btn-primary">View Attendance</a>
       @endif
     </div>
   </div>

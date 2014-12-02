@@ -24,71 +24,77 @@ Route::resource('sessions', 'SessionsController');
 
 // Authenticated group
 Route::group(array('before' => 'auth'), function() {
-//volunteer
-Route::post('register',
-			array(
-				'as' => 'participants-created',
-				'uses' => 'ParticipantsController@store'
-			)
+	//volunteer
+	Route::post('register',
+				array(
+					'as' => 'participants-created',
+					'uses' => 'ParticipantsController@store'
+				)
+	);
+
+	Route::get('attendance/{event_id}', 
+		array(
+			'as' => 'takingAttendance',
+			'uses' => 'ParticipantsController@show' )
+	);
+
+	Route::get('register', function(){
+		return View::make('volunteer/register');
+	});
+	//take attendance
+	Route::post('/takeAttendance', 'AttendanceController@store');
+
+	//check attendance
+	Route::get('/showAttendance/{event_id}', 'AttendanceController@show');
+
+	// browse all participants
+	Route::get('/browseAllParticiapnts', function() {
+
+	});
+
+	//sign out
+	Route::get('signout', 'SessionsController@destroy');
+
+	//admin 
+	Route::group(array('before' => 'admin'), function() {
+		//admin main page
+		Route::get('aevents', 'EventsController@showAdminEvents');
+		//admin create event
+		Route::post('public/events',
+					array(
+						'as' => 'events-created',
+						'uses' => 'EventsController@store'
+					)
+				);
+		Route::get('/check', 'UsersController@show');
+		//admin edit event
+
+		//Route::post('admin/edit',
+		Route::get('edit/{event_id}',
+					array(
+						'as' => 'event-tobe-edited',
+						'uses' => 'EventsController@edit'	
+					)
+				);
+
+		Route::resource('admin', 'EventsController');
+		//admin delete event
+		Route::post('/delete', 'EventsController@destroy');
+
+		//admin queries
+		Route::get('/query', function() {
+			return View::make('admin/query');
+		});
+
+		Route::post('/runQuery',
+					array(
+						'as' => 'runQuery',
+						'uses' => 'UsersController@runQuery'	
+					)
 		);
-//>>
-Route::get('attendance/{event_id}', 
-	array(
-		'as' => 'takingAttendance',
-		'uses' => 'ParticipantsController@show' )
-);
 
-
-Route::get('register', function(){
-	return View::make('volunteer/register');
+		Route::get('/newUser', function() {
+			return View::make('admin/newUser');
+		});
+	});
 });
-//take attendance
-Route::post('/takeAttendance', 'AttendanceController@store');
-//sign out
-Route::get('signout', 'SessionsController@destroy');
-
-//admin 
-Route::group(array('before' => 'admin'), function() {
-
-
-//admin main page
-Route::get('aevents', 'EventsController@showAdminEvents');
-//admin create event
-Route::post('public/events',
-			array(
-				'as' => 'events-created',
-				'uses' => 'EventsController@store'
-			)
-		);
-Route::get('/check', 'UsersController@show');
-//admin edit event
-
-//Route::post('admin/edit',
-Route::get('edit/{event_id}',
-			array(
-				'as' => 'event-tobe-edited',
-				'uses' => 'EventsController@edit'	
-			)
-		);
-
-Route::resource('admin', 'EventsController');
-//admin delete event
-Route::post('/delete', 'EventsController@destroy');
-});
-
-//admin check attendance
-Route::get('/showAttendance/{event_id}', 'AttendanceController@show');
-});
-
-//admin queries
-Route::get('/query', function() {
-	return View::make('admin/query');
-});
-
-Route::post('/runQuery',
-			array(
-				'as' => 'runQuery',
-				'uses' => 'UsersController@runQuery'	
-			)
-		);
-
