@@ -36,7 +36,13 @@
             <span class="icon-bar"></span>
           </button>
 
-          <div class="logo"><a class="navbar-brand" href="{{{ URL::to('/') }}}"><img src="{{ URL::asset('assets/images/logo.png') }}"/></a></div>
+          @if(Auth::check())
+            @if(Auth::user()->user_type == 1)
+               <div class="logo"><a class="navbar-brand" href="{{{ URL::to('/aevents') }}}"><img src="{{ URL::asset('assets/images/logo.png') }}"/></a></div>
+            @else
+               <div class="logo"><a class="navbar-brand" href="{{{ URL::to('/events') }}}"><img src="{{ URL::asset('assets/images/logo.png') }}"/></a></div>
+            @endif
+          @endif
         </div>
 
         <!-- Everything you want hidden at 940px or less, place within here -->
