@@ -30,7 +30,7 @@ Attendance
 					ADDRESS
 				</th>
 				<th>
-					LOG OR UPDATE
+					MARK OR UPDATE
 				</th>
 			</tr>
 		</thead>

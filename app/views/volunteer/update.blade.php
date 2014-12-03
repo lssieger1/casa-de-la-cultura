@@ -21,7 +21,7 @@ Update Information
 		</div>
 		<div>
 			{{ Form::label('gender', 'Gender', array('class' => 'form-control')) }}
-			{{ Form::select('gender', array("Male", "Female", "Other")) }}
+			{{ Form::select('gender', array("Male", "Female", "Other"), null, array('class'=>'form-control')) }}
 		</div>	
 		<div>
 			{{ Form::label('updateDateOfBirth', 'Date of Birth', array('class' => 'form-control')) }}

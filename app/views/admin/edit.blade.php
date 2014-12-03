@@ -10,11 +10,9 @@ Edit Event
 
 	{{ Form::model($eventList, array('route' => array('admin.update', $eventList->event_id), 'method' => 'PUT')) }}
 	<div>	 
-		{{ Form::label('eventType', 'Event Type: ') }}
-
-		{{ Form::select('eventType', (EventType::all()->lists('type_name','type_id') + array("other" => "Other")),
-			array('class' => 'form-control')) }}
-
+		{{ Form::label('eventType', 'Event Type: ', array('class'=>'form-control')) }}
+		{{ Form::select('eventType', (EventType::all()->lists('type_name','type_id') + array('Other')),
+			 null, array('class' => 'form-control')) }}
 
 		{{ Form::text('other', null, array('placeholder' => 'Other',
 											'class' => 'form-control event-edit-description')) }} 
@@ -23,7 +21,6 @@ Edit Event
 	</div>
 	<div>
 		{{ Form::label('date', 'Date: ', array('class' => 'form-control')) }}
-		<!-- {{ Form::selectMonth('month') }} -->
 		{{ Form::input('date', 'date') }}
 		{{ $errors->first('editEventDate') }}
 	</div>
@@ -38,7 +35,6 @@ Edit Event
 	</div> -->
 	<div>
 		{{ Form::label('description2', 'Description: ', array('class' => 'form-control')) }}
-		<!-- <input type="text" id="description" name="description" value=""> -->
 		{{ Form::textarea('description', null, array('class' => 'form-control', 'resize' => 'none')) }}
 	</div>
 	<div>

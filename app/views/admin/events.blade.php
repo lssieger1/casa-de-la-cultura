@@ -6,7 +6,7 @@ Admin Homepage
 
 @section('style')
 {{ HTML::style('css/dataTables.bootstrap.css') }}
-<!-- {{ HTML::style('css/sb-admin-2.css') }} -->
+{{ HTML::style('css/custom.css') }}
 @stop
 
 @section('content')
@@ -31,7 +31,7 @@ Admin Homepage
 		<tbody>
 			@foreach  ($eventLists as $eventList)			
 			<tr>
-				<td class="col-sm-3">
+				<td class="col-sm-3 myblock">
 					{{ $eventList->name }}  
 				</td>
 				<td class="col-sm-3">
