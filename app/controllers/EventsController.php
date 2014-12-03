@@ -26,15 +26,28 @@ class EventsController extends BaseController{
 	public function store(){
 		
 		$input = Input::all();
-		if( ! $this->eventList->fill($input)->isValid() ){
-			return Redirect::back()->withErrors($this->eventList->messages);
-		}
+		// if( ! $this->eventList->fill($input)->isValid() ){
+		// 	return Redirect::back()->withErrors($this->eventList->messages);
+		// }
 		
 		$eventList = new EventList;
 		$eventList->location = Input::get('location');
 		$type_id = Input::get('eventType') ;
-		$eventList->type_id = $type_id;
-		$eventList->name = DB::table('eventtype')->where('type_id', $type_id)->pluck('type_name');
+		if($type_id == 0){
+			$newName = Input::get('other');
+			// DB::insert('insert into eventtype ('type_id', 'type_name') values(?, ?)', array($type_id, $newName));
+			DB::table('eventtype')->insert(
+				array( 
+					'type_name' => $newName
+				)
+			);
+			$eventList->type_id = DB::table('eventtype')->where('type_name', $newName)->pluck('type_id');
+			$eventList->name = $newName;
+		}
+		else{
+			$eventList->type_id = $type_id;
+			$eventList->name = DB::table('eventtype')->where('type_id', $type_id)->pluck('type_name');
+		}
 		$eventList->description = Input::get('description');
 		$eventList->date = date("Y-m-d", strtotime(Input::get('date')));
 	
@@ -62,20 +75,19 @@ class EventsController extends BaseController{
 		$eventList = EventList::find($event_id);
 		$eventList->location = Input::get('location');
 		$type_id = Input::get('eventType') ;
-		$eventList->type_id = $type_id;
-		if($type_id == $eventList->size){
+		if($type_id == 0){
 			$newName = Input::get('other');
 			// DB::insert('insert into eventtype ('type_id', 'type_name') values(?, ?)', array($type_id, $newName));
-			DB::table('eventType')->insert(
+			DB::table('eventtype')->insert(
 				array( 
-					'type_id' => $type_id,
-					'type_name' => $newName)
-				);
-			$eventList->name = $newName;
-
-			
+					'type_name' => $newName
+				)
+			);
+			$eventList->type_id = DB::table('eventtype')->where('type_name', $newName)->pluck('type_id');
+			$eventList->name = $newName;			
 		}
 		else{
+			$eventList->type_id = $type_id;
 			$eventList->name = DB::table('eventtype')->where('type_id', $type_id)->pluck('type_name');
 		}
 		$eventList->description = Input::get('description');

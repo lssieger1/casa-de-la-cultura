@@ -32,7 +32,6 @@ class EventList extends Eloquent {
 	 */
 	protected $table = 'events';
 	protected $fillable = ['location','name','date','description', 'other'];
-	protected $hidden = ['size'];
 	protected $primaryKey = 'event_id';
 
 	public function isValid(){
@@ -47,8 +46,5 @@ class EventList extends Eloquent {
 
 	public function get_date() {
 		return date('d M Y', strtotime($this->date));
-	}
-	public function setSize(){
-		$this->set_attribute('size', EventList::count());
 	}
 }

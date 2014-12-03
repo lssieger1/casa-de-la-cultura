@@ -5,16 +5,11 @@ Edit Event
 @stop
 
 @section('content')
-	<!-- <button name = "edit" class="btn btn-primary">Edit</button>
-			 <input type="hidden" name="event_id" value = "{{$eventList->event_id}}"> --> 
-
 	{{ Form::model($eventList, array('route' => array('admin.update', $eventList->event_id), 'method' => 'PUT')) }}
-	<div>	 
-
-		{{ Form::label('eventType', 'Event Type: ') }}
-
+	<div>
+		{{ Form::label('eventType', 'Event Type: ', array('class'=>'form-control')) }}
 		{{ Form::select('eventType', (EventType::all()->lists('type_name','type_id') + 
-			array($eventList->size => "Other")), array('class' => 'form-control')) }}
+			array('Other')), 0, array('class' => 'form-control')) }}
 
 		{{ Form::text('other', null, array('placeholder' => 'Other',
 											'class' => 'form-control event-edit-description')) }} 

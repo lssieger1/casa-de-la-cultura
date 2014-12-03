@@ -13,10 +13,12 @@
       <div class="modal-body">
 		{{ Form::open(['route'=> 'events-created']) }}	
 			<div>
-				{{ Form::label('eventType', 'Event Type: ') }}
-				{{ Form::select('eventType', EventType::all()->lists('type_name','type_id') + array('other' => 'Other'),
-							 array('class' => 'form-control')) }}
-				{{ Form::text('other', null, array('placeholder' => 'Other', 'class' => 'form-control')) }}
+				{{ Form::label('eventType', 'Event Type: ', array('class'=>'form-control')) }}
+				{{ Form::select('eventType', (EventType::all()->lists('type_name','type_id') + 
+					array('Other')), 0, array('class' => 'form-control')) }}
+
+				{{ Form::text('other', null, array('placeholder' => 'Other',
+											'class' => 'form-control event-edit-description')) }} 
 				 <!-- validation needed if Other is selected to make sure this is filled in -->
 				{{ $errors->first('other') }}
 			</div>
