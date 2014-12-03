@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{{ URL::asset('assets/images/logo.png') }}">
     <title>
       @section('title')
       @show
     </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <!-- CSS are placed here -->
     {{ HTML::style('css/bootstrap.css') }}
@@ -51,18 +52,24 @@
         <!-- Everything you want hidden at 940px or less, place within here -->
         <div class="collapse navbar-collapse navbar-right">
           <ul class="nav navbar-nav">
+          @if(Auth::check())
+            @if(Auth::user()->user_type == 1)
+              <!-- change route to past admint events view -->
+              <li><a href="{{{ URL::to('/aevents') }}}">Past Events</a></li>
+              <li><a href="{{{ URL::to('/aevents') }}}">Upcoming Events</a></li>
+              <li><a href="#createEventModal" data-toggle="modal">New Event</a></li>
+              <li><a href="{{{ URL::to('/query') }}}">Run Query</a></li>
+            @else
+              <li><a href="{{{ URL::to('/pastEvents') }}}">Past Events</a></li>
+              <li><a href="{{{ URL::to('/events') }}}">Upcoming Events</a></li>
+            @endif    
+            <li><a href="#registerParticipantModal" data-toggle="modal">Register</a></li>
+            <li><a href="{{{ URL::to('/signout') }}}">Sign Out</a></li>
+          @else
             <li><a href="{{{ URL::to('/pastEvents') }}}">Past Events</a></li>
             <li><a href="{{{ URL::to('/events') }}}">Upcoming Events</a></li>
-            @if(Auth::check())
-              @if(Auth::user()->user_type == 1)
-                <li><a href="#createEventModal" data-toggle="modal">New Event</a></li>
-                <li><a href="{{{ URL::to('/query') }}}">Run Query</a></li>
-              @endif    
-              <li><a href="#registerParticipantModal" data-toggle="modal">Register</a></li>
-              <li><a href="{{{ URL::to('/signout') }}}">Sign Out</a></li>
-            @else
-              <li><a href="{{{ URL::to('/signin') }}}">Sign In</a></li>
-            @endif
+            <li><a href="{{{ URL::to('/signin') }}}">Sign In</a></li>
+          @endif
           </ul>
         </div>
       </div>

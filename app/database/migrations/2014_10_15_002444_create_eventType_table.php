@@ -12,7 +12,7 @@ class CreateEventTypeTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('eventType', function(Blueprint $table)
+		Schema::create('eventtype', function(Blueprint $table)
 		{
 			$table->increments('type_id')->unsigned();
 			$table->string('type_name');
@@ -28,7 +28,7 @@ class CreateEventTypeTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('eventType');
+		Schema::drop('eventtype');
 	}
 
 }

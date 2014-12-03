@@ -6,7 +6,6 @@ Admin Homepage
 
 @section('style')
 {{ HTML::style('css/dataTables.bootstrap.css') }}
-<!-- {{ HTML::style('css/sb-admin-2.css') }} -->
 @stop
 
 @section('content')
@@ -15,17 +14,22 @@ Admin Homepage
 	<table class="table table-bordered table-striped">
 		<thead>
 			<tr>
-				<th class="col-8">
-					DATE
-				</th>
 				<th>
 					NAME
+				</th>
+				<th>
+					DATE OF BIRTH
+				</th>
+				<th>
+					PHONE NUMBER
+				</th>
+				<th>
+					ADDRESS
 				</th>
 			</tr>
 		</thead>
 		<tbody>
-			
-			@foreach  ($attendances as $attendance)			
+			@foreach  ($attendances as $attendance)
 			<tr>
 				<td class="col-sm-3">
 					{{ $eventList->date}}
@@ -33,8 +37,8 @@ Admin Homepage
 				<td class="col-sm-3">
 					{{ $attendance->fname }} {{ $attendance->lname }}
 				</td>
-			
 			</tr>
+			<!-- should look similar to other attendance view (i.e. should show name, address, dob, phoneNumber) -->
 			@endforeach 
 		</tbody>
 	</table>

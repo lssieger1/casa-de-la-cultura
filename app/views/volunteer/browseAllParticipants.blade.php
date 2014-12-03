@@ -9,10 +9,6 @@ Attendance
 @stop
 
 @section('content')
-<p> This is where the attendance will be taken, by displaying all of the participants</p>
-<div class="pull-right">
-	<button class="btn-sm btn-primary" id="browse">Browse</button>
-</div>
  <div class="table-responsive">
     <table class="table table-striped table-bordered" id="attendanceTable">
 		<thead>
@@ -30,7 +26,7 @@ Attendance
 					ADDRESS
 				</th>
 				<th>
-					MARK OR UPDATE
+					LOG OR UPDATE
 				</th>
 			</tr>
 		</thead>
@@ -70,22 +66,23 @@ Attendance
 								<td>
 									@if($records == null)	
 										{{ Form::open(['url'=> '/takeAttendance']) }}
-												<input type="hidden" name="part_id" value = "{{ $participant->part_id }}">
-												<input type="hidden" name="event_id" value = "{{ $event_id }}">  
-												<button name="takeAttendance"  class="btn btn-primary">Take Attendance</button>				 
+											<input type="hidden" name="part_id" value = "{{ $participant->part_id }}">
+											<input type="hidden" name="event_id" value = "{{ $event_id }}">  
+											<button name="takeAttendance"  class="btn btn-primary">Take Attendance</button>
+											<!-- Redirect to previous page -->
 										{{ Form::close() }}	
 									@else
-									<button type="button" disabled>Attendance Taken!</button>
+										<button type="button" disabled>Attendance Taken!</button>
 									@endif
 								</td>
 								<td>
-								<span>&nbsp;</span>
+									<span>&nbsp;</span>
 								</td>
 								<td>
 									{{ Form::open() }}
-											<input type="hidden" name="part_id" value = "{{ $participant->part_id }}">
-											<input type="hidden" name="event_id" value = "{{ $event_id }}">  
-											<button name="updateParticipant"  class="btn btn-primary">Update Info</button>	
+										<input type="hidden" name="part_id" value = "{{ $participant->part_id }}">
+										<input type="hidden" name="event_id" value = "{{ $event_id }}">  
+										<button name="updateParticipant"  class="btn btn-primary">Update Info</button>	
 									{{ Form::close() }}
 								</td>
 							</tr>
@@ -96,8 +93,5 @@ Attendance
 			@endforeach
 		</tbody>
 	</table>
-</div>
-<div class="pull-right">
-	<button class="btn-lg btn-primary" id="browse">Browse</button>
 </div>
 @stop
