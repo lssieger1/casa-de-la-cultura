@@ -11,7 +11,7 @@ Attendance
 
 @section('content')
 <div class="pull-right">
-	<a href="browseAllParticipants" class="btn btn-primary" id="browse">Browse</a>
+	<a href="browseAllParticipants/{{$event_id}}" class="btn btn-lg btn-primary">Browse</a>
 </div>
  <div class="table-responsive">
     <table class="table table-striped table-bordered" id="attendanceTable">
@@ -30,7 +30,7 @@ Attendance
 					ADDRESS
 				</th>
 				<th>
-					SELECT
+					LOG OR UPDATE
 				</th>
 			</tr>
 		</thead>
@@ -68,11 +68,26 @@ Attendance
 						<table>
 							<tr>
 								<td>
-									{{ Form::open(['url'=> '/takeAttendance']) }}
-											<input type="hidden" name="part_id" value = "{{ $participant->part_id }}">
-											<input type="hidden" name="event_id" value = "{{ $event_id }}">  
-											<button name="takeAttendance"  class="btn btn-primary">Take Attendance</button>				 
-									{{ Form::close() }}	
+									@if($records === NULL)
+										{{ Form::open(['url'=> '/takeAttendance']) }}
+												<input type="hidden" name="part_id" value = "{{ $participant->part_id }}">
+												<input type="hidden" name="event_id" value = "{{ $event_id }}">  
+												<button name="takeAttendance"  class="btn btn-primary">Take Attendance</button>				 
+										{{ Form::close() }}
+									@else
+										<button type="button" disabled>Attendance Taken!</button>
+									@endif
+								</td>
+								<td>
+									<span>&nbsp;</span>
+								</td>
+								<td>
+									{{ Form::open() }}
+										<input type="hidden" name="part_id" value = "{{ $participant->part_id }}">
+										<input type="hidden" name="event_id" value = "{{ $event_id }}">  
+										<button name="updateParticipant"  class="btn btn-primary">Update</button>				 
+									{{ Form::close() }}
+								</td>
 							</tr>
 						</table>
 					</td>
@@ -83,6 +98,7 @@ Attendance
 	</table>
 </div>
 <div class="pull-right">
-	<a href="browseAllParticipants" class="btn btn-lg btn-primary" id="browse">Browse</a>
+	<a href="browseAllParticipants/{{$event_id}}" class="btn btn-lg btn-primary">Browse</a>
+
 </div>
 @stop

@@ -27,70 +27,34 @@ Attendance
 					ADDRESS
 				</th>
 				<th>
-					LOG OR UPDATE
+					SELECT
 				</th>
 			</tr>
 		</thead>
 		<tbody>
-			@foreach  ($participants as $participant)	
-				<?php 
-					$part_id = $participant->part_id;
-					$type_id = DB::table('events')->where('event_id', '=', $event_id)
-				  									   ->pluck('type_id');
-					//people who attended this type of event
-				    $takenAttendance =  DB::table('attendance')->where('part_id', '=', $part_id)
-				  									   ->where('type_id', '=', $type_id)
-				  									   ->get();
-
-				    $records = DB::table('attendance')->where('part_id', '=', $part_id)
-				  									   ->where('type_id', '=', $type_id)
-				  									   ->where('event_id','=',$event_id)
-				  									   ->first();
-				?>
-				@if($takenAttendance != null)				
+			@foreach  ($participants as $participant)			
 				<tr>
 					<td>
 						{{ $participant->fname }} {{ $participant->lname }}  
 					</td>
 					<td>
-						{{ $participant->get_dob() }}
+						{{ $participant->dob}}
 					</td>
 					<td>
 						{{ $participant->phoneNo }}
 					</td>
 					<td>
-						{{ $participant->address }} {{ $participant->city }} {{ $participant->state }}
+						{{ $participant->address }}
 					</td>
 					<td>
-						<table>
-							<tr>
-								<td>
-									@if($records == null)	
-										{{ Form::open(['url'=> '/takeAttendance']) }}
-											<input type="hidden" name="part_id" value = "{{ $participant->part_id }}">
-											<input type="hidden" name="event_id" value = "{{ $event_id }}">  
-											<button name="takeAttendance"  class="btn btn-primary">Take Attendance</button>
-											<!-- Redirect to previous page -->
-										{{ Form::close() }}	
-									@else
-										<button type="button" disabled>Attendance Taken!</button>
-									@endif
-								</td>
-								<td>
-									<span>&nbsp;</span>
-								</td>
-								<td>
-									{{ Form::open() }}
-										<input type="hidden" name="part_id" value = "{{ $participant->part_id }}">
-										<input type="hidden" name="event_id" value = "{{ $event_id }}">  
-										<button name="updateParticipant"  class="btn btn-primary">Update Info</button>	
-									{{ Form::close() }}
-								</td>
-							</tr>
-						</table>
+						{{Form::open(['browseAllPart'])}}
+						<input type="hidden" name="part_id" value = "{{ $participant->part_id }}">  
+							{{ Form::submit("Select", array('class'=>'btn btn-primary')) }}
+
+						<!-- <button class="btn btn-primary">Select</button> -->
+						{{Form::close()}}
 					</td>
 				</tr>
-				@endif
 			@endforeach
 		</tbody>
 	</table>

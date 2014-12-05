@@ -9,11 +9,10 @@ class AttendanceController extends BaseController{
 	public function show($event_id){
         $attendances = DB::table('attendance')->where('event_id','=',$event_id)
         			 ->join('participants', 'participants.part_id', '=', 'attendance.part_id')
-           			 ->select('fname', 'lname')
+           			 ->select('fname', 'lname','dob','phoneNo','address')
             		 ->get();
 
-        $eventList = EventList::find($event_id);
-        return View::make('admin/showAttendance',['attendances'=> $attendances, 'eventList'=>$eventList]);
+        return View::make('admin/showAttendance',['attendances'=> $attendances]);
 	}
 
 	public function store(){

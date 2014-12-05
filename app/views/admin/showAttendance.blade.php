@@ -32,13 +32,19 @@ Admin Homepage
 			@foreach  ($attendances as $attendance)
 			<tr>
 				<td class="col-sm-3">
-					{{ $eventList->date}}
+					{{ $attendance->fname}}  {{ $attendance->lname }}
 				</td>
 				<td class="col-sm-3">
-					{{ $attendance->fname }} {{ $attendance->lname }}
+					{{ $attendance->dob }}
+				</td>
+				<td class="col-sm-3">
+					{{ $attendance->phoneNo }}
+				</td>
+				<td class="col-sm-3">
+					{{ $attendance->address }}
 				</td>
 			</tr>
-			<!-- should look similar to other attendance view (i.e. should show name, address, dob, phoneNumber) -->
+			
 			@endforeach 
 		</tbody>
 	</table>

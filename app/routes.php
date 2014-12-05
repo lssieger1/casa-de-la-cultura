@@ -46,9 +46,12 @@ Route::group(array('before' => 'auth'), function() {
 	Route::get('/showAttendance/{event_id}', 'AttendanceController@show');
 
 	// browse all participants
-	Route::get('/browseAllParticipants', function() {
-		return View::make('volunteer/browseAllParticipants');
-	});
+	Route::get('attendance/browseAllParticipants/{event_id}','ParticipantsController@index');
+	Route::post('attendance/browseAllParticipants/{event_id}', array(
+						'as' => 'browseAllPart',
+						'uses' => 'ParticipantsController@browseAll'
+					)
+	);
 
 	//sign out
 	Route::get('signout', 'SessionsController@destroy');

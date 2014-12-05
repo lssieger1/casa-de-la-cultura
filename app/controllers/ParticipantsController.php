@@ -7,6 +7,17 @@ class ParticipantsController extends BaseController{
 		$this->participant = $participant;
 	}
 
+	public function index($event_id){
+		$type_id = DB::table('events')->where('event_id','=',$event_id)->pluck('type_id');
+		$participants =  Participant::whereNotIn(
+						'part_id',DB::table('attendance')->where('type_id','=',$type_id)->lists('part_id'))
+				  		 ->select('part_id','fname','lname','phoneNo','dob','address')
+				  		 ->distinct()
+				  		->get();
+
+		return View::make('volunteer/browseAllParticipants',['participants'=> $participants, 'event_id'=>$event_id]);
+	}
+
 	public function show($event_id){
 		$participants = $this->participant->all();
 		return View::make('volunteer/attendance',['participants'=> $participants, 'event_id'=>$event_id]);
@@ -31,17 +42,18 @@ class ParticipantsController extends BaseController{
 		$participant->dob = date("Y-m-d", strtotime(Input::get('registerDateOfBirth')));
 		$participant->save();
 
-		$attendance = new Attendance;
-		// $event_id = 1;//Input::get('event_id');
-		$type_name = Input::get('eventType');
-		$type_id = DB::table('eventtype')->where('type_name','=',$type_name)->pluck('type_id');//EventList::find($event_id)->type_id;
-		$attendance->type_id = $type_id;
-		$event_id = DB::table('events')->where('type_id', '=', $type_id)
-				  									   ->orderBy('event_id','DESC')
-				  									   ->pluck('event_id');
-		$attendance->event_id = $event_id;
-		$attendance->part_id = $participant->part_id;
-		$attendance->save();
 		return Redirect::back()->with('message', 'New participant created');
+	}
+
+	public function browseAll($event_id){
+		$attendance = new Attendance;
+		$type_name = Input::get('eventType');
+		$type_id = DB::table('events')->where('event_id','=',$event_id)->pluck('type_id');//EventList::find($event_id)->type_id;
+		$attendance->type_id = $type_id;
+		$attendance->event_id = $event_id;
+		$attendance->part_id = Input::get('part_id');
+		$attendance->save();
+
+		return Redirect::to('attendance/'.$event_id.'');
 	}
 }
