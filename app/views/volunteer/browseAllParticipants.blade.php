@@ -6,6 +6,7 @@ Attendance
 
 @section('style')
 {{ HTML::style('css/dataTables.bootstrap.css') }}
+{{ HTML::style('css/custom.css') }}
 @stop
 
 @section('content')

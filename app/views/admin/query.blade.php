@@ -96,7 +96,7 @@ Run Queries
 				<div class="panel-body">
 					<div>
 						{{ Form::checkbox('dateCB', 'dateCB') }}
-						{{ Form::label('dateCB', 'Date') }}
+						{{ Form::label('dateCB', 'Event Date') }}
 					</div>
 					<div>
 						{{ Form::checkbox('locationCB', 'locationCB') }}

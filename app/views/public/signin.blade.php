@@ -19,6 +19,6 @@ Sign in
       {{ Form::checkbox('remember_me', 'Remember me') }}
       {{ Form::label('remember_me', "Remember me") }}
     </div>
-    {{Form::submit('Login', array('class' => 'btn btn-lg btn-primary btn-block'))}} 
+    {{Form::submit('Sign in', array('class' => 'btn btn-lg btn-primary btn-block'))}} 
   {{ Form::close() }}
 @stop

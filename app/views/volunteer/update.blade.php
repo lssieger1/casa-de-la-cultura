@@ -25,7 +25,7 @@ Update Information
 		</div>	
 		<div>
 			{{ Form::label('updateDateOfBirth', 'Date of Birth', array('class' => 'form-control')) }}
-			{{ Form::input('date', 'updateDateOfBirth') }}
+			{{ Form::input('date', 'updateDateOfBirth', null, array('class'=>'form-control')) }}
 		</div>
 		<div>
 			{{ Form::label('nationality', 'Nationality', array('class' => 'form-control')) }}
@@ -36,6 +36,14 @@ Update Information
 			{{ Form::text('address', null, array('class' => 'form-control')) }}
 		</div>
 		<div>
+			{{ Form::label('city', 'City', array('class' => 'form-control')) }}
+			{{ Form::text('city', null, array('class' => 'form-control')) }}
+		</div>
+		<div>
+			{{ Form::label('state', 'State', array('class' => 'form-control')) }}
+			{{ Form::text('state', null, array('class' => 'form-control')) }}
+		</div>
+		<div>
 			{{ Form::label('native_lang', 'Native Language', array('class' => 'form-control')) }}
 			{{ Form::text('native_lang', null, array('class' => 'form-control')) }}
 		</div>
@@ -44,7 +52,7 @@ Update Information
 			{{ Form::text('other_lang', null, array('class' => 'form-control')) }}
 		</div>
 		<div>
-			{{ Form::label('houseHoldID', 'Family Member', array('class' => 'form-control')) }}
+			{{ Form::label('houseHoldID', 'Parent/Guardian', array('class' => 'form-control')) }}
 			{{ Form::text('houseHoldID', null, array('class' => 'form-control')) }}
 		</div>
 		<div>
@@ -56,7 +64,7 @@ Update Information
 			{{ Form::email('email', null, array('class' => 'form-control')) }}
 		</div>
 		<div>
-			{{ Form::submit('Confirm and Mark', array('class' => 'form-control btn-primary')) }}
+			{{ Form::submit('Update', array('class' => 'form-control btn-primary')) }}
 		</div>
 	</div>
 {{ Form::close() }}

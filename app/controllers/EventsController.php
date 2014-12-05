@@ -75,14 +75,14 @@ class EventsController extends BaseController{
 		$eventList = EventList::find($event_id);
 		$eventList->location = Input::get('location');
 		$type_id = Input::get('eventType') ;			
-		if($type_id == $eventList->size){
+		if($type_id == 0){
 			$newName = Input::get('other');
 			// DB::insert('insert into eventtype ('type_id', 'type_name') values(?, ?)', array($type_id, $newName));
 			DB::table('eventType')->insertGetId(
 				array( 
-					'type_name' => $newName)
-				);
-
+					'type_name' => $newName
+				)
+			);
 			$eventList->name = $newName;
 			$eventList->type_id = DB::table('eventtype')->where('type_name', $newName)->pluck('type_id');
 		}
@@ -96,5 +96,4 @@ class EventsController extends BaseController{
 		$eventList->save();
 		return Redirect::to('aevents');
 	}
-
 }

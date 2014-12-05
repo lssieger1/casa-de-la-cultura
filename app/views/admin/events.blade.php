@@ -31,7 +31,7 @@ Admin Homepage
 		<tbody>
 			@foreach  ($eventLists as $eventList)			
 			<tr>
-				<td class="col-sm-3 myblock">
+				<td class="col-sm-3">
 					{{ $eventList->name }}  
 				</td>
 				<td class="col-sm-3">
