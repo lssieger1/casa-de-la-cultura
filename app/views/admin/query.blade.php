@@ -6,7 +6,6 @@ Run Queries
 
 @section('content')
 
-// two columns
 {{ Form::open(['route'=> 'runQuery']) }}
 	<div class="row">
 		<div class="col-lg-8">
@@ -17,8 +16,6 @@ Run Queries
 					</div>
 				</div>
 				<div class="panel-body">
-					// left side entering query specifics
-					// better way than hard-coding?
 					<div>
 						{{ Form::label('eventType', 'Event Type: ', array('class' => 'form-control')) }}
 						{{ Form::select('eventType', (EventType::all()->lists('type_name','type_id')+ array("None","None")), null, array('class' => 'form-control')) }}
@@ -48,7 +45,6 @@ Run Queries
 						{{ Form::text('lastName', null, array('class' => 'form-control')) }}
 					</div>
 					<div>
-						<!-- should be a year/month maybe? -->
 						{{ Form::label('dob', 'Date of Birth: ', array('class' => 'form-control')) }} 
 						{{ Form::text('dob', null, array('class' => 'form-control')) }}
 					</div>
@@ -86,7 +82,6 @@ Run Queries
 	</div>
 	<div class="row">
 		<div class="col-lg-4">
-			// right side entering retrieval shown
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<div class="panel-title">

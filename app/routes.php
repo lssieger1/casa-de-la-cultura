@@ -59,7 +59,7 @@ Route::group(array('before' => 'auth'), function() {
 	//admin 
 	Route::group(array('before' => 'admin'), function() {
 		//admin main page
-		Route::get('aevents', 'EventsController@showAdminEvents');
+		Route::get('events', 'EventsController@showAdminEvents');
 		//admin create event
 		Route::post('public/events',
 					array(

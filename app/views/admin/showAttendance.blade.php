@@ -44,7 +44,6 @@ Admin Homepage
 					{{ $attendance->address }}
 				</td>
 			</tr>
-			
 			@endforeach 
 		</tbody>
 	</table>
