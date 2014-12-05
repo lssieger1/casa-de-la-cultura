@@ -9,7 +9,7 @@ Edit Event
 	<div>
 		{{ Form::label('eventType', 'Event Type: ', array('class'=>'form-control')) }}
 		{{ Form::select('eventType', (EventType::all()->lists('type_name','type_id') + 
-			array('Other')), 0, array('class' => 'form-control')) }}
+			array('Other')), $eventList->type_id, array('class' => 'form-control')) }}
 
 		{{ Form::text('other', null, array('placeholder' => 'Other',
 											'class' => 'form-control event-edit-description')) }} 

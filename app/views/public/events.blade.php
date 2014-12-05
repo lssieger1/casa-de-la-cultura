@@ -10,7 +10,14 @@ Events
 @stop
 
 @section('content')
-<h3>Public Events</h3>
+<h3>Public Events  </h3>
+<h5> Sort by: </h5>
+  <select name = 'theEvents'>
+    <?php
+      
+    ?>
+
+
 <p>
   This is the template/page where the public can view events. Volunteers will have a very similar view but
   with an additional item at the bottom of each item which will take them to the attendance page.
@@ -29,7 +36,8 @@ Events
       <label> {{ $eventList->get_date() }}</label>
       @if(Auth::check())
         <br><a href = "attendance/{{$eventList->event_id}}" class="btn btn-primary">Attendance</a>
-        <a href = "showAttendance/{{$eventList->event_id}}" class="btn btn-primary">View Attendance</a>
+         <!-- needs to be linked to showAttendance?? -->
+        <a href = "attendance/{{$eventList->event_id}}" class="btn btn-primary">View Attendance</a>
       @endif
     </div>
   </div>
