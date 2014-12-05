@@ -25,7 +25,7 @@
 			<div>
 				{{ Form::label('date', 'Date: ', array('class' => 'form-control')) }}
 				<!-- {{ Form::selectMonth('month') }} -->
-				{{ Form::input('date', 'date') }}
+				{{ Form::input('date', 'date', null, array('class'=>'form-control')) }}
 				{{ $errors->first('date') }}
 			</div>
 			<div>

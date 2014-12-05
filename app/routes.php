@@ -38,9 +38,7 @@ Route::group(array('before' => 'auth'), function() {
 			'uses' => 'ParticipantsController@show' )
 	);
 
-	Route::get('register', function(){
-		return View::make('volunteer/register');
-	});
+	
 	//take attendance
 	Route::post('/takeAttendance', 'AttendanceController@store');
 
@@ -48,8 +46,8 @@ Route::group(array('before' => 'auth'), function() {
 	Route::get('/showAttendance/{event_id}', 'AttendanceController@show');
 
 	// browse all participants
-	Route::get('/browseAllParticiapnts', function() {
-
+	Route::get('/browseAllParticipants', function() {
+		return View::make('volunteer/browseAllParticipants');
 	});
 
 	//sign out
@@ -67,9 +65,8 @@ Route::group(array('before' => 'auth'), function() {
 					)
 				);
 		Route::get('/check', 'UsersController@show');
+		
 		//admin edit event
-
-		//Route::post('admin/edit',
 		Route::get('edit/{event_id}',
 					array(
 						'as' => 'event-tobe-edited',

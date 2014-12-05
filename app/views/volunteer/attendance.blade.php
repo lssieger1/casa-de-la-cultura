@@ -6,12 +6,12 @@ Attendance
 
 @section('style')
 {{ HTML::style('css/dataTables.bootstrap.css') }}
+{{ HTML::style('css/custom.css') }}
 @stop
 
 @section('content')
-<p> This is where the attendance will be taken, by displaying all of the participants</p>
 <div class="pull-right">
-	<button class="btn-sm btn-primary" id="browse">Browse</button>
+	<a href="browseAllParticipants" class="btn btn-primary" id="browse">Browse</a>
 </div>
  <div class="table-responsive">
     <table class="table table-striped table-bordered" id="attendanceTable">
@@ -30,7 +30,7 @@ Attendance
 					ADDRESS
 				</th>
 				<th>
-					MARK OR UPDATE
+					SELECT
 				</th>
 			</tr>
 		</thead>
@@ -68,26 +68,11 @@ Attendance
 						<table>
 							<tr>
 								<td>
-									@if($records == null)	
-										{{ Form::open(['url'=> '/takeAttendance']) }}
-												<input type="hidden" name="part_id" value = "{{ $participant->part_id }}">
-												<input type="hidden" name="event_id" value = "{{ $event_id }}">  
-												<button name="takeAttendance"  class="btn btn-primary">Take Attendance</button>				 
-										{{ Form::close() }}	
-									@else
-									<button type="button" disabled>Attendance Taken!</button>
-									@endif
-								</td>
-								<td>
-								<span>&nbsp;</span>
-								</td>
-								<td>
-									{{ Form::open() }}
+									{{ Form::open(['url'=> '/takeAttendance']) }}
 											<input type="hidden" name="part_id" value = "{{ $participant->part_id }}">
 											<input type="hidden" name="event_id" value = "{{ $event_id }}">  
-											<button name="updateParticipant"  class="btn btn-primary">Update Info</button>	
-									{{ Form::close() }}
-								</td>
+											<button name="takeAttendance"  class="btn btn-primary">Take Attendance</button>				 
+									{{ Form::close() }}	
 							</tr>
 						</table>
 					</td>
@@ -98,6 +83,6 @@ Attendance
 	</table>
 </div>
 <div class="pull-right">
-	<button class="btn-lg btn-primary" id="browse">Browse</button>
+	<a href="browseAllParticipants" class="btn btn-lg btn-primary" id="browse">Browse</a>
 </div>
 @stop
