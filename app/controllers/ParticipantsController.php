@@ -9,12 +9,17 @@ class ParticipantsController extends BaseController{
 
 	public function index($event_id){
 		$type_id = DB::table('events')->where('event_id','=',$event_id)->pluck('type_id');
-		$participants =  Participant::whereNotIn(
-						'part_id',DB::table('attendance')->where('type_id','=',$type_id)->lists('part_id'))
-				  		 ->select('part_id','fname','lname','phoneNo','dob','address')
-				  		 ->distinct()
-				  		->get();
-
+		$test = DB::table('attendance')->where('type_id','=',$type_id)->lists('part_id');
+		if($test != null){
+			$participants =  Participant::whereNotIn(
+		 				'part_id', $test)
+		 		  		 ->select('part_id','fname','lname','phoneNo','dob','address')
+		 		  		 ->distinct()
+		 		  		->get();
+		}else{
+		    $participants = $this->participant->all();
+		}
+		 
 		return View::make('volunteer/browseAllParticipants',['participants'=> $participants, 'event_id'=>$event_id]);
 	}
 

@@ -43,6 +43,9 @@ class EventsController extends BaseController{
 			);
 			$eventList->type_id = DB::table('eventtype')->where('type_name', $newName)->pluck('type_id');
 			$eventList->name = $newName;
+			$eventtype = new EventType;
+			$eventtype->type_name = $newName;
+			$eventtype->save();
 		}
 		else{
 			$eventList->type_id = $type_id;
