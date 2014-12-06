@@ -9,7 +9,7 @@ Create New User
 @stop
 
 @section('content')
-{{ Form::open() }}
+{{ Form::open(['user-created']) }}
 	<div>
 		{{ Form::label('username', 'Username: ', array('class'=>'form-control')) }}
 		{{ Form::text('username', null, array('class'=>'form-control')) }}
@@ -31,12 +31,12 @@ Create New User
 		{{ Form::password('verifyPassword', array('class'=>'form-control')) }}
 	</div>
 	<div>
-		{{ Form::label('phoneNumber', 'Phone Number: ', array('class'=>'form-control')) }}
-		{{ Form::text('phoneNumber', null, array('class'=>'form-control')) }}
+		{{ Form::label('phoneNo', 'Phone Number: ', array('class'=>'form-control')) }}
+		{{ Form::text('phoneNo', null, array('class'=>'form-control')) }}
 	</div>
 	<div>
 		{{ Form::label('userType', 'User Type: ', array('class'=>'form-control')) }}
-		{{ Form::select('userType', array('Volunteer', 'Administrator'), 1, array('class'=>'form-control')) }}
+		{{ Form::select('userType', array('Administrator', 'Volunteer'), 1, array('class'=>'form-control')) }}
 	</div>
 	{{ Form::submit('Create User', array('class'=>'btn btn-primary form-control')) }}
 {{ Form::close() }}

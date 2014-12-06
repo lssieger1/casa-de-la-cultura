@@ -45,6 +45,7 @@
             @if(Auth::user()->user_type == 1)
               <li><a href="#createEventModal" data-toggle="modal">New Event</a></li>
               <li><a href="{{{ URL::to('/query') }}}">Run Query</a></li>
+              <li><a href="{{{ URL::to('/newUser') }}}">New User</a></li>
             @endif
             <li><a href="#registerParticipantModal" data-toggle="modal">Register</a></li>
             <li><a href="{{{ URL::to('/signout') }}}">Sign Out</a></li>

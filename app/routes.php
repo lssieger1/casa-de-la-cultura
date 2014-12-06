@@ -92,9 +92,12 @@ Route::group(array('before' => 'auth'), function() {
 						'uses' => 'UsersController@runQuery'	
 					)
 		);
-
-		Route::get('/newUser', function() {
+		Route::get('/newUser', function(){
 			return View::make('admin/newUser');
 		});
+		Route::post('/newUser', array(
+						'as' => 'user-created',
+						'uses' => 'UsersController@store'
+					));
 	});
 });

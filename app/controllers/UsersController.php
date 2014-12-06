@@ -6,21 +6,26 @@
 			$this->user = $user;
 		}
 
-		public function show(){
-			if(Auth::check()){
-				$id = Auth::user()->id;
-				//$currentUser = User::get($id);
-				if(Auth::user()->type ===1){
-					return View::make('public/admin');
-				}
-			//$user = User::find($id);
-				return View::make('volunteer/attendance');
-				}
-			else{
-				return 'log in!';
-			}
-			//return View::make('public/admin',['currentUser'=> $currentUser]);
-		}
+	    public function store(){
+	    	$input = Input::all();
+	    	$user = new User;
+	    	$user->username = Input::get('username');
+	    	$user->email = Input::get('email');
+	    	$user->name = Input::get('name');
+	    	if(Input::get('password') === Input::get('verifyPassword')){
+	    		$user->password = Input::get('password');
+	    	}
+	    	else{
+
+	    		return Redirect::back()->withInput(); 
+	    	}
+	    	$user->phoneNo = Input::get('phoneNo');
+	    	$user->user_type = Input::get('userType')+1;
+
+	    	$user->save();
+	    	Session::flash('message', 'User created');
+	    	return Redirect::to('/events')->with('message','User created succesfully');
+	    }
 
 		public function runQuery(){
 
@@ -159,4 +164,10 @@
 			return  View::make('admin/showResults',['results'=> $results, 'a'=>$a]);
 		}
 	}
+	public function exportExcel(){
+	Excel::create('Filename', function($excel) {
+
+	})->export('xls');
+}
+
 ?>
