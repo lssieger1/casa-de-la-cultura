@@ -61,4 +61,31 @@ class ParticipantsController extends BaseController{
 
 		return Redirect::to('attendance/'.$event_id.'');
 	}
+
+	public function edit($part_id){
+		$participant = Participant::findOrFail($part_id);
+		return View::make('volunteer/edit', ['participant' => $participant]);
+	}
+
+	public function update($part_id){
+		$input = Input::all();
+		$participant = Participant::findOrFail($part_id);
+		$participant->fname = Input::get('fname');
+		$participant->mname = Input::get('mname');
+		$participant->lname = Input::get('lname');
+		$participant->gender = Input::get('gender');
+		$participant->dob = Input::get('dob');
+		$participant->nationality = Input::get('nationality');
+		$participant->address = Input::get('address');
+		$participant->native_lang = Input::get('native_lang');
+		$participant->other_lang = Input::get('other_lang');
+		$participant->houseHOldID = Input::get('houseHoldID');
+		$participant->phoneNo = Input::get('phoneNo');
+		$participant->email = Input::get('email');
+		$participant->city = Input::get('city');
+		$participant->state = Input::get('state');
+
+		$participant->save();
+		return Redirect::back();
+	}
 }

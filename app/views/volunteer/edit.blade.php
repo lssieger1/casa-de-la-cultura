@@ -1,11 +1,11 @@
-@extends('layout.master')
+@extends('layouts.master')
 
 @section('title')
 Update Information
 @stop
 
-@content
-{{ Form::open(['route'=> 'participants-edited']) }}
+@section('content')
+{{ Form::model($participant, array('route' => array('attendance.update', $participant->part_id), 'method' => 'PUT')) }}
 	<div>
 		<div>
 			{{ Form::label('fname', 'First Name', array('class' => 'form-control')) }}
@@ -21,11 +21,12 @@ Update Information
 		</div>
 		<div>
 			{{ Form::label('gender', 'Gender', array('class' => 'form-control')) }}
-			{{ Form::select('gender', array("Male", "Female", "Other"), null, array('class'=>'form-control')) }}
+			{{ Form::select('gender', array("Male" => "Male", "Female" => "Female", "Other" => "Other"), 
+			$participant->gender, array('class'=>'form-control')) }}
 		</div>	
 		<div>
 			{{ Form::label('updateDateOfBirth', 'Date of Birth', array('class' => 'form-control')) }}
-			{{ Form::input('date', 'updateDateOfBirth', null, array('class'=>'form-control')) }}
+			{{ Form::input('date', 'date', null, array('class'=>'form-control')) }}
 		</div>
 		<div>
 			{{ Form::label('nationality', 'Nationality', array('class' => 'form-control')) }}

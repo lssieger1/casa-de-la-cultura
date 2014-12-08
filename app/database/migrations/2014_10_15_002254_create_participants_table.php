@@ -26,6 +26,8 @@ class CreateParticipantsTable extends Migration {
 			$table->string('native_lang');
 			$table->string('other_lang');
 			$table->integer('householdID')->unsigned();
+			$table->string('city');
+			$table->string('state');
 			$table->string('phoneNo');
 			$table->string('email');
 			

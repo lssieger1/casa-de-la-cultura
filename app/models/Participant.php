@@ -24,7 +24,7 @@ class Participant extends Eloquent{
 	 */
 	protected $table = 'participants';
 	protected $fillable = ['fname','mname','lname','gender','dob','nationality','address',
-	'native_lang','other_lang','houseHoldID','phoneNo','email'];
+	'native_lang','other_lang','houseHoldID','phoneNo','email','city','state'];
 	protected $primaryKey = 'part_id';
 
 	public function isValid(){

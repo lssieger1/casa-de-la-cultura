@@ -11,7 +11,7 @@ class ParticipantsTableSeeder extends Seeder {
          'phoneNo'=>'5552348976', 'email'=>'toolMan@toolTime.com'),
         array('part_id'=> 2, 'fname' => 'Penelope', 'mname'=> 'Beautiful', 'lname'=>'Cruz', 'dob'=>'19740220', 
          'nationality'=> 'Spanish', 'native_lang'=>'Spanish', 'other_lang'=>'English', 
-         'phoneNo'=>'5558562635', 'email'=>'sexiest@esquire.com'),
+         'phoneNo'=>'5558562635', 'email'=>'sexiest@esquire.com', 'gender'=> 'Female'), 
         array('part_id'=> 3,'fname' => 'Luis', 'mname'=> 'Evander', 'lname'=>'Suarez', 'dob'=>'19740131', 
          'nationality'=> 'Argentinian', 'native_lang'=>'Spanish', 'other_lang'=>'English', 
          'phoneNo'=>'5558622031', 'email'=>'BiteYaEar@bowToTyson.com'),

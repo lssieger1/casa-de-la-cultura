@@ -68,12 +68,14 @@ Attendance
 						<table>
 							<tr>
 								<td>
+
 									@if($records === NULL)
 										{{ Form::open(['url'=> '/takeAttendance']) }}
 												<input type="hidden" name="part_id" value = "{{ $participant->part_id }}">
 												<input type="hidden" name="event_id" value = "{{ $event_id }}">  
 												<button name="takeAttendance"  class="btn btn-primary">Take Attendance</button>				 
 										{{ Form::close() }}
+
 									@else
 										<button type="button" disabled>Attendance Taken!</button>
 									@endif
@@ -84,8 +86,12 @@ Attendance
 								<td>
 									{{ Form::open() }}
 										<input type="hidden" name="part_id" value = "{{ $participant->part_id }}">
-										<input type="hidden" name="event_id" value = "{{ $event_id }}">  
-										<button name="updateParticipant"  class="btn btn-primary">Update</button>				 
+
+										<input type="hidden" name="event_id" value = "{{ $event_id }}"> 
+										<a href = "{{$participant->part_id}}/edit" class="btn btn-primary">Update</a> 
+
+										<!-- <button name="updateParticipant"  class="btn btn-primary">Update Info</button>	 -->
+
 									{{ Form::close() }}
 								</td>
 							</tr>

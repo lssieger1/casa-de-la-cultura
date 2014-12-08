@@ -12,11 +12,8 @@ Events
 @section('content')
 <h3>Public Events  </h3>
 <h5> Sort by: </h5>
-  <select name = 'theEvents'>
-    <?php
-      
-    ?>
-  </select>
+
+{{ Form::open}}
 
 
 <div class="row">

@@ -39,11 +39,11 @@ Route::group(array('before' => 'auth'), function() {
 	);
 
 	
-	//take attendance
-	Route::post('/takeAttendance', 'AttendanceController@store');
 
 	//check attendance
 	Route::get('/showAttendance/{event_id}', 'AttendanceController@show');
+
+	Route::resource('attendance', 'ParticipantsController');
 
 	// browse all participants
 	Route::get('attendance/browseAllParticipants/{event_id}','ParticipantsController@index');
