@@ -13,13 +13,14 @@ Events
 <h3>Public Events  </h3>
 <h5> Sort by: </h5>
 
-{{ Form::open}}
+<!-- {{ Form::open()}}
 
 
 <div class="row">
-  <!-- Enter populate the values from the database within the div below. -->
-  <!-- Use a for loop to make it cleaner. -->
-  <ul>
+  Enter populate the values from the database within the div below.
+  <!-- Use a for loop to make it cleaner. >
+  <ul> -->
+
 
   @foreach  ($eventLists as $eventList)
  

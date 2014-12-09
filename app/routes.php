@@ -38,12 +38,16 @@ Route::group(array('before' => 'auth'), function() {
 			'uses' => 'ParticipantsController@show' )
 	);
 
-	
+	Route::get('changePassword', function() {
+		return View::make('volunteer/changePassword');
+	});
 
 	//check attendance
 	Route::get('/showAttendance/{event_id}', 'AttendanceController@show');
 
 	Route::resource('attendance', 'ParticipantsController');
+
+	Route::post('/takeAttendance', 'AttendanceController@store');
 
 	// browse all participants
 	Route::get('attendance/browseAllParticipants/{event_id}','ParticipantsController@index');
@@ -59,7 +63,7 @@ Route::group(array('before' => 'auth'), function() {
 	//admin 
 	Route::group(array('before' => 'admin'), function() {
 		//admin main page
-		Route::get('events', 'EventsController@showAdminEvents');
+		Route::get('aevents', 'EventsController@showAdminEvents');
 		//admin create event
 		Route::post('public/events',
 					array(
@@ -76,6 +80,18 @@ Route::group(array('before' => 'auth'), function() {
 						'uses' => 'EventsController@edit'	
 					)
 				);
+
+		Route::get('resetPassword', function() {
+			return View::make('admin/resetPassword');
+		});
+
+		Route::get('browseAllUsers', function() {
+			return View::make('admin/browseAllUsers');
+		});
+
+		Route::get('updateUserInformation', function() {
+			return View::make('admin/updateUserInformation');
+		});
 
 		Route::resource('admin', 'EventsController');
 		//admin delete event

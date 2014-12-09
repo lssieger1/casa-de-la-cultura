@@ -9,16 +9,16 @@ class EventsController extends BaseController{
 
 	public function index(){
 		$eventLists = EventList::where('date', '>=', new DateTime('today'))->get();
-		if(Auth::user()->user_type == 1) {
-			return View::make('admin/events', ['eventLists'=>$eventLists]);
-		}
+		// if(Auth::user()->user_type == 1) {
+		// 	return View::make('admin/events', ['eventLists'=>$eventLists]);
+		// }
 		return View::make('public/events',['eventLists'=> $eventLists]);
 	}
 	public function showPastEvents(){
 		$eventLists = EventList::where('date', '<', new DateTime('today'))->get();
-		if(Auth::user()->user_type == 1) {
-			return View::make('admin/events', ['eventLists'=>$eventLists]);
-		}
+		// if(Auth::check() && Auth::user()->user_type == 1) {
+		// 	return View::make('admin/events', ['eventLists'=>$eventLists]);
+		// }
 		return View::make('public/events',['eventLists'=> $eventLists]);
 	}
 	public function showAdminEvents(){
@@ -41,7 +41,6 @@ class EventsController extends BaseController{
 		$type_id = Input::get('eventType') ;
 		if($type_id == 0){
 			$newName = Input::get('other');
-			// DB::insert('insert into eventtype ('type_id', 'type_name') values(?, ?)', array($type_id, $newName));
 			DB::table('eventtype')->insert(
 				array( 
 					'type_name' => $newName
@@ -103,6 +102,6 @@ class EventsController extends BaseController{
 		$eventList->date = date("Y-m-d", strtotime(Input::get('date')));	
 
 		$eventList->save();
-		return Redirect::to('events');
+		return Redirect::to('aevents');
 	}
 }

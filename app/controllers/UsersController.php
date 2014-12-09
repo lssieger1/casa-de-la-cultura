@@ -164,10 +164,10 @@
 			return  View::make('admin/showResults',['results'=> $results, 'a'=>$a]);
 		}
 	}
-	public function exportExcel(){
-	Excel::create('Filename', function($excel) {
+	// public function exportExcel(){
+	// Excel::create('Filename', function($excel) {
 
-	})->export('xls');
-}
+	// })->export('xls');
+	//}
 
 ?>
