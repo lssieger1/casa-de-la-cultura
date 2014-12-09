@@ -81,15 +81,13 @@ Route::group(array('before' => 'auth'), function() {
 					)
 				);
 
-		Route::get('resetPassword', function() {
+		Route::get('/resetPassword', function() {
 			return View::make('admin/resetPassword');
 		});
 
-		Route::get('browseAllUsers', function() {
-			return View::make('admin/browseAllUsers');
-		});
+		Route::get('/browseAllUsers', 'UsersController@index');
 
-		Route::get('updateUserInformation', function() {
+		Route::get('/updateUserInformation', function() {
 			return View::make('admin/updateUserInformation');
 		});
 

@@ -9,10 +9,11 @@ Change Password
 @stop
 
 @section('content')
+<h1>Change Password</h1>
 {{ Form::open(['user-created']) }}
 	<div>
 		{{ Form::label('currPassword', 'Current Password: ', array('class'=>'form-control')) }}
-		{{ Form::text('currPassword', null, array('class'=>'form-control')) }}
+		{{ Form::password('currPassword', array('class'=>'form-control')) }}
 	</div>
 	<div>
 		{{ Form::label('password', 'New Password: ', array('class'=>'form-control')) }}

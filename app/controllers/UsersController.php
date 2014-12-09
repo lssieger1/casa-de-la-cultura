@@ -6,6 +6,11 @@
 			$this->user = $user;
 		}
 
+		public function index() {
+			$users = User::all();
+			return View::make('admin/browseAllUsers', ['users'=>$users]);
+		}
+
 	    public function store(){
 	    	$input = Input::all();
 	    	$user = new User;

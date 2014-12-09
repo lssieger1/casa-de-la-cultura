@@ -9,7 +9,7 @@ Reset Account Password
 @stop
 
 @section('content')
-{{ Form::open(['user-created']) }}
+{{ Form::open() }}
 	<div>
 		{{ Form::label('username', 'Username: ', array('class'=>'form-control')) }}
 		{{ Form::text('username', null, array('class'=>'form-control')) }}

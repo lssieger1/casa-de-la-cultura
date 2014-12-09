@@ -32,7 +32,7 @@
             <span class="icon-bar"></span>
           </button>
             <div class="logo">
-              <a class="navbar-brand" href="{{{ URL::to('/events') }}}"><img src="{{ URL::asset('assets/images/logo.png') }}"/></a>
+              <a class="navbar-brand" href="{{{ URL::to('/events') }}}"><img src="{{ URL::asset('assets/images/logo.png') }}" scale="75%" /></a>
             </div>
         </div>
 
@@ -45,7 +45,17 @@
             @if(Auth::user()->user_type == 1)
               <li><a href="#createEventModal" data-toggle="modal">New Event</a></li>
               <li><a href="{{{ URL::to('/query') }}}">Run Query</a></li>
-              <li><a href="{{{ URL::to('/newUser') }}}">New User</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                  Accounts<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="{{{ URL::to('/newUser') }}}">New User</a></li>
+                  <li><a href="{{{ URL::to('/changePassword') }}}">Change Password</a></li>
+                  <li><a href="{{{ URL::to('/browseAllUsers') }}}">Browse All Users</a></li>
+                </ul>
+              </li>
+            @else
+              <li><a href="{{{ URL::to('/changePassword') }}}">Change Password</a></li>
             @endif
             <li><a href="#registerParticipantModal" data-toggle="modal">Register</a></li>
             <li><a href="{{{ URL::to('/signout') }}}">Sign Out</a></li>

@@ -23,11 +23,6 @@ Generated Report
 			</tr>
 		</thead>
 		<tbody>
-			<!-- ?php 
-			//for test purpose
-			var_dump($results);
-			? -->
-
 			@foreach($results as $result)
 			<tr>
 			<?php					
@@ -42,9 +37,3 @@ Generated Report
 		</tbody>
 	</table>
 </div>
-<!-- 
-register delete event type
-view attendance
-run query
-
--->
