@@ -18,7 +18,7 @@ Events
 
 <div class="row">
   Enter populate the values from the database within the div below.
-  <!-- Use a for loop to make it cleaner. >
+  <! Use a for loop to make it cleaner. >
   <ul> -->
 
 

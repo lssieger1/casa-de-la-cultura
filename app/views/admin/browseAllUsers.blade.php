@@ -1,7 +1,9 @@
 @extends('layouts.master')
 
 @section('title')
+
 All Users
+
 @stop
 
 @section('style')
@@ -10,6 +12,7 @@ All Users
 @stop
 
 @section('content')
+
  <div class="table-responsive">
     <table class="table table-striped table-bordered" id="attendanceTable">
 		<thead>
@@ -32,6 +35,7 @@ All Users
 			</tr>
 		</thead>
 		<tbody>
+
 			@foreach ($users as $user)				
 				<tr>
 					<td>
@@ -44,18 +48,20 @@ All Users
 						{{ $user->email }}
 					</td>
 					<td>
-						{{ Form::open(['url'=> '/updateUserInformation']) }}
+						
 							<input type="hidden" name="user_id" value = "{{ $user->id }}">
-							<button name="updateInfo"  class="btn btn-primary">Update Information</button>				 
-						{{ Form::close() }}
+							<button name="updateInfo"  class="btn btn-primary">Update Information</button>	
+							<a href = 'updateUserInformation/{{ $user->id }}' > Update Information </a>			 
+						
 					</td>
 					<td>
-						{{ Form::open(['url'=> '/resetPassword']) }}
+						
 							<input type="hidden" name="user_id" value = "{{ $user->id }}">
 							<button name="resetPassword"  class="btn btn-primary">Reset Password</button>				 
-						{{ Form::close() }}
+							<a href = 'resetPassword/{{ $user->id }}' > Reset Password </a>
 					</td>
 				</tr>
+
 			@endforeach
 		</tbody>
 	</table>

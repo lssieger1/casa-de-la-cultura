@@ -9,6 +9,7 @@
 		public function index() {
 			$users = User::all();
 			return View::make('admin/browseAllUsers', ['users'=>$users]);
+
 		}
 
 	    public function store(){
@@ -18,7 +19,8 @@
 	    	$user->email = Input::get('email');
 	    	$user->name = Input::get('name');
 	    	if(Input::get('password') === Input::get('verifyPassword')){
-	    		$user->password = Input::get('password');
+	    		$user->password = Hash::make(Input::get('password'));
+	    		
 	    	}
 	    	else{
 
@@ -168,6 +170,66 @@
 
 			return  View::make('admin/showResults',['results'=> $results, 'a'=>$a]);
 		}
+
+		public function editUser($user_id){
+			$user = findOrFail($user_id);
+			return View::make('admin/updateUserInformation',['user'=> $user]);
+		}
+
+		public function updateUser($user_id){
+
+			$input = Input::all();
+			$user = User::findOrFail($user_id);
+
+			$user->username = Input::get('username');
+			$user->email = Input::get('email');
+			$user->name = Input::get('name');
+			$user->phoneNo = Input::get('phoneNo');
+			$user->user_type = Input::get('userType');
+
+			$user->save();
+
+			return Redirect::to('browseAllUsers');
+		}
+
+
+		public function changePassword() {
+			$id = Auth::id();
+			$user = User::findOrFail($id);
+			$pword = Input::get('currPassword');
+			$oldPword = Auth::user()->password;
+
+			if(Hash::check($pword, $oldPword)){
+				$newPword = Input::get('password');
+				$confPword = Input::get('verifyPassword');
+				if($newPword === $confPword){
+					$user->password = Hash::make($newPword);
+					
+					$user->save();
+					return Redirect::to('events');
+				}
+				return Redirect::back()->withErrors('New passwords do not match');
+			}
+			return Redirect::back()->withErrors('Current password does not match existing password');
+		}
+
+		public function editPassword($user_id){
+			$user = User::findOrFail($user_id);
+			return View::make('admin/resetPassword', ['user' => $user]);
+		}
+		public function resetPassword($user_id) {
+			$user = User::findOrFail($user_id);
+			$newPword = Input::get('password');
+			$verPword = Input::get('verifyPassword');
+			if($newPword === $verPword){
+
+				$user->password = Hash::make($newPword);
+				$user->save();
+				return Redirect::to('browseAllUsers');
+			}
+			return Redirect::back()->withErrors('Passwords do not match');
+		}
+
 	}
 	// public function exportExcel(){
 	// Excel::create('Filename', function($excel) {

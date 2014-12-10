@@ -26,6 +26,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * @var array
 	 */
 	protected $primaryKey = 'id';
+	protected $fillable = ['username', 'email', 'password', 'name', 'phoneNo'];
 
 
 	public function isValid(){

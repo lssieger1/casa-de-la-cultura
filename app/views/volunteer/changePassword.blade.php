@@ -11,6 +11,7 @@ Change Password
 @section('content')
 <h1>Change Password</h1>
 {{ Form::open(['user-created']) }}
+
 	<div>
 		{{ Form::label('currPassword', 'Current Password: ', array('class'=>'form-control')) }}
 		{{ Form::password('currPassword', array('class'=>'form-control')) }}
@@ -22,6 +23,9 @@ Change Password
 	<div>
 		{{ Form::label('verifyPassword', 'Verify Password: ', array('class'=>'form-control')) }}
 		{{ Form::password('verifyPassword', array('class'=>'form-control')) }}
+		@if($errors->any())
+			{{ $errors->first() }}
+		@endif
 	</div>
 	{{ Form::submit('Change Password', array('class'=>'btn btn-primary form-control')) }}
 {{ Form::close() }}
