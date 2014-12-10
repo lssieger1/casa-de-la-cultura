@@ -22,10 +22,10 @@ Update Information
 		<div>
 			{{ Form::label('gender', 'Gender', array('class' => 'form-control')) }}
 			{{ Form::select('gender', array("Male" => "Male", "Female" => "Female", "Other" => "Other"), 
-			$participant->gender, array('class'=>'form-control')) }}
+					$participant->gender, array('class'=>'form-control')) }}
 		</div>	
 		<div>
-			{{ Form::label('updateDateOfBirth', 'Date of Birth', array('class' => 'form-control')) }}
+			{{ Form::label('date', 'Date of Birth', array('class' => 'form-control')) }}
 			{{ Form::input('date', 'date', null, array('class'=>'form-control')) }}
 		</div>
 		<div>
@@ -73,9 +73,9 @@ Update Information
 {{ HTML::script('//code.jquery.com/jquery-1.10.2.js') }}
 <script type="text/javascript">
 	$(document).ready(function() {
-		$( "#updateDateOfBirth" ).datepicker({//changeMonth: true,
+		$( "#date" ).datepicker(/*{//changeMonth: true,
 											  //changeYear: true,
-											  dateFormat: "dd MM yy"});
+											  dateFormat: "dd MM yy"}*/);
 	});
 </script>
 

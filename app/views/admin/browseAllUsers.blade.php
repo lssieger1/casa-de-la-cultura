@@ -48,20 +48,14 @@ All Users
 						{{ $user->email }}
 					</td>
 					<td>
-						
 							<input type="hidden" name="user_id" value = "{{ $user->id }}">
-							<button name="updateInfo"  class="btn btn-primary">Update Information</button>	
-							<a href = 'updateUserInformation/{{ $user->id }}' > Update Information </a>			 
-						
+							<a class="btn btn-primary" href = 'updateUserInformation/{{ $user->id }}'> Update Information </a>			 
 					</td>
 					<td>
-						
-							<input type="hidden" name="user_id" value = "{{ $user->id }}">
-							<button name="resetPassword"  class="btn btn-primary">Reset Password</button>				 
-							<a href = 'resetPassword/{{ $user->id }}' > Reset Password </a>
+							<input type="hidden" name="user_id" value = "{{ $user->id }}">				 
+							<a class="btn btn-primary" href = 'resetPassword/{{ $user->id }}'> Reset Password </a>
 					</td>
 				</tr>
-
 			@endforeach
 		</tbody>
 	</table>

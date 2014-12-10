@@ -69,6 +69,7 @@ Route::group(array('before' => 'auth'), function() {
 	Route::group(array('before' => 'admin'), function() {
 		//admin main page
 		Route::get('aevents', 'EventsController@showAdminEvents');
+		Route::get('pastAevents', 'EventsController@showPastAdminEvents');
 		//admin create event
 		Route::post('public/events',
 					array(
@@ -90,8 +91,6 @@ Route::group(array('before' => 'auth'), function() {
 			'as' => 'resetpword', function($id){
 				return View::make('admin/resetPassword')->with('user', User::findOrFail($id));
 			}
-			// 'uses' => 'UsersController@editPassword')
-			
 		));
 
 		Route::put('/resetPassword/{user}', array(
@@ -99,32 +98,22 @@ Route::group(array('before' => 'auth'), function() {
 			'uses' => 'UsersController@resetPassword'
 			));
 
-		//Route::patch('/resetPassword', array())
-
 		Route::get('/browseAllUsers', 'UsersController@index');
 
 		Route::get('/updateUserInformation/{id}', array(
 			'as' => 'updateUserInfo', function($id) {
-
-			return View::make('admin/updateUserInformation')->with('user', User::findOrFail($id));
+				return View::make('admin/updateUserInformation')->with('user', User::findOrFail($id));
 			}
 		));
 
 		Route::put('/updateUserInformation/{user}', array(
 			'as' => 'updateUserInfo',
 			'uses' => 'UsersController@updateUser'
-			));
-
-		// Route::post('updateUserInformation',
-		// 	array(
-		// 		'as'=>'updateUser',
-		// 		'uses' => 'UsersController@updateUser'
-		// 		));
+			)
+		);
 
 		Route::resource('admin', 'EventsController');
-		//admin delete event
 
-		
 
 		Route::post('/delete', 'EventsController@destroy');
 
@@ -139,12 +128,15 @@ Route::group(array('before' => 'auth'), function() {
 						'uses' => 'UsersController@runQuery'	
 					)
 		);
+
 		Route::get('/newUser', function(){
 			return View::make('admin/newUser');
 		});
+
 		Route::post('/newUser', array(
 						'as' => 'user-created',
 						'uses' => 'UsersController@store'
-					));
+					)
+		);
 	});
 });

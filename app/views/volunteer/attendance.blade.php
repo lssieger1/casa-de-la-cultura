@@ -11,7 +11,7 @@ Attendance
 
 @section('content')
 <div class="pull-right">
-	<a href="browseAllParticipants/{{$event_id}}" class="btn btn-lg btn-primary">Browse</a>
+	<a href="browseAllParticipants/{{$event_id}}" class="btn btn-default btn-primary">Browse</a>
 </div>
  <div class="table-responsive">
     <table class="table table-striped table-bordered" id="attendanceTable">

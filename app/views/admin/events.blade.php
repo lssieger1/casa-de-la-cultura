@@ -14,11 +14,11 @@ Admin Homepage
 	<table class="table table-bordered table-striped" id="adminEvents">
 		<thead>
 			<tr>
-				<th>
-					NAME (TYPE)
-				</th>
 				<th class="col-8">
 					DATE AND LOCATION
+				</th>
+				<th>
+					NAME (TYPE)
 				</th>
 				<th>
 					DESCRIPTION
@@ -32,10 +32,10 @@ Admin Homepage
 			@foreach  ($eventLists as $eventList)			
 			<tr>
 				<td class="col-sm-3">
-					{{ $eventList->name }}  
+					{{ $eventList->get_date() }} <br><br> {{ $eventList->location }}
 				</td>
 				<td class="col-sm-3">
-					{{ $eventList->get_date() }} <br><br> {{ $eventList->location }}
+					{{ $eventList->name }}  
 				</td>
 				<td class="col-sm-3">
 					{{ $eventList->description }}
