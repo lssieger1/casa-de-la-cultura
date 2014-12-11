@@ -91,7 +91,7 @@ class EventsController extends BaseController{
 		if($type_id == 0){
 			$newName = Input::get('other');
 			// DB::insert('insert into eventtype ('type_id', 'type_name') values(?, ?)', array($type_id, $newName));
-			DB::table('eventType')->insertGetId(
+			DB::table('eventtype')->insertGetId(
 				array( 
 					'type_name' => $newName
 				)

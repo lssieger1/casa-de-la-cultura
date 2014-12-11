@@ -25,8 +25,8 @@ Update Information
 					$participant->gender, array('class'=>'form-control')) }}
 		</div>	
 		<div>
-			{{ Form::label('date', 'Date of Birth', array('class' => 'form-control')) }}
-			{{ Form::input('date', 'date', null, array('class'=>'form-control')) }}
+			{{ Form::label('dob', 'Date of Birth', array('class' => 'form-control')) }}
+			{{ Form::input('dob', 'dob', null, array('class'=>'form-control')) }}
 		</div>
 		<div>
 			{{ Form::label('nationality', 'Nationality', array('class' => 'form-control')) }}
