@@ -53,8 +53,8 @@ Update Information
 			{{ Form::text('other_lang', null, array('class' => 'form-control')) }}
 		</div>
 		<div>
-			{{ Form::label('houseHoldID', 'Parent/Guardian', array('class' => 'form-control')) }}
-			{{ Form::text('houseHoldID', null, array('class' => 'form-control')) }}
+			{{ Form::label('guardian', 'Parent/Guardian', array('class' => 'form-control')) }}
+			{{ Form::text('guardian', null, array('class' => 'form-control')) }}
 		</div>
 		<div>
 			{{ Form::label('phoneNo', 'Phone Number', array('class' => 'form-control')) }}

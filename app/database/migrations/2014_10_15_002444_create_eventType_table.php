@@ -16,7 +16,6 @@ class CreateEventTypeTable extends Migration {
 		{
 			$table->increments('type_id')->unsigned();
 			$table->string('type_name');
-			//picture??
 			$table->timestamps();
 		});
 	}

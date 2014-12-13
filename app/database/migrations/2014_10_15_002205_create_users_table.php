@@ -25,9 +25,7 @@ class CreateUsersTable extends Migration {
 			$table->string('securityQue');
 			$table->string('securityAns');
 			$table->rememberToken();
-
 			$table->timestamps();
-
 		});
 	}
 

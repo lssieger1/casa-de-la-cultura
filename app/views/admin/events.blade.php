@@ -41,14 +41,22 @@ Admin Homepage
 					{{ $eventList->description }}
 				</td>
 				<td class="col-sm-3">
-					{{ Form::open(['url'=> '/delete' ]) }}
+					<?php
+						$check = DB::table('attendance')->where('event_id','=',$eventList->event_id)->get();
+					?>
+						@if(count($check)==0)
 						<a href = "edit/{{$eventList->event_id}}" class="btn btn-primary">Update</a>
+						@else
+						<button type="button" disabled>Update</button>
+						@endif
 						<span> </span>
+
 						<a href = "attendance/{{$eventList->event_id}}" class="btn btn-primary">Attendance</a>
 						<span> </span>
 						<a href = "showAttendance/{{$eventList->event_id}}" class="btn btn-primary">View Attendance</a>
 						<span> </span>
-						<button name = "delete" class="btn btn-primary" onclick="if(!confirm('Are you sure to delete this item?')){return false;};">Delete</button>
+					{{ Form::open(['url'=> '/delete' ]) }}
+						<button name = "delete" class="btn btn-primary" onclick="if(!confirm('Are you sure to delete this item?')){return false;};">Delete</button>					
 						<input type="hidden" name="event_id" value = "{{$eventList->event_id}}"> 
 					{{ Form::close() }}
 				</td>

@@ -79,7 +79,7 @@ class ParticipantsController extends BaseController{
 		$participant->address = Input::get('address');
 		$participant->native_lang = Input::get('native_lang');
 		$participant->other_lang = Input::get('other_lang');
-		$participant->houseHOldID = Input::get('houseHoldID');
+		$participant->guardian = Input::get('guardian');
 		$participant->phoneNo = Input::get('phoneNo');
 		$participant->email = Input::get('email');
 		$participant->city = Input::get('city');

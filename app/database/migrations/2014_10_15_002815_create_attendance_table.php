@@ -23,7 +23,6 @@ class CreateAttendanceTable extends Migration {
 			$table->integer('part_id')->unsigned();
 			$table->foreign('part_id')->references('part_id')->on('participants');
 			$table->primary(array('event_id', 'part_id'));
-			$table->timestamps();
 			
 		});
 	}

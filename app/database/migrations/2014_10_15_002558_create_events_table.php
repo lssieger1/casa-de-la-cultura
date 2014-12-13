@@ -25,7 +25,6 @@ class CreateEventsTable extends Migration {
 			$table->string('location');
 			$table->date('date');
 			$table->longText('description');
-			$table->timestamps();
 		});
 	}
 

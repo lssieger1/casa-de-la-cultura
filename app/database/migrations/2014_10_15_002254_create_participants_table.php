@@ -20,18 +20,15 @@ class CreateParticipantsTable extends Migration {
 			$table->string('lname');
 			$table->string('gender');
 			$table->date('dob');
-			//$table->string('pob');
 			$table->string('nationality');
 			$table->string('address');
 			$table->string('native_lang');
 			$table->string('other_lang');
-			$table->integer('householdID')->unsigned();
+			$table->string('guardian');
 			$table->string('city');
 			$table->string('state');
 			$table->string('phoneNo');
 			$table->string('email');
-			
-			$table->timestamps();
 		});
 	}
 
