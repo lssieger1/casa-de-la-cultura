@@ -21,7 +21,6 @@ class CreateEventsTable extends Migration {
 					->onDelete('cascade')
 					->onUpdate('cascade');
 			$table->increments('event_id')->unsigned();
-			$table->string('name');
 			$table->string('location');
 			$table->date('date');
 			$table->longText('description');

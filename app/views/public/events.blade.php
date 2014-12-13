@@ -26,7 +26,7 @@ Events
  
   <div class="col-xs-8 col-sm-3">
     <div>
-      <label> {{ $eventList->name}}</label>
+      <label> {{ $eventList->EventType->type_name }}</label>
       <p> {{ $eventList->description }}</p>
       <label> {{ $eventList->get_date() }}</label>
       <?php 

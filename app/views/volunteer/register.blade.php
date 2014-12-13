@@ -32,7 +32,7 @@
 				</div>	
 				<div>
 					{{ Form::label('registerDateOfBirth', 'Date of Birth', array('class' => 'form-control')) }}
-					{{ Form::input('date', 'registerDateOfBirth', null, array('class'=>'form-control')) }}
+					{{ Form::input('text', 'registerDateOfBirth', null, array('class'=>'form-control')) }}
 				</div>
 				<div>
 					{{ Form::label('nationality', 'Nationality', array('class' => 'form-control')) }}
@@ -83,9 +83,18 @@
 {{ HTML::script('//code.jquery.com/jquery-1.10.2.js') }}
 <script type="text/javascript">
 	$(document).ready(function() {
-		$( "#registerDateOfBirth" ).datepicker({//changeMonth: true,
-											    //changeYear: true,
+		$( "#registerDateOfBirth" ).datepicker({changeMonth: true,
+											    changeYear: true,
 											    dateFormat: "dd MM yy"});
 	});
+
+	// var enforceModalFocusFN = $.fn.modal.Constructor.prototype.enforceFocus;
+
+	// $.fn.modal.Constructor.prototype.enforceFocus = function(){};
+
+	// $confModal.on('hidden', function() {
+	// 	$.fn.modal.Constructor.prototype.enforceFocus = enforceModalFocusFN;
+	// });
+	// $confModal.modal({ backdrop : false });
 </script>
 

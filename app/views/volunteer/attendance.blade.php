@@ -68,7 +68,6 @@ Attendance
 						<table>
 							<tr>
 								<td>
-
 									@if($records === NULL)
 										{{ Form::open(['url'=> '/takeAttendance']) }}
 												<input type="hidden" name="part_id" value = "{{ $participant->part_id }}">

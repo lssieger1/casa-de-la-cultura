@@ -26,7 +26,7 @@ Update Information
 		</div>	
 		<div>
 			{{ Form::label('dob', 'Date of Birth', array('class' => 'form-control')) }}
-			{{ Form::input('dob', 'dob', null, array('class'=>'form-control')) }}
+			{{ Form::input('text', 'dob', null, array('class'=>'form-control')) }}
 		</div>
 		<div>
 			{{ Form::label('nationality', 'Nationality', array('class' => 'form-control')) }}
@@ -73,7 +73,7 @@ Update Information
 {{ HTML::script('//code.jquery.com/jquery-1.10.2.js') }}
 <script type="text/javascript">
 	$(document).ready(function() {
-		$( "#date" ).datepicker(/*{//changeMonth: true,
+		$( "#dob" ).datepicker(/*{//changeMonth: true,
 											  //changeYear: true,
 											  dateFormat: "dd MM yy"}*/);
 	});

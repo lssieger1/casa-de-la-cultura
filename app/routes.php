@@ -14,7 +14,11 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	if (Auth::check() && Auth::user()->user_type == 1)
+	{
+		return Redirect::to('aevents');
+	}
+	return Redirect::to('events');
 });
 Route::get('/events','EventsController@index');
 Route::get('/pastEvents','EventsController@showPastEvents');
@@ -35,7 +39,8 @@ Route::group(array('before' => 'auth'), function() {
 	Route::get('attendance/{event_id}', 
 		array(
 			'as' => 'takingAttendance',
-			'uses' => 'ParticipantsController@show' )
+			'uses' => 'ParticipantsController@show'
+		)
 	);
 
 	Route::get('changePassword', function() {
