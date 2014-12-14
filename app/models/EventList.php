@@ -18,7 +18,6 @@ class EventList extends Eloquent {
 
 	public static $rules =[
 		'location' => 'required',
-		'name' => 'required',
 		'date' => 'required',
 		'other' => 'required_if_attribute: type_id, ==, EventList::count() + 1'
 
@@ -31,7 +30,7 @@ class EventList extends Eloquent {
 	 * @var string
 	 */
 	protected $table = 'events';
-	protected $fillable = ['location','name','date','description', 'other'];
+	protected $fillable = ['location', 'date','description', 'other'];
 	protected $primaryKey = 'event_id';
 
 	public function isValid(){

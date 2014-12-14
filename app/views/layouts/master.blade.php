@@ -4,11 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="{{ URL::asset('assets/images/logo.png') }}">
-    <title>
-      @section('title')
-      @show
-    </title>
+    <link rel="icon" href="{{ URL::asset('images/logo.png') }}">
+    <title>@yield('title')</title>
 
     <!-- CSS are placed here -->
     {{ HTML::style('css/bootstrap.css') }}
@@ -16,7 +13,8 @@
     {{ HTML::style('css/jquery-ui.css') }}
     {{ HTML::style('//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css') }}
     {{ HTML::style('css/prettyPhoto.css') }}
-
+    {{ HTML::style('css/jquery.dataTables.css') }}
+    {{ HTML::style('css/dataTables.tableTools.css') }}
     @yield('style')
     <style>body {
       padding: 108px;
@@ -37,9 +35,9 @@
           </button>
             <div class="logo">
               @if(Auth::check() && Auth::user()->user_type == 1)
-                <a class="navbar-brand" href="{{{ URL::to('/aevents') }}}"><img src="{{ URL::asset('assets/images/logo.png') }}" scale="75%" /></a>
+                <a class="navbar-brand" href="{{{ URL::to('/aevents') }}}"><img src="{{ URL::asset('images/logo.png') }}" scale="75%" /></a>
               @else
-                <a class="navbar-brand" href="{{{ URL::to('/events') }}}"><img src="{{ URL::asset('assets/images/logo.png') }}" scale="75%" /></a>
+                <a class="navbar-brand" href="{{{ URL::to('/events') }}}"><img src="{{ URL::asset('images/logo.png') }}" scale="75%" /></a>
               @endif
             </div>
         </div>
@@ -93,26 +91,27 @@
     @include('admin.create')
 
     <!-- Scripts are placed here -->
-    {{ HTML::script('//code.jquery.com/jquery-1.10.2.js') }}
+    {{ HTML::script('js/jquery.js') }}
     {{ HTML::script('js/jquery-ui.js') }}
-
-<script>
-  $(#editEventModal).on('show.bs.modal' function(e) {
-       var eventTest = $(e.relatedTarget).id;
-       alert("eventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTesteventTest");
-       $(e.currentTarget).find('input[name="description"]').val(eventTest);
-  });
-</script>
-
     {{ HTML::script('js/bootstrap.js') }}
     {{ HTML::script('js/jquery.dataTables.js') }}
     {{ HTML::script('js/dataTables.bootstrap.js') }}
+    {{ HTML::script('js/dataTables.tableTools.js') }}
+
     <script>
       $(document).ready(function() {
-        $('#adminEvents').dataTable();
+        $('#adminEventsTable').dataTable();
       });
       $(document).ready(function() {
         $('#attendanceTable').dataTable();
+      });
+      $(document).ready(function() {
+        $('#reportResultsTable').dataTable({
+          "sDom": 'T<"clear">lfrtip',
+          "oTableTools": {
+            "sSwfPath": "{{asset('/swf/copy_csv_xls_pdf.swf')}}"
+          }
+        });
       });
     </script>
   </body>

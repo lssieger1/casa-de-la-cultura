@@ -18,7 +18,7 @@ Edit Event
 	</div>
 	<div>
 		{{ Form::label('date', 'Date: ', array('class' => 'form-control')) }}
-		{{ Form::input('date', 'date', null, array('class'=>'form-control')) }}
+		{{ Form::input('text', 'date', null, array('class'=>'form-control')) }}
 		{{ $errors->first('date') }}
 	</div>
 	<div>
@@ -42,7 +42,7 @@ Edit Event
 {{ HTML::script('//code.jquery.com/jquery-1.10.2.js') }}
 <script type="text/javascript">
 	$(document).ready(function() {
-		$( "#editEventDate" ).datepicker({dateFormat: "dd MM yy"});
+		$( "#date" ).datepicker({dateFormat: "dd MM yy"});
 	});
 </script>
 
