@@ -49,10 +49,6 @@ Run Queries
 						{{ Form::text('dob', null, array('class' => 'form-control')) }}
 					</div>
 					<div>
-						{{ Form::label('pob', 'Place of Birth: ', array('class' => 'form-control')) }}
-						{{ Form::text('pob', null, array('class' => 'form-control')) }}
-					</div>
-					<div>
 						{{ Form::label('nationality', 'Nationality: ', array('class' => 'form-control')) }}
 						{{ Form::text('nationality', null, array('class' => 'form-control')) }}
 					</div>
@@ -116,10 +112,6 @@ Run Queries
 					<div>
 						{{ Form::checkbox('dobCB', 'dobCB') }}
 						{{ Form::label('dobCB', 'Date of Birth') }}
-					</div>
-					<div>
-						{{ Form::checkbox('pobCB', 'pobCB') }}
-						{{ Form::label('pobCB', 'Place of Birth') }}
 					</div>
 					<div>
 						{{ Form::checkbox('nationalityCB', 'nationalityCB') }}

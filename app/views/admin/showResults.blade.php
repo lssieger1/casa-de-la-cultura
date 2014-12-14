@@ -15,13 +15,9 @@ Generated Report
 		<thead>
 			<tr>
 				<?php					
-				for($r = 0; $r < count($a); $r++){
+				for($r = 0; $r < count($showFields); $r++){
 					echo "<th>";
-					if($a[$r] === "native_lang"){
-						echo "Language";
-					} else{
-						echo $a[$r];
-					}
+					echo $showFields[$r];			
 					echo "</th>";
 				}			
 				?>

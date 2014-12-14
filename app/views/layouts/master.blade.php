@@ -33,26 +33,17 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-            <div class="logo">
-              @if(Auth::check() && Auth::user()->user_type == 1)
-                <a class="navbar-brand" href="{{{ URL::to('/aevents') }}}"><img src="{{ URL::asset('images/logo.png') }}" scale="75%" /></a>
-              @else
+            <div class="logo">         
                 <a class="navbar-brand" href="{{{ URL::to('/events') }}}"><img src="{{ URL::asset('images/logo.png') }}" scale="75%" /></a>
-              @endif
             </div>
         </div>
 
         <!-- Everything you want hidden at 940px or less, place within here -->
         <div class="collapse navbar-collapse navbar-right">
           <ul class="nav navbar-nav">
-          @if(Auth::check())
-            @if(Auth::user()->user_type == 1)
-              <li><a href="{{{ URL::to('/pastAevents') }}}">Past Events</a></li>
-              <li><a href="{{{ URL::to('/aevents') }}}">Upcoming Events</a></li>
-            @else
+          @if(Auth::check())           
               <li><a href="{{{ URL::to('/pastEvents') }}}">Past Events</a></li>
               <li><a href="{{{ URL::to('/events') }}}">Upcoming Events</a></li>
-            @endif
             <li><a href="#registerParticipantModal" data-toggle="modal">Register Part</a></li>
             @if(Auth::user()->user_type == 1)
               <li><a href="#createEventModal" data-toggle="modal">New Event</a></li>

@@ -16,9 +16,9 @@ Route::get('/', function()
 {
 	if (Auth::check() && Auth::user()->user_type == 1)
 	{
-		return Redirect::to('aevents');
+		return Redirect::to('/events');
 	}
-	return Redirect::to('events');
+	return Redirect::to('/events');
 });
 Route::get('/events','EventsController@index');
 Route::get('/pastEvents','EventsController@showPastEvents');
@@ -72,9 +72,7 @@ Route::group(array('before' => 'auth'), function() {
 
 	//admin 
 	Route::group(array('before' => 'admin'), function() {
-		//admin main page
-		Route::get('aevents', 'EventsController@showAdminEvents');
-		Route::get('pastAevents', 'EventsController@showPastAdminEvents');
+
 		//admin create event
 		Route::post('public/events',
 					array(

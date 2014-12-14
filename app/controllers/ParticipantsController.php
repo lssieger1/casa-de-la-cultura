@@ -31,7 +31,7 @@ class ParticipantsController extends BaseController{
 	public function store(){	
 		$input = Input::all();
 		if( ! $this->participant->fill($input)->isValid() ){
-			return Redirect::back()->withErrors($this->participant->messages);
+			return Redirect::back()->withInput()->withErrors($this->participant->messages);
 		}		
 		$participant = new Participant;
 		$participant->fill($input);
@@ -63,6 +63,7 @@ class ParticipantsController extends BaseController{
 	}
 
 	public function edit($part_id){
+		$event_id = Input::get("event_id");
 		$participant = Participant::findOrFail($part_id);
 		return View::make('volunteer/edit', ['participant' => $participant]);
 	}
