@@ -18,7 +18,7 @@ Events
 
 <div class="row">
   Enter populate the values from the database within the div below.
-  <! Use a for loop to make it cleaner. >
+  <!- Use a for loop to make it cleaner. >
   <ul> -->
 
 
@@ -37,7 +37,9 @@ Events
        <br><button type="button" disabled>Attendance</button> 
       @else
         <br><a href = "attendance/{{$eventList->event_id}}" class="btn btn-primary">Attendance</a>
+
         @endif
+
          <!-- needs to be linked to showAttendance?? -->
         <a href = "showAttendance/{{$eventList->event_id}}" class="btn btn-primary">View Attendance</a>
       @endif

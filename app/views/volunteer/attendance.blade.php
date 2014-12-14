@@ -87,7 +87,7 @@ Attendance
 										<input type="hidden" name="part_id" value = "{{ $participant->part_id }}">
 
 										<input type="hidden" name="event_id" value = "{{ $event_id }}"> 
-										<a href = "{{$participant->part_id}}/edit" class="btn btn-primary">Update</a> 
+										<a href = "{{$event_id}}/{{$participant->part_id}}/edit" class="btn btn-primary">Update</a> 
 
 										<!-- <button name="updateParticipant"  class="btn btn-primary">Update Info</button>	 -->
 

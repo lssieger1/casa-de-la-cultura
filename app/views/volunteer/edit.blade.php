@@ -5,6 +5,7 @@ Update Information
 @stop
 
 @section('content')
+<!-- {{ Form::model($participant, array('route' => array('attendance.update', $participant->part_id), 'method' => 'PUT')) }} -->
 {{ Form::model($participant, array('route' => array('attendance.update', $participant->part_id), 'method' => 'PUT')) }}
 	<div>
 		<div>
@@ -49,7 +50,7 @@ Update Information
 			{{ Form::text('native_lang', null, array('class' => 'form-control')) }}
 		</div>
 		<div>
-			{{ Form::label('other_lang', 'Other Lanuages', array('class' => 'form-control')) }}
+			{{ Form::label('other_lang', 'Other Languages', array('class' => 'form-control')) }}
 			{{ Form::text('other_lang', null, array('class' => 'form-control')) }}
 		</div>
 		<div>
