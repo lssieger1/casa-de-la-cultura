@@ -14,7 +14,20 @@ Generated Report
 					print "<th>";
 					if($a[$r] === "native_lang"){
 						print "Language";
-					} else{
+					}
+					elseif($a[$r] === "fname"){
+						print "First name";
+					}
+					elseif($a[$r] === "mname"){
+						print "Middle name";
+					}
+					elseif($a[$r] === "lname"){
+						print "Last name";
+					}
+					elseif($a[$r] === "dob"){
+						print "Date of Birth";
+					}
+					 else{
 						print $a[$r];
 					}
 					print "</th>";

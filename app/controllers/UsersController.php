@@ -161,13 +161,22 @@
 					   $a[] = 'address';
 				 }
 
-
+				 if($eventType == null and $date == null and $location == null and $gender == null and $fname == null
+				 	and $mname == null and $lname == null and $dob == null and $nationality == null and $language == null
+				 	and $address == null){
+				 	$results = DB::table('participants')
+				 						->join('attendance','participants.part_id','=','attendance.part_id')
+				 						->join('events','attendance.event_id','=','events.event_id')
+				 						->distinct()
+				 						->get();
+				 }
+				 else{
 				 $selectedField = implode(" , ", $selectedField);
 
 				 $results = DB::select(DB::raw("SELECT DISTINCT $selectedField FROM participants,attendance,events 
 				 	WHERE participants.part_id = attendance.part_id AND attendance.event_id = events.event_id AND
 				 	$built_query"));
-
+				}
 			return  View::make('admin/showResults',['results'=> $results, 'a'=>$a]);
 		}
 
