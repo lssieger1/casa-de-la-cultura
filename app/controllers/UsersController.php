@@ -31,7 +31,7 @@
 
 	    	$user->save();
 	    	Session::flash('message', 'User created');
-	    	return Redirect::to('/events')->with('message','User created succesfully');
+	    	return Redirect::to('events')->with('message','User created succesfully');
 	    }
 
 		public function runQuery(){

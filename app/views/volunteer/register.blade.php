@@ -85,16 +85,23 @@
 	$(document).ready(function() {
 		$( "#registerDateOfBirth" ).datepicker({changeMonth: true,
 											    changeYear: true,
-											    dateFormat: "dd MM yy"});
+											    dateFormat: "dd MM yy",
+											    yearRange: "-90:+0"});
+		// var enforceModalFocusFN = $.fn.modal.Constructor.prototype.enforceFocus;
+		// $('#registerParticipantModal').on('show.bs.modal', function() {
+		// 	$.fn.modal.Constructor.prototype.enforceFocus = function(){};
+		// });
+		// $('#registerParticipantModal').on('hide.bs.modal', function() {
+		// 	$.fn.modal.Constructor.prototype.enforceFocus = enforceModalFocusFN;
+		// });
+		var enforceModalFocusFN = $.fn.modal.Constructor.prototype.enforceFocus;
+
+		$.fn.modal.Constructor.prototype.enforceFocus = function(){};
+
+		$confModal.on('hidden', function() {
+			$.fn.modal.Constructor.prototype.enforceFocus = enforceModalFocusFN;
+		});
+		// $confModal.modal({ backdrop : false });
 	});
-
-	// var enforceModalFocusFN = $.fn.modal.Constructor.prototype.enforceFocus;
-
-	// $.fn.modal.Constructor.prototype.enforceFocus = function(){};
-
-	// $confModal.on('hidden', function() {
-	// 	$.fn.modal.Constructor.prototype.enforceFocus = enforceModalFocusFN;
-	// });
-	// $confModal.modal({ backdrop : false });
 </script>
 
