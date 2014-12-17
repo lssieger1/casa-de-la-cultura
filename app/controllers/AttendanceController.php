@@ -24,7 +24,16 @@ class AttendanceController extends BaseController{
 		$type_id = EventList::find($event_id)->first()->type_id;
 		$attendance->type_id = $type_id;
 		$attendance->save();
-		Session::flash('message','Attendance taken');
 		return Redirect::back()->with('message', 'Attendance taken');
+	}
+
+	public function destroy(){
+		$event_id = Input::get('event_id');
+		$part_id = Input::get('part_id');
+		$attendance = DB::table('attendance')->where('event_id','=',$event_id)
+											->where('part_id','=',$part_id)
+											->delete();
+
+		return Redirect::back();
 	}
 }

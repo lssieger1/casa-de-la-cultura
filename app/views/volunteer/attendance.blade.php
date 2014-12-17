@@ -71,12 +71,17 @@ Attendance
 									@if($records === NULL)
 										{{ Form::open(['url'=> '/takeAttendance']) }}
 												<input type="hidden" name="part_id" value = "{{ $participant->part_id }}">
-												<input type="hidden" name="event_id" value = "{{ $event_id }}">  
-												<button name="takeAttendance"  class="btn btn-primary">Take Attendance</button>				 
+												<input type="hidden" name="event_id" value = "{{ $event_id }}">
+												<button name="takeAttendance"  class="btn btn-primary">Take Attendance</button><br>				 
 										{{ Form::close() }}
 
 									@else
-										<button type="button" disabled>Attendance Taken!</button>
+										<button type="button" class="btn btn-primary" disabled>Attendance Taken!</button><br>
+										{{ Form::open(['url'=> '/deleteAttendance']) }}
+												<input type="hidden" name="part_id" value = "{{ $participant->part_id }}">
+												<input type="hidden" name="event_id" value = "{{ $event_id }}">  
+												<button name="deleteAttendance"  class="btn btn-primary">Delete Attendance</button><br>				 
+										{{ Form::close() }}
 									@endif
 								</td>
 								<td>
@@ -87,7 +92,7 @@ Attendance
 										<input type="hidden" name="part_id" value = "{{ $participant->part_id }}">
 
 										<input type="hidden" name="event_id" value = "{{ $event_id }}"> 
-										<a href = "{{$participant->part_id}}/edit" class="btn btn-primary">Update</a> 
+										<a href = "{{$participant->part_id}}/edit" class="btn btn-primary">Update</a><br> 
 
 										<!-- <button name="updateParticipant"  class="btn btn-primary">Update Info</button>	 -->
 

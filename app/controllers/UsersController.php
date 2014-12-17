@@ -37,6 +37,7 @@
 		public function runQuery(){
 
 			$built_query = [];
+
 			$eventType = Input::get("eventType");
 			$date = Input::get("date");
 			$location = Input::get("location");
@@ -44,11 +45,10 @@
 			$fname = Input::get("firstName");
 			$lname = Input::get("lastName");
 			$mname = Input::get("middleName");
-			$dob = Input::get("dob");
+			$age = Input::get('age');
 			$nationality = Input::get("nationality");
 			$language = Input::get("language");
 			$address = Input::get("address");
-			$email = Input::get("email");
 			$city = Input::get("city");
 			$state = Input::get("state");
 
@@ -85,8 +85,14 @@
 				$built_query['mname'] = 'mname LIKE "'.$mname.'" ';
 			}
 
-			if($dob !=''){			
-				$built_query['dob'] = 'dob LIKE "'.$dob.'" ';
+			if($age == 1){
+				$built_query['age'] = 'YEAR(CURDATE())-YEAR(dob) BETWEEN 0 AND 12';
+			}elseif($age ==2){
+				$built_query['age'] = 'YEAR(CURDATE())-YEAR(dob) BETWEEN 13 AND 18';
+			}elseif($age == 3){
+				$built_query['age'] = 'YEAR(CURDATE())-YEAR(dob) BETWEEN 19 AND 21';
+			}elseif($age == 4){
+				$built_query['age'] = 'YEAR(CURDATE())-YEAR(dob) > 21';
 			}
 
 			if($nationality !=''){
@@ -108,9 +114,7 @@
 				
 				$built_query['state'] = 'state LIKE "'.$state.'" ';
 			}
-			if($email != ''){
-				$built_query['email'] = 'email LIKE "'.$email.'" ';
-			}
+
 
 			 $built_query = implode(" AND ", $built_query);
 
@@ -170,7 +174,7 @@
 				 }
 
 				 if($eventType == null and $date == null and $location == null and $gender == null and $fname == null
-				 	and $mname == null and $lname == null and $dob == null and $nationality == null and $language == null
+				 	and $mname == null and $lname == null and $age == null and $nationality == null and $language == null
 				 	and $address == null){
 				 	$results = DB::table('participants')
 				 						->join('attendance','participants.part_id','=','attendance.part_id')
@@ -247,11 +251,12 @@
 			return Redirect::back()->withErrors('Passwords do not match');
 		}
 
-	}
-	// public function exportExcel(){
-	// Excel::create('Filename', function($excel) {
+		public function destroy($user_id){
+			$user = User::findOrFail($user_id);
+			$user->delete();
+			return Redirect::back();
+		}
 
-	// })->export('xls');
-	//}
+	}
 
 ?>

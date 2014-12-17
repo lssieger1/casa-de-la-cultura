@@ -32,6 +32,9 @@ All Users
 				<th>
 					RESET PASSWORD
 				</th>
+				<th>
+					DELETE USER
+				</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -54,6 +57,10 @@ All Users
 					<td>
 							<input type="hidden" name="user_id" value = "{{ $user->id }}">				 
 							<a class="btn btn-primary" href = 'resetPassword/{{ $user->id }}'> Reset Password </a>
+					</td>
+					<td>
+							<input type="hidden" name="user_id" value = "{{ $user->id }}">				 
+							<a class="btn btn-primary" href = 'deleteUser/{{ $user->id }}'> Delete User </a>
 					</td>
 				</tr>
 			@endforeach

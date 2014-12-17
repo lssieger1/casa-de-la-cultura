@@ -17,7 +17,7 @@ Admin Homepage
 					DATE AND LOCATION
 				</th>
 				<th>
-					NAME (TYPE)
+					PROGRAM NAME
 				</th>
 				<th>
 					DESCRIPTION

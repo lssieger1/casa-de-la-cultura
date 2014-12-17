@@ -52,13 +52,18 @@ Route::group(array('before' => 'auth'), function() {
 			'uses' => 'UsersController@changePassword') 
 	);
 
+	Route::get('deleteUser/{user_id}', array(
+			'as' => 'delete_user',
+			'uses' => 'UsersController@destroy') 
+	);
+
 	//check attendance
 	Route::get('/showAttendance/{event_id}', 'AttendanceController@show');
 
 	Route::resource('attendance', 'ParticipantsController');
 
 	Route::post('/takeAttendance', 'AttendanceController@store');
-
+	Route::post('/deleteAttendance', 'AttendanceController@destroy');
 	// browse all participants
 	Route::get('attendance/browseAllParticipants/{event_id}','ParticipantsController@index');
 	Route::post('attendance/browseAllParticipants/{event_id}', array(

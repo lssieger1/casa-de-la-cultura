@@ -8,14 +8,14 @@ class EventsController extends BaseController{
 	}
 
 	public function index(){
-		$eventLists = EventList::with('EventType')->where('date', '>=', new DateTime('today'))->get();
+		$eventLists = EventList::with('EventType')->where('date', '>=', new DateTime('today'))->orderBy('date','desc')->get();
 		if(Auth::check() && Auth::user()->user_type == 1) {
 		 	return View::make('admin/events', ['eventLists'=>$eventLists]);
 	    }
 		return View::make('public/events',['eventLists'=> $eventLists]);
 	}
 	public function showPastEvents(){
-		$eventLists = EventList::with('EventType')->where('date', '<', new DateTime('today'))->get();
+		$eventLists = EventList::with('EventType')->where('date', '<', new DateTime('today'))->orderBy('date','desc')->get();
 		 if(Auth::check() && Auth::user()->user_type == 1) {
 		 	return View::make('admin/events', ['eventLists'=>$eventLists]);
 		 }
@@ -29,9 +29,9 @@ class EventsController extends BaseController{
 	public function store(){
 		
 		$input = Input::all();
-		// if( ! $this->eventList->fill($input)->isValid() ){
-		// 	return Redirect::back()->withErrors($this->eventList->messages);
-		// }
+		if( ! $this->eventList->fill($input)->isValid() ){
+			return Redirect::back()->withErrors($this->eventList->messages);
+		}
 		
 		$eventList = new EventList;
 		$eventList->location = $input['location'];

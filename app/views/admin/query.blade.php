@@ -18,7 +18,7 @@ Run Queries
 				<div class="panel-body">
 					<div>
 						{{ Form::label('eventType', 'Event Type: ', array('class' => 'form-control')) }}
-						{{ Form::select('eventType', (EventType::all()->lists('type_name','type_id')+ array("None","None")), null, array('class' => 'form-control')) }}
+						{{ Form::select('eventType', (EventType::all()->lists('type_name','type_id')+ array("All","All")), null, array('class' => 'form-control')) }}
 					</div>
 					<div>
 						{{ Form::label('date', 'Event Date: ', array('class' => 'form-control')) }}
@@ -45,8 +45,8 @@ Run Queries
 						{{ Form::text('lastName', null, array('class' => 'form-control')) }}
 					</div>
 					<div>
-						{{ Form::label('dob', 'Date of Birth: ', array('class' => 'form-control')) }} 
-						{{ Form::text('dob', null, array('class' => 'form-control')) }}
+						{{ Form::label('age','Age range: ', array('class' => 'form-control')) }}
+						{{ Form::select('age', (array('All','Under 13', '13-18', '19-21','21+')), 0, array('class' => 'form-control')) }}
 					</div>
 					<div>
 						{{ Form::label('nationality', 'Nationality: ', array('class' => 'form-control')) }}
@@ -67,10 +67,6 @@ Run Queries
 					<div>
 						{{ Form::label('state', 'State: ', array('class' => 'form-control')) }}
 						{{ Form::text('state', null, array('class' => 'form-control')) }}
-					</div>
-					<div>
-						{{ Form::label('email', 'Email: ', array('class' => 'form-control')) }}
-						{{ Form::email('email', null, array('class' => 'form-control')) }}
 					</div>
 				</div>
 			</div>
