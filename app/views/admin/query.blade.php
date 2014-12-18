@@ -22,11 +22,11 @@ Run Queries
 					</div>
 					<div>
 						{{ Form::label('date', 'Event Date: ', array('class' => 'form-control')) }}
-						{{ Form::text('date', null, array('class' => 'form-control')) }}
+						{{ Form::text('fields[]', null, array('class' => 'form-control')) }}
 					</div>
 					<div>
 						{{ Form::label('location', 'Event Location: ', array('class' => 'form-control')) }}
-						{{ Form::text('location', null, array('class' => 'form-control')) }}
+						{{ Form::text('fields[]', null, array('class' => 'form-control')) }}
 					</div>
 					<div>
 						{{ Form::label('gender', 'Gender: ', array('class' => 'form-control')) }}
@@ -34,15 +34,15 @@ Run Queries
 					</div>
 					<div>
 						{{ Form::label('firstName', 'First Name: ', array('class' => 'form-control')) }}
-						{{ Form::text('firstName', null, array('class' => 'form-control')) }}
+						{{ Form::text('fields[]', null, array('class' => 'form-control')) }}
 					</div>
 					<div>
 						{{ Form::label('middleName', 'Middle Name: ', array('class' => 'form-control')) }}
-						{{ Form::text('middleName', null, array('class' => 'form-control')) }}
+						{{ Form::text('fields[]', null, array('class' => 'form-control')) }}
 					</div>
 					<div>
 						{{ Form::label('lastName', 'Last Name: ', array('class' => 'form-control')) }}
-						{{ Form::text('lastName', null, array('class' => 'form-control')) }}
+						{{ Form::text('fields[]', null, array('class' => 'form-control')) }}
 					</div>
 					<div>
 						{{ Form::label('age','Age range: ', array('class' => 'form-control')) }}
@@ -50,23 +50,23 @@ Run Queries
 					</div>
 					<div>
 						{{ Form::label('nationality', 'Nationality: ', array('class' => 'form-control')) }}
-						{{ Form::text('nationality', null, array('class' => 'form-control')) }}
+						{{ Form::text('fields[]', null, array('class' => 'form-control')) }}
 					</div>
 					<div>
 						{{ Form::label('language', 'Language: ', array('class' => 'form-control')) }}
-						{{ Form::text('language', null, array('class' => 'form-control')) }}
+						{{ Form::text('fields[]', null, array('class' => 'form-control')) }}
 					</div>
 					<div>
 						{{ Form::label('address', 'Address: ', array('class' => 'form-control')) }}
-						{{ Form::text('address', null, array('class' => 'form-control')) }}
+						{{ Form::text('fields[]', null, array('class' => 'form-control')) }}
 					</div>
 					<div>
 						{{ Form::label('city', 'City: ', array('class' => 'form-control')) }}
-						{{ Form::text('city', null, array('class' => 'form-control')) }}
+						{{ Form::text('fields[]', null, array('class' => 'form-control')) }}
 					</div>
 					<div>
 						{{ Form::label('state', 'State: ', array('class' => 'form-control')) }}
-						{{ Form::text('state', null, array('class' => 'form-control')) }}
+						{{ Form::text('fields[]', null, array('class' => 'form-control')) }}
 					</div>
 				</div>
 			</div>
@@ -82,55 +82,55 @@ Run Queries
 				</div>
 				<div class="panel-body">
 					<div>
-						{{ Form::checkbox('dateCB', 'dateCB') }}
+						{{ Form::checkbox('cb[]', 'date/Date') }}
 						{{ Form::label('dateCB', 'Event Date') }}
 					</div>
 					<div>
-						{{ Form::checkbox('locationCB', 'locationCB') }}
+						{{ Form::checkbox('cb[]', 'location/Location') }}
 						{{ Form::label('locationCB', 'Location') }}
 					</div>
 					<div>
-						{{ Form::checkbox('genderCB', 'genderCB') }}
+						{{ Form::checkbox('cb[]', 'gender/Gender') }}
 						{{ Form::label('genderCB', 'Gender') }}
 					</div>
 					<div>
-						{{ Form::checkbox('firstNameCB', 'firstNameCB') }}
+						{{ Form::checkbox('cb[]', 'fname/First Name') }}
 						{{ Form::label('firstNameCB', 'First Name') }}
 					</div>
 					<div>
-						{{ Form::checkbox('middleNameCB', 'middleNameCB') }}
+						{{ Form::checkbox('cb[]', 'mname/Middle Name') }}
 						{{ Form::label('middleNameCB', 'Middle Name') }}
 					</div>
 					<div>
-						{{ Form::checkbox('lastNameCB', 'lastNameCB') }}
+						{{ Form::checkbox('cb[]', 'lname/Last Name') }}
 						{{ Form::label('lastNameCB', 'Last Name') }}
 					</div>
 					<div>
-						{{ Form::checkbox('dobCB', 'dobCB') }}
+						{{ Form::checkbox('cb[]', 'dob/Date of Birth') }}
 						{{ Form::label('dobCB', 'Date of Birth') }}
 					</div>
 					<div>
-						{{ Form::checkbox('nationalityCB', 'nationalityCB') }}
+						{{ Form::checkbox('cb[]', 'nationality/Nationality') }}
 						{{ Form::label('nationalityCB', 'Nationality') }}
 					</div>
 					<div>
-						{{ Form::checkbox('languageCB', 'languageCB') }}
+						{{ Form::checkbox('cb[]', 'native_lang/Language') }}
 						{{ Form::label('languageCB', 'Language') }}
 					</div>
 					<div>
-						{{ Form::checkbox('addressCB', 'addressCB') }}
+						{{ Form::checkbox('cb[]', 'address/Address') }}
 						{{ Form::label('addressCB', 'Address') }}
 					</div>
 					<div>
-						{{ Form::checkbox('cityCB', 'cityCB') }}
+						{{ Form::checkbox('cb[]', 'city/City') }}
 						{{ Form::label('cityCB', 'City') }}
 					</div>
 					<div>
-						{{ Form::checkbox('stateCB', 'stateCB') }}
+						{{ Form::checkbox('cb[]', 'state/State') }}
 						{{ Form::label('stateCB', 'State') }}
 					</div>
 					<div>
-						{{ Form::checkbox('emailCB', 'emailCB') }}
+						{{ Form::checkbox('cb[]','email/Email') }}
 						{{ Form::label('emailCB', 'Email') }}
 					</div>
 					<div class='panel-footer'>
