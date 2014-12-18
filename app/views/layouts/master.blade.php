@@ -34,7 +34,7 @@
             <span class="icon-bar"></span>
           </button>
             <div class="logo">         
-                <a class="navbar-brand" href="{{{ URL::to('/events') }}}"><img src="{{ URL::asset('images/logo.png') }}" scale="75%" /></a>
+                <a class="navbar-brand" href="{{{ URL::to('/events') }}}"><img src="{{ URL::asset('images/logo.png') }}" width="95%" height="95%" /></a>
             </div>
         </div>
 
@@ -151,7 +151,8 @@
               "xls",
               "pdf",
               "print"
-            ]
+            ],
+            "sSwfPath": "{{asset('/swf/copy_csv_xls_pdf.swf')}}"
           }
         });
       });
@@ -180,7 +181,8 @@
               "xls",
               "pdf",
               "print"
-            ]
+            ],
+            "sSwfPath": "{{asset('/swf/copy_csv_xls_pdf.swf')}}"
           }
         });
       });

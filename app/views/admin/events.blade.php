@@ -1,15 +1,8 @@
 @extends('layouts.master')
 
 @section('title')
-<?php 
-  // if (date("Y-m-d") <= $eventLists[0]->date) {
-  //   echo "Upcoming";
-  // }
-  // else {
-  //   echo "Past";
-  // }
-?>
- Events
+@parent
+{{ $event }} Events
 @stop
 
 @section('style')
@@ -61,7 +54,7 @@
       					$check =  date("Y-m-d");
       				?>
       				@if($eventList->date > $check)
-      					<a class="btn btn-primary" disabled>Take Attendance</a>
+      					<button class="btn btn-primary" disabled>Take Attendance</button>
       				@else
 						<a href = "attendance/{{$eventList->event_id}}" class="btn btn-primary">Take Attendance</a>
 					@endif

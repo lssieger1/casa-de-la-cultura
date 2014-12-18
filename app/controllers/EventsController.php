@@ -8,15 +8,25 @@ class EventsController extends BaseController{
 	}
 
 	public function index(){
-		$eventLists = EventList::with('EventType')->where('date', '>=', new DateTime('today'))->get();
-		// if(Auth::user()->user_type == 1) {
-		// 	return View::make('admin/events', ['eventLists'=>$eventLists]);
-		// }
-		return View::make('public/events',['eventLists'=> $eventLists]);
+		$eventLists = EventList::with('EventType')->where('date', '>=', new DateTime('today'))->orderBy('date','desc')->get();
+		if(Auth::check() && Auth::user()->user_type == 1) {
+		 	return View::make('admin/events', ['eventLists'=>$eventLists, 'event'=>"Upcoming"]);
+	    }
+	    if(Auth::check() && Auth::user()->user_type == 0) {
+			return View::make('volunteer/events', ['eventLists'=>$eventLists, 'event'=>"Upcoming"]);
+		}
+		return View::make('public/events',['eventLists'=> $eventLists, 'event'=>"Upcoming"]);
 	}
 	public function showPastEvents(){
-		$eventLists = EventList::with('EventType')->where('date', '<', new DateTime('today'))->get();
-		return View::make('public/events',['eventLists'=> $eventLists]);
+
+		$eventLists = EventList::with('EventType')->where('date', '<', new DateTime('today'))->orderBy('date','desc')->get();
+		if(Auth::check() && Auth::user()->user_type == 1) {
+			return View::make('admin/events', ['eventLists'=>$eventLists, 'event'=>"Past"]);
+		}
+		if(Auth::check() && Auth::user()->user_type == 0) {
+			return View::make('volunteer/events', ['eventLists'=>$eventLists, 'event'=>"Past"]);
+		}
+		return View::make('public/events',['eventLists'=> $eventLists, 'event'=>"Past"]);
 	}
 
 	public function show(){
@@ -35,10 +45,6 @@ class EventsController extends BaseController{
 	public function store(){
 		
 		$input = Input::all();
-		// if( ! $this->eventList->fill($input)->isValid() ){
-		// 	return Redirect::back()->withErrors($this->eventList->messages);
-		// }
-		
 		$eventList = new EventList;
 		$eventList->location = $input['location'];
 		$type_id = $input['eventType'];
@@ -73,30 +79,31 @@ class EventsController extends BaseController{
 	}
 
 	public function update($event_id){
-		$input = Input::all();
-		// if( ! $this->eventList->fill($input)->isValid() ){
-		// 	return Redirect::back()->withErrors($this->eventList->messages);
-		// }
 		$eventList = EventList::find($event_id);
 		$eventList->location = Input::get('location');
-		$type_id = Input::get('eventType') ;	
+		if(Input::get('eventType') != ''){
+			$type_id = Input::get('eventType') ;		
+			if($type_id == 0){
+				$newName = Input::get('other');
+				$eventtype = new EventType;
+				$eventtype->type_name = $newName;
+				$eventtype->save();
 
-		if($type_id == 0){
-			$newName = Input::get('other');
-
-			$eventtype = new EventType;
-			$eventtype->type_name = $newName;
-			$eventtype->save();
-
-			$eventList->type_id = $eventtype->type_id;
-		}
-		else{
-			$eventList->type_id = $type_id;
+				$eventList->type_id = $eventtype->type_id;
+			}
+			else{
+				$eventList->type_id = $type_id;
+			}
 		}
 		$eventList->description = Input::get('description');
 		$eventList->date = date("Y-m-d", strtotime(Input::get('date')));	
-
 		$eventList->save();
-		return Redirect::to('events');
+		$check =  date("Y-m-d");
+      	if(Input::get('date') < $check){
+			return Redirect::to('pastEvents');
+		}
+		else{
+			return Redirect::to('events');
+		}
 	}
 }

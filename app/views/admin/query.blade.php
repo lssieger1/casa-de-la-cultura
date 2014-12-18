@@ -18,7 +18,7 @@ Generate Report
 				<div class="panel-body">
 					<div>
 						{{ Form::label('eventType', 'Program: ', array('class' => 'form-control')) }}
-						{{ Form::select('eventType', (EventType::all()->lists('type_name','type_id')+ array("All","All")), null, array('class' => 'form-control')) }}
+						{{ Form::select('eventType', (array("All")+EventType::all()->lists('type_name','type_id')), null, array('class' => 'form-control')) }}
 					</div>
 					<div>
 						{{ Form::label('date', 'Event Date: ', array('class' => 'form-control')) }}
@@ -70,7 +70,7 @@ Generate Report
 					</div>
 				</div>
 			</div>
-		</td>
+		</div>
 	</div>
 	<div class="row">
 		<div class="col-lg-4">

@@ -11,7 +11,7 @@ class SessionsController extends BaseController{
 			return Redirect::to('events');
 		}
 		else{
-			Session::flash('loginError','Invalid credentials. Plase try again.');
+			Session::flash('loginError','Invalid credentials. Please try again.');
 			return Redirect::back()->withInput();
 		}
 	}

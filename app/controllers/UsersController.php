@@ -13,7 +13,6 @@
 		}
 
 	    public function store(){
-	    	$input = Input::all();
 	    	$user = new User;
 	    	$user->username = Input::get('username');
 	    	$user->email = Input::get('email');
@@ -31,7 +30,7 @@
 
 	    	$user->save();
 	    	Session::flash('message', 'User created');
-	    	return Redirect::to('events')->with('message','User created succesfully');
+	    	return Redirect::to('events')->with('message','User created successfully');
 	    }
 
 		public function runQuery(){
@@ -103,8 +102,6 @@
 		}
 
 		public function updateUser($user_id){
-
-			$input = Input::all();
 			$user = User::findOrFail($user_id);
 
 			$user->username = Input::get('username');
@@ -163,5 +160,3 @@
 		}
 
 	}
-
-?>
