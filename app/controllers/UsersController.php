@@ -36,133 +36,145 @@
 
 		public function runQuery(){
 
-			if(Input::get("eventType") != 0){
-				$eventType = Input::get("eventType");
-			}else{$eventType = null;}
+			$built_query = [];
 
-			if(Input::get("date") != ''){
-				$date = Input::get("date");
-			}else{$date = null;}
+			$eventType = Input::get("eventType");
+			$date = Input::get("date");
+			$location = Input::get("location");
+			$gender = Input::get("gender");
+			$fname = Input::get("firstName");
+			$lname = Input::get("lastName");
+			$mname = Input::get("middleName");
+			$age = Input::get('age');
+			$nationality = Input::get("nationality");
+			$language = Input::get("language");
+			$address = Input::get("address");
+			$city = Input::get("city");
+			$state = Input::get("state");
+
+			if($eventType != 0){
+				$built_query['eventType'] = 'attendance.type_id =  '.$eventType.' ';
+			}
+
+			if($date != ''){				
+				$built_query['date'] = 'date LIKE  "'.$date.'" ';
+			}
 			
-			if(Input::get("location") != ''){
-				$location = Input::get("location");
-			}else{$location = null;}				
+			if($location != ''){
+				$built_query['location'] = 'location LIKE  "'.$location.'" ';
+			}		
 
-			if(Input::get("gender") == 1){
-				$gender = "Male";
+			if($gender == 1){
+				$built_query['gender'] = 'gender LIKE  "Male" ';
 			}
-			elseif (Input::get("gender") == 2) {
-				$gender = "Female";
-			}elseif (Input::get("gender") == 3) {
-				$gender = "Other";
-			}else {$gender = null;}
+			elseif ($gender == 2) {
+				$built_query['gender'] = 'gender LIKE  "Female" ';
+			}elseif ($gender == 3) {
+				$built_query['gender'] = 'gender LIKE  "Other" ';
+			}
 
-			if(Input::get("firstName") != ''){
-				$fname = Input::get("firstName");
-			}else{$fname = null;}
+			if($fname != ''){
+				$built_query['fname'] = 'fname LIKE  "'.$fname.'" ';
+			}
 		
-			if(Input::get("lastName") !=''){
-				$lname = Input::get("lastName");
-			}else{$lname = null;}
-
-			if(Input::get("middleName") !=''){
-				$mname = Input::get("middleName",null);
-			}else{
-				$mname = null;
+			if($lname !=''){
+				$built_query['lname'] = 'lname LIKE "'.$lname.'" ';
 			}
 
-			if(Input::get("dob") !=''){
-				$dob = Input::get("dob");
-			}else{
-				$dob = null;
+			if($mname !=''){
+				$built_query['mname'] = 'mname LIKE "'.$mname.'" ';
 			}
 
-			if(Input::get("nationality") !=''){
-				$nationality = Input::get("nationality");
-			}else{
-				$nationality = null;
+			if($age == 1){
+				$built_query['age'] = 'YEAR(CURDATE())-YEAR(dob) BETWEEN 0 AND 12';
+			}elseif($age ==2){
+				$built_query['age'] = 'YEAR(CURDATE())-YEAR(dob) BETWEEN 13 AND 18';
+			}elseif($age == 3){
+				$built_query['age'] = 'YEAR(CURDATE())-YEAR(dob) BETWEEN 19 AND 21';
+			}elseif($age == 4){
+				$built_query['age'] = 'YEAR(CURDATE())-YEAR(dob) > 21';
 			}
 
-			if(Input::get("language") !=''){
-				$language = Input::get("language");
-			}else{
-				$language = null;
+			if($nationality !=''){
+				$built_query['nationality'] = 'nationality LIKE "'.$nationality.'" ';
 			}
 
-			if(Input::get("address") !=''){
-				$address = Input::get("address");
-			}else{
-				$address = null;
+			if($language !=''){
+				 $built_query['language'] = 'native_lang LIKE "'.$language.'" ';
 			}
-			//$city = Input::get("city");
-			//$state = Input::get("state");
-			if(Input::get("email") != ''){
-				$email = Input::get("email");
-			}else{
-				$email = null;
+
+			if($address !=''){
+				$built_query['address'] = 'address LIKE "'.$address.'" ';
 			}
-			//run query
-			 $built_query = [];
-			 is_null($eventType) ? null : $built_query['eventType'] = 'attendance.type_id =  '.$eventType.' ';
-			 is_null($date) ? null : $built_query['date'] = 'date LIKE  "'.$date.'" ';
-			 is_null($location) ? null : $built_query['location'] = 'location LIKE  "'.$location.'" ';
-			 is_null($gender) ? null : $built_query['gender'] = 'gender LIKE  "'.$gender.'" ';
-			 is_null($fname) ? null : $built_query['fname'] = 'fname LIKE  "'.$fname.'" ';
-			 is_null($lname) ? null : $built_query['lname'] = 'lname LIKE "'.$lname.'" ';
-			 is_null($mname) ? null : $built_query['mname'] = 'mname LIKE "'.$mname.'" ';
-			 is_null($dob) ? null : $built_query['dob'] = 'dob LIKE "'.$dob.'" ';
-			 is_null($nationality) ? null : $built_query['nationality'] = 'nationality LIKE "'.$nationality.'" ';
-			 is_null($language) ? null : $built_query['language'] = 'native_lang LIKE "'.$language.'" ';
-			 is_null($address) ? null : $built_query['address'] = 'address LIKE "'.$address.'" ';
-			 is_null($email) ? null : $built_query['email'] = 'email LIKE "'.$email.'" ';
+			if($city !=''){
+				
+				$built_query['city'] = 'city LIKE "'.$city.'" ';
+			}
+			if($state !=''){
+				
+				$built_query['state'] = 'state LIKE "'.$state.'" ';
+			}
+
+
 			 $built_query = implode(" AND ", $built_query);
 
-				 //select fields
+		     //select fields
 		     $selectedField = [];
 			 $a = array();
+			 $showFields = array();
 				 if (Input::get('dateCB') === 'dateCB') {
 					   $selectedField['date'] = 'date';
 					   $a[] = 'date';
+					   $showFields[] = 'Date';
 				 }
 				 if (Input::get('locationCB') === 'locationCB') {
 					   $selectedField['location'] = 'location';
 					   $a[] = 'location';
+					   $showFields[] = 'Location';
 				 }
 				 if (Input::get('genderCB') === 'genderCB') {
 					   $selectedField['gender'] = 'gender';
 					   $a[] = 'gender';
+					   $showFields[] = 'Gender';
 				 }
 				 if (Input::get('firstNameCB') === 'firstNameCB') {
 					   $selectedField['fname'] = 'fname';
 					   $a[] = 'fname';
+					   $showFields[] = 'First Name';
 				 }
 				 if (Input::get('middleNameCB') === 'middleNameCB') {
 					   $selectedField['mname'] = 'mname';
 					   $a[] = 'mname';
+					   $showFields[] = 'Middle Name';
 				 }
 				 if (Input::get('lastNameCB') === 'lastNameCB') {
 					   $selectedField['lname'] = 'lname';
 					   $a[] = 'lname';
+					   $showFields[] = 'Last Name';
 				 }
 				 if (Input::get('dobCB') === 'dobCB') {
 					   $selectedField['dob'] = 'dob';
 					   $a[] = 'dob';
+					   $showFields[] = 'Date of Birth';
 				 }
-				 if (Input::get('nationality') === 'nationality') {
+				 if (Input::get('nationalityCB') === 'nationalityCB') {
 					   $selectedField['nationality'] = 'nationality';
 					   $a[] = 'nationality';
+					   $showFields[] = 'Nationality';
 				 }
 				 if (Input::get('languageCB') === 'languageCB') {
 					   $selectedField['native_lang'] = 'native_lang';
 					   $a[] = 'native_lang';
+					   $showFields[] = 'Native Language';
 				 }
 				 if (Input::get('addressCB') === 'addressCB') {
 					   $selectedField['address'] = 'address';
 					   $a[] = 'address';
+					   $showFields[] = 'Address';
 				 }
 
 				 if($eventType == null and $date == null and $location == null and $gender == null and $fname == null
-				 	and $mname == null and $lname == null and $dob == null and $nationality == null and $language == null
+				 	and $mname == null and $lname == null and $age == null and $nationality == null and $language == null
 				 	and $address == null){
 				 	$results = DB::table('participants')
 				 						->join('attendance','participants.part_id','=','attendance.part_id')
@@ -177,7 +189,7 @@
 				 	WHERE participants.part_id = attendance.part_id AND attendance.event_id = events.event_id AND
 				 	$built_query"));
 				}
-			return  View::make('admin/showResults',['results'=> $results, 'a'=>$a]);
+			return  View::make('admin/showResults',['results'=> $results, 'a'=>$a, 'showFields' => $showFields]);
 		}
 
 		public function editUser($user_id){
@@ -239,11 +251,12 @@
 			return Redirect::back()->withErrors('Passwords do not match');
 		}
 
-	}
-	// public function exportExcel(){
-	// Excel::create('Filename', function($excel) {
+		public function destroy($user_id){
+			$user = User::findOrFail($user_id);
+			$user->delete();
+			return Redirect::back();
+		}
 
-	// })->export('xls');
-	//}
+	}
 
 ?>

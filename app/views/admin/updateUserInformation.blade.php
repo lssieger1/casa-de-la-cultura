@@ -11,25 +11,25 @@ Update Account Information
 @section('content')
 
 {{ Form::model($user, array('route' => array('updateUserInfo', $user->id), 'method' => 'PUT')) }}
-	<div>
-		{{ Form::label('username', 'Username: ', array('class'=>'form-control')) }}
-		{{ Form::text('username', null, array('class'=>'form-control')) }}
+	<div class='input-group'>
+		<span class='input-group-addon'>Username</span>
+		{{ Form::text('username', null, array('class'=>'form-control', 'required'=>'required')) }}
 	</div>
-	<div>
-		{{ Form::label('email', 'Email: ', array('class'=>'form-control')) }}
+	<div class='input-group'>
+		<span class='input-group-addon'>Email</span>
 		{{ Form::email('email', null, array('class'=>'form-control')) }}
 	</div>
-	<div>
-		{{ Form::label('name', 'Name: ', array('class'=>'form-control')) }}
-		{{ Form::text('name', null, array('class'=>'form-control')) }}
+	<div class='input-group'>
+		<span class='input-group-addon'>Name</span>
+		{{ Form::text('name', null, array('placeholder'=>'Full Name', 'class'=>'form-control')) }}
 	</div>
-	<div>
-		{{ Form::label('phoneNo', 'Phone Number: ', array('class'=>'form-control')) }}
+	<div class='input-group'>
+		<span class='input-group-addon'>Phone Number</span>
 		{{ Form::text('phoneNo', null, array('class'=>'form-control')) }}
 	</div>
-	<div>
-		{{ Form::label('userType', 'User Type: ', array('class'=>'form-control')) }}
-		{{ Form::select('userType', array('Volunteer', 'Administrator'), $user->user_type, array('class'=>'form-control')) }}
+	<div class='input-group'>
+		<span class='input-group-addon'>User Type</span>
+		{{ Form::select('userType', array('Volunteer', 'Administrator'), $user->user_type, array('class'=>'form-control', 'required'=>'required')) }}
 	</div>
 	{{ Form::submit('Update Information', array('class'=>'btn btn-primary form-control')) }}
 {{ Form::close() }}

@@ -11,8 +11,15 @@ Events
 
 @section('content')
 <h3>Public Events  </h3>
-<h5> Sort by: </h5>
+<div>
+  {{ Form::model($eventLists, array('url' => '/eventSort', 'method' => 'get')) }}
+    {{ Form:: label('event_type', 'Sort By: ') }}
+    {{ Form:: select('event_id', (array('All') + EventType::all()->lists('type_name','type_id')
+       )) }}
 
+    {{ Form::submit('Filter') }}
+  {{ Form::close() }}
+</div>
 <!-- {{ Form::open()}}
 
 

@@ -9,12 +9,12 @@
 
     <!-- CSS are placed here -->
     {{ HTML::style('css/bootstrap.css') }}
-    {{ HTML::style('css/bootstrap-theme.css') }}
     {{ HTML::style('css/jquery-ui.css') }}
     {{ HTML::style('//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css') }}
     {{ HTML::style('css/prettyPhoto.css') }}
     {{ HTML::style('css/jquery.dataTables.css') }}
     {{ HTML::style('css/dataTables.tableTools.css') }}
+    {{ HTML::style('css/dataTables.responsive.css') }}
     @yield('style')
     <style>body {
       padding: 108px;
@@ -33,26 +33,17 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-            <div class="logo">
-              @if(Auth::check() && Auth::user()->user_type == 1)
-                <a class="navbar-brand" href="{{{ URL::to('/aevents') }}}"><img src="{{ URL::asset('images/logo.png') }}" scale="75%" /></a>
-              @else
+            <div class="logo">         
                 <a class="navbar-brand" href="{{{ URL::to('/events') }}}"><img src="{{ URL::asset('images/logo.png') }}" scale="75%" /></a>
-              @endif
             </div>
         </div>
 
         <!-- Everything you want hidden at 940px or less, place within here -->
         <div class="collapse navbar-collapse navbar-right">
           <ul class="nav navbar-nav">
-          @if(Auth::check())
-            @if(Auth::user()->user_type == 1)
-              <li><a href="{{{ URL::to('/pastAevents') }}}">Past Events</a></li>
-              <li><a href="{{{ URL::to('/aevents') }}}">Upcoming Events</a></li>
-            @else
+          @if(Auth::check())           
               <li><a href="{{{ URL::to('/pastEvents') }}}">Past Events</a></li>
               <li><a href="{{{ URL::to('/events') }}}">Upcoming Events</a></li>
-            @endif
             <li><a href="#registerParticipantModal" data-toggle="modal">Register Part</a></li>
             @if(Auth::user()->user_type == 1)
               <li><a href="#createEventModal" data-toggle="modal">New Event</a></li>
@@ -82,6 +73,9 @@
 
     <!-- Container -->
     <div class="container">
+      <div class="page-header">
+        <h2>@yield('title')</h2>
+      </div>
       <!-- Content -->
       @yield('content')
     </div>
@@ -97,19 +91,96 @@
     {{ HTML::script('js/jquery.dataTables.js') }}
     {{ HTML::script('js/dataTables.bootstrap.js') }}
     {{ HTML::script('js/dataTables.tableTools.js') }}
+    {{ HTML::script('js/dataTables.responsive.js') }}
+    {{ HTML::script('js/dataTAbles.dateSorting.js') }}
 
     <script>
       $(document).ready(function() {
-        $('#adminEventsTable').dataTable();
+        $('#adminEventsTable').dataTable({
+          "responsive" : true,
+          "columnDefs": [
+            { "type": "date-dd-mmm-yyyy", targets: 0 }
+          ],
+          "aoColumns": [
+            null,
+            null,
+            null,
+            null,
+            { "bSearchable" : false },
+            { "bSearchable" : false }
+          ]
+        });
       });
       $(document).ready(function() {
-        $('#attendanceTable').dataTable();
+        $('#volunteerEventsTable').dataTable({
+          "responsive" : true,
+          "order": [[ 0, "desc" ]],
+          "columnDefs": [
+            { "type": "date-dd-mmm-yyyy", targets: 0 }
+          ],
+          "aoColumns": [
+            null,
+            null,
+            null,
+            null,
+            { "bSearchable" : false }
+          ]
+        });
+      });
+      $(document).ready(function() {
+        $('#attendanceTable').dataTable({
+          "responsive" : true,
+          "columnDefs": [
+            { "type": "date-dd-mmm-yyyy", targets: 1 },
+            { "type": "numeric", targets: 2 }
+          ],
+          "aoColumns": [
+            null,
+            null,
+            null,
+            null,
+            { "bSearchable" : false }
+          ]
+        });
       });
       $(document).ready(function() {
         $('#reportResultsTable').dataTable({
           "sDom": 'T<"clear">lfrtip',
           "oTableTools": {
-            "sSwfPath": "{{asset('/swf/copy_csv_xls_pdf.swf')}}"
+            "aButtons": [
+              "xls",
+              "pdf",
+              "print"
+            ]
+          }
+        });
+      });
+      $(document).ready(function() {
+        $('#allUsersTable').dataTable({
+          "responsive" : true,
+          "aoColumns": [
+            null,
+            null,
+            null,
+            null,
+            { "bSearchable" : false }
+          ]
+        });
+      });
+      $(document).ready(function() {
+        $('#showAttendanceTable').dataTable({
+          "responsive" : true,
+          "columnDefs": [
+            { "type": "date-dd-mmm-yyyy", targets: 1 },
+            { "type": "numeric", targets: 2 }
+          ],
+          "sDom": 'T<"clear">lfrtip',
+          "oTableTools": {
+            "aButtons": [
+              "xls",
+              "pdf",
+              "print"
+            ]
           }
         });
       });

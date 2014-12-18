@@ -25,13 +25,14 @@ class ParticipantsController extends BaseController{
 
 	public function show($event_id){
 		$participants = $this->participant->all();
-		return View::make('volunteer/attendance',['participants'=> $participants, 'event_id'=>$event_id]);
+		$eventList = EventList::with('EventType')->find($event_id);
+		return View::make('volunteer/attendance',['participants'=> $participants, 'event'=>$eventList, 'event_id'=>$event_id]);
 	}
 
 	public function store(){	
 		$input = Input::all();
 		if( ! $this->participant->fill($input)->isValid() ){
-			return Redirect::back()->withErrors($this->participant->messages);
+			return Redirect::back()->withInput()->withErrors($this->participant->messages);
 		}		
 		$participant = new Participant;
 		$participant->fill($input);
@@ -63,6 +64,7 @@ class ParticipantsController extends BaseController{
 	}
 
 	public function edit($part_id){
+		$event_id = Input::get("event_id");
 		$participant = Participant::findOrFail($part_id);
 		return View::make('volunteer/edit', ['participant' => $participant]);
 	}

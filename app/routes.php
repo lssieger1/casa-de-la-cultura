@@ -14,17 +14,20 @@
 
 Route::get('/', function()
 {
-	if (Auth::check() && Auth::user()->user_type == 1)
-	{
-		return Redirect::to('aevents');
-	}
-	return Redirect::to('events');
+	return Redirect::to('/events');
 });
 Route::get('/events','EventsController@index');
 Route::get('/pastEvents','EventsController@showPastEvents');
 Route::get('signin', 'SessionsController@create');
 Route::resource('sessions', 'SessionsController');
-
+Route::get('/eventSort', array(
+	'as' => 'updatePart',
+	'uses' => 'EventsController@sort'
+	));
+Route::get('/pastEventSort', array(
+	'as' => 'updatePastPart',
+	'uses' => 'EventsController@sortPast')
+);
 
 // Authenticated group
 Route::group(array('before' => 'auth'), function() {
@@ -52,6 +55,11 @@ Route::group(array('before' => 'auth'), function() {
 			'uses' => 'UsersController@changePassword') 
 	);
 
+	Route::get('deleteUser/{user_id}', array(
+			'as' => 'delete_user',
+			'uses' => 'UsersController@destroy') 
+	);
+
 	//check attendance
 	Route::get('/showAttendance/{event_id}', 'AttendanceController@show');
 
@@ -59,11 +67,13 @@ Route::group(array('before' => 'auth'), function() {
 
 	Route::post('/takeAttendance', 'AttendanceController@store');
 
-	Route::get('/{event_id}/{participant_id}/edit');
-	Route::put('/{event_id}/{participant_id/edit', array(
-					'as' => 'edit-participant',
-					'uses' => 'ParticipantsController@update')
-	);
+	// Route::get('/{event_id}/{participant_id}/edit');
+	// Route::put('/{event_id}/{participant_id/edit', array(
+	// 				'as' => 'edit-participant',
+	// 				'uses' => 'ParticipantsController@update')
+	// );
+
+	Route::post('/deleteAttendance', 'AttendanceController@destroy');
 
 	// browse all participants
 	Route::get('attendance/browseAllParticipants/{event_id}','ParticipantsController@index');
@@ -78,9 +88,7 @@ Route::group(array('before' => 'auth'), function() {
 
 	//admin 
 	Route::group(array('before' => 'admin'), function() {
-		//admin main page
-		Route::get('aevents', 'EventsController@showAdminEvents');
-		Route::get('pastAevents', 'EventsController@showPastAdminEvents');
+
 		//admin create event
 		Route::post('public/events',
 					array(
