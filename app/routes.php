@@ -67,8 +67,8 @@ Route::group(array('before' => 'auth'), function() {
 
 	Route::post('/takeAttendance', 'AttendanceController@store');
 
-	Route::get('/{event_id}/{participant_id}/edit');
-	Route::put('/{event_id}/{participant_id/edit', array(
+	Route::get('attendance/{event_id}/{participant_id}/edit','ParticipantsController@edit');
+	Route::put('attendance/{event_id}/{participant_id/edit', array(
 					'as' => 'updatePart',
 					'uses' => 'ParticipantsController@update')
 	);
