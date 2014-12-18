@@ -8,11 +8,19 @@ Edit Event
 	{{ Form::model($eventList, array('route' => array('admin.update', $eventList->event_id), 'method' => 'PUT')) }}
 	<div class='input-group'>
 		<span class='input-group-addon'>Program</span>
+		<?php
+			$check = DB::table('attendance')->where('event_id','=',$eventList->event_id)->get();
+		?>
+		@if(count($check)==0)
 		{{ Form::select('eventType', (EventType::all()->lists('type_name','type_id') + 
 			array('Other')), $eventList->type_id, array('class'=>'form-control', 'required'=>'required')) }}
 		{{ Form::text('other', null, array('placeholder' => 'Other', 'class' => 'form-control')) }} 
 		<!-- validation needed if Other is selected to make sure this is filled in -->
 		{{ $errors->first('other') }}
+		@else
+		{{ Form::select('eventType', (EventType::all()->lists('type_name','type_id') + 
+			array('Other')), $eventList->type_id, array('class'=>'form-control', 'required'=>'required','disabled'=>'disabled')) }}
+		@endif
 	</div>
 	<div class='input-group'>
 		<span class='input-group-addon'>Date</span>

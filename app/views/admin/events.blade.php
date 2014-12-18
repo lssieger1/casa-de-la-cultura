@@ -70,14 +70,8 @@
 					<span> </span>
 				</td>
 				<td>
-					<?php
-						$check = DB::table('attendance')->where('event_id','=',$eventList->event_id)->get();
-					?>
-					@if(count($check)==0)
+
 					<a href = "edit/{{$eventList->event_id}}" class="btn btn-success">Update</a>
-					@else
-					<button class="btn btn-success" disabled>Update</button>
-					@endif
 					{{ Form::open(['url'=> '/delete' ]) }}
 						<button name = "delete" class="btn btn-danger" onclick="if(!confirm('Are you sure to delete this event?')){return false;}">Delete</button>
 						<input type="hidden" name="event_id" value = "{{$eventList->event_id}}"> 
