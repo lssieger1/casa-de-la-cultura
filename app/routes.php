@@ -20,9 +20,9 @@ Route::get('/events','EventsController@index');
 Route::get('/pastEvents','EventsController@showPastEvents');
 Route::get('signin', 'SessionsController@create');
 Route::resource('sessions', 'SessionsController');
-Route::get('/eventSort', array(
-	'as' => 'updatePart',
-	'uses' => 'EventsController@sort'
+Route::get('/eventsSort', array(
+	'as' => 'updateSort',
+	'uses' => 'EventsController@sortFuture'
 	));
 Route::get('/pastEventSort', array(
 	'as' => 'updatePastPart',
@@ -67,11 +67,11 @@ Route::group(array('before' => 'auth'), function() {
 
 	Route::post('/takeAttendance', 'AttendanceController@store');
 
-	// Route::get('/{event_id}/{participant_id}/edit');
-	// Route::put('/{event_id}/{participant_id/edit', array(
-	// 				'as' => 'edit-participant',
-	// 				'uses' => 'ParticipantsController@update')
-	// );
+	Route::get('/{event_id}/{participant_id}/edit');
+	Route::put('/{event_id}/{participant_id/edit', array(
+					'as' => 'updatePart',
+					'uses' => 'ParticipantsController@update')
+	);
 
 	Route::post('/deleteAttendance', 'AttendanceController@destroy');
 

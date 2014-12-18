@@ -2,7 +2,7 @@
 
 @section('title')
 @parent
-{{ $event }} Events
+
 @stop
 
 @section('style')
@@ -12,13 +12,35 @@
 @section('content')
 <h3>Public Events  </h3>
 <div>
-  {{ Form::model($eventLists, array('url' => '/eventSort', 'method' => 'get')) }}
+   @if(Request::is('pastEvents') || Request::is('pastEventSort?*'))
+    {{ Form::model($eventLists, array('url' => '/pastEventSort', 'method' => 'get')) }}
     {{ Form:: label('event_type', 'Sort By: ') }}
     {{ Form:: select('event_id', (array('All') + EventType::all()->lists('type_name','type_id')
        )) }}
-
     {{ Form::submit('Filter') }}
-  {{ Form::close() }}
+    {{ Form::close() }}
+  @elseif(Request::is('pastEventSort'))
+    {{ Form::model($eventLists, array('url' => '/pastEventSort', 'method' => 'get')) }}
+    {{ Form:: label('event_type', 'Sort By: ') }}
+    {{ Form:: select('event_id', (array('All') + EventType::all()->lists('type_name','type_id')
+       )) }}
+    {{ Form::submit('Filter') }}
+    {{ Form::close() }}
+  @elseif(Request::is('events'))
+    {{ Form::model($eventLists, array('url' => '/eventsSort', 'method' => 'get')) }}
+    {{ Form:: label('event_type', 'Sort By: ') }}
+    {{ Form:: select('event_id', (array('All') + EventType::all()->lists('type_name','type_id')
+       )) }}
+    {{ Form::submit('Filter') }}
+    {{ Form::close() }}
+  @elseif(Request::is('eventsSort'))
+      {{ Form::model($eventLists, array('url' => '/eventsSort', 'method' => 'get')) }}
+      {{ Form:: label('event_type', 'Sort By: ') }}
+      {{ Form:: select('event_id', (array('All') + EventType::all()->lists('type_name','type_id')
+       )) }}
+      {{ Form::submit('Filter') }}
+      {{ Form::close() }}
+  @endif
 </div>
 
   @foreach  ($eventLists as $eventList)
