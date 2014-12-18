@@ -16,18 +16,7 @@ class EventsController extends BaseController{
 	}
 	public function showPastEvents(){
 		$eventLists = EventList::with('EventType')->where('date', '<', new DateTime('today'))->get();
-		// if(Auth::check() && Auth::user()->user_type == 1) {
-		// 	return View::make('admin/events', ['eventLists'=>$eventLists]);
-		// }
 		return View::make('public/events',['eventLists'=> $eventLists]);
-	}
-	public function showAdminEvents(){
-		$eventLists = EventList::with('EventType')->where('date', '>=', new DateTime('today'))->get();
-		return View::make('admin/events',['eventLists'=> $eventLists]);
-	}
-	public function showPastAdminEvents() {
-		$eventLists = EventList::with('EventType')->where('date', '<', new DateTime('today'))->get();
-		return View::make('admin/events',['eventLists'=> $eventLists]);	
 	}
 
 	public function show(){
@@ -108,6 +97,6 @@ class EventsController extends BaseController{
 		$eventList->date = date("Y-m-d", strtotime(Input::get('date')));	
 
 		$eventList->save();
-		return Redirect::to('aevents');
+		return Redirect::to('events');
 	}
 }

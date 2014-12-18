@@ -41,7 +41,7 @@ Events
       ?>
       @if(Auth::check()) 
       @if($eventList->date > $check )
-       <br><button type="button" disabled>Attendance</button> 
+       <br><button type="button" class="btn btn-primary" disabled>Attendance</button> 
       @else
         <br><a href = "attendance/{{$eventList->event_id}}" class="btn btn-primary">Attendance</a>
 

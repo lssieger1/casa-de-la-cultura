@@ -72,7 +72,7 @@ Take Attendance for {{ $event->EventType->type_name }} on {{ $event->get_date() 
 							{{ Form::close() }}
 
 						@else
-							<button class="btn btn-info" disabled>Attendance Taken</button>
+							<button class="btn btn-info" class="btn btn-primary" disabled>Attendance Taken</button>
 							{{ Form::open(['url'=> '/deleteAttendance']) }}
 								<input type="hidden" name="part_id" value = "{{ $participant->part_id }}">
 								<input type="hidden" name="event_id" value = "{{ $event_id }}">  

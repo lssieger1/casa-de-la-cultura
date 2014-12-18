@@ -32,16 +32,16 @@ Attendance for {{ $event->get_date() }} {{ $event->EventType->type_name }}
 			@foreach  ($attendances as $attendance)
 			<tr>
 				<td class="col-sm-3">
-					{{ $attendance->fname}}  {{ $attendance->lname }}
+					{{ $attendance->Participant->fname}}  {{ $attendance->Participant->lname }}
 				</td>
 				<td class="col-sm-3">
-					{{ $attendance->dob }}
+					{{ $attendance->Participant->dob }}
 				</td>
 				<td class="col-sm-3">
-					{{ $attendance->phoneNo }}
+					{{ $attendance->Participant->phoneNo }}
 				</td>
 				<td class="col-sm-3">
-					{{ $attendance->address }}
+					{{ $attendance->Participant->address }}
 				</td>
 			</tr>
 			@endforeach 
