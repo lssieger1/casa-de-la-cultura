@@ -37,33 +37,19 @@
 		public function runQuery(){
 
 			$built_query = [];
+			$query = ['date','location','fname','lname','mname','nationality','language','address','city','state'];
+			$fields = Input::get('fields');
+			for($i = 0; $i < count($fields); $i++){
+				if($fields[$i] != ''){
+					$built_query[''.$query[$i].''] = ''.$query[$i].' LIKE  "'.$fields[$i].'" ';
+				}
 
-			$eventType = Input::get("eventType");
-			$date = Input::get("date");
-			$location = Input::get("location");
-			$gender = Input::get("gender");
-			$fname = Input::get("firstName");
-			$lname = Input::get("lastName");
-			$mname = Input::get("middleName");
-			$age = Input::get('age');
-			$nationality = Input::get("nationality");
-			$language = Input::get("language");
-			$address = Input::get("address");
-			$city = Input::get("city");
-			$state = Input::get("state");
-
-			if($eventType != 0){
-				$built_query['eventType'] = 'attendance.type_id =  '.$eventType.' ';
 			}
-
-			if($date != ''){				
-				$built_query['date'] = 'date LIKE  "'.$date.'" ';
+			$type_id = Input::get('eventType');
+			if($type_id != 0){
+				$built_query['type_id'] = 'attendance.type_id = "'.$type_id.'"';
 			}
-			
-			if($location != ''){
-				$built_query['location'] = 'location LIKE  "'.$location.'" ';
-			}		
-
+			$gender = Input::get('gender');
 			if($gender == 1){
 				$built_query['gender'] = 'gender LIKE  "Male" ';
 			}
@@ -73,18 +59,7 @@
 				$built_query['gender'] = 'gender LIKE  "Other" ';
 			}
 
-			if($fname != ''){
-				$built_query['fname'] = 'fname LIKE  "'.$fname.'" ';
-			}
-		
-			if($lname !=''){
-				$built_query['lname'] = 'lname LIKE "'.$lname.'" ';
-			}
-
-			if($mname !=''){
-				$built_query['mname'] = 'mname LIKE "'.$mname.'" ';
-			}
-
+			$age = Input::get('age');
 			if($age == 1){
 				$built_query['age'] = 'YEAR(CURDATE())-YEAR(dob) BETWEEN 0 AND 12';
 			}elseif($age ==2){
@@ -94,102 +69,32 @@
 			}elseif($age == 4){
 				$built_query['age'] = 'YEAR(CURDATE())-YEAR(dob) > 21';
 			}
-
-			if($nationality !=''){
-				$built_query['nationality'] = 'nationality LIKE "'.$nationality.'" ';
-			}
-
-			if($language !=''){
-				 $built_query['language'] = 'native_lang LIKE "'.$language.'" ';
-			}
-
-			if($address !=''){
-				$built_query['address'] = 'address LIKE "'.$address.'" ';
-			}
-			if($city !=''){
 				
-				$built_query['city'] = 'city LIKE "'.$city.'" ';
-			}
-			if($state !=''){
-				
-				$built_query['state'] = 'state LIKE "'.$state.'" ';
-			}
-
-
-			 $built_query = implode(" AND ", $built_query);
-
-		     //select fields
-		     $selectedField = [];
+			 //select fields
 			 $a = array();
-			 $showFields = array();
-				 if (Input::get('dateCB') === 'dateCB') {
-					   $selectedField['date'] = 'date';
-					   $a[] = 'date';
-					   $showFields[] = 'Date';
-				 }
-				 if (Input::get('locationCB') === 'locationCB') {
-					   $selectedField['location'] = 'location';
-					   $a[] = 'location';
-					   $showFields[] = 'Location';
-				 }
-				 if (Input::get('genderCB') === 'genderCB') {
-					   $selectedField['gender'] = 'gender';
-					   $a[] = 'gender';
-					   $showFields[] = 'Gender';
-				 }
-				 if (Input::get('firstNameCB') === 'firstNameCB') {
-					   $selectedField['fname'] = 'fname';
-					   $a[] = 'fname';
-					   $showFields[] = 'First Name';
-				 }
-				 if (Input::get('middleNameCB') === 'middleNameCB') {
-					   $selectedField['mname'] = 'mname';
-					   $a[] = 'mname';
-					   $showFields[] = 'Middle Name';
-				 }
-				 if (Input::get('lastNameCB') === 'lastNameCB') {
-					   $selectedField['lname'] = 'lname';
-					   $a[] = 'lname';
-					   $showFields[] = 'Last Name';
-				 }
-				 if (Input::get('dobCB') === 'dobCB') {
-					   $selectedField['dob'] = 'dob';
-					   $a[] = 'dob';
-					   $showFields[] = 'Date of Birth';
-				 }
-				 if (Input::get('nationalityCB') === 'nationalityCB') {
-					   $selectedField['nationality'] = 'nationality';
-					   $a[] = 'nationality';
-					   $showFields[] = 'Nationality';
-				 }
-				 if (Input::get('languageCB') === 'languageCB') {
-					   $selectedField['native_lang'] = 'native_lang';
-					   $a[] = 'native_lang';
-					   $showFields[] = 'Native Language';
-				 }
-				 if (Input::get('addressCB') === 'addressCB') {
-					   $selectedField['address'] = 'address';
-					   $a[] = 'address';
-					   $showFields[] = 'Address';
-				 }
+			 $showFields = array();	
+			 $selectedFields = Input::get('cb');
+			 foreach($selectedFields as $selectedField) {
+    			list($p,$q) = explode("/",$selectedField);
+    			$a[] = $p;
+    			$showFields[] =$q;   			
+			}
+			$queryFields = implode(" , ", $a);
 
-				 if($eventType == null and $date == null and $location == null and $gender == null and $fname == null
-				 	and $mname == null and $lname == null and $age == null and $nationality == null and $language == null
-				 	and $address == null){
-				 	$results = DB::table('participants')
+			if($type_id == 0 and $age == 0 and count($built_query) == 0 and $gender == 0){
+				 $results = DB::table('participants')
 				 						->join('attendance','participants.part_id','=','attendance.part_id')
 				 						->join('events','attendance.event_id','=','events.event_id')
 				 						->distinct()
 				 						->get();
-				 }
-				 else{
-				 $selectedField = implode(" , ", $selectedField);
-
-				 $results = DB::select(DB::raw("SELECT DISTINCT $selectedField FROM participants,attendance,events 
+			}
+			else{
+				$built_query = implode(" AND ", $built_query);
+				$results = DB::select(DB::raw("SELECT DISTINCT $queryFields FROM participants,attendance,events 
 				 	WHERE participants.part_id = attendance.part_id AND attendance.event_id = events.event_id AND
 				 	$built_query"));
-				}
-			return  View::make('admin/showResults',['results'=> $results, 'a'=>$a, 'showFields' => $showFields]);
+			}
+			return View::make('admin/showResults',['results'=> $results, 'a'=>$a, 'showFields' => $showFields]);
 		}
 
 		public function editUser($user_id){
