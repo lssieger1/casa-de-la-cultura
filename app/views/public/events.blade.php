@@ -1,16 +1,23 @@
 @extends('layouts.master')
 
 @section('title')
+
 @parent
-Events
+<?php 
+  if (date("Y-m-d") <= $eventLists[0]->date) {
+    echo "Upcoming";
+  }
+  else {
+    echo "Past";
+  }
+?>
+ Events
 @stop
 
 @section('style')
 {{ HTML::style('css/grid.css') }}
 @stop
-
 @section('content')
-<h3>Public Events  </h3>
 <h5> Sort by: </h5>
 
 <!-- {{ Form::open()}}

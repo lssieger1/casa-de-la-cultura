@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-Admin Homepage
+Attendance for {{ $event->get_date() }} {{ $event->EventType->type_name }}
 @stop
 
 @section('style')
@@ -11,7 +11,7 @@ Admin Homepage
 @section('content')
 
 <div class="table-responsive">
-	<table class="table table-bordered table-striped">
+	<table class="table table-bordered table-striped" id="showAttendanceTable">
 		<thead>
 			<tr>
 				<th>

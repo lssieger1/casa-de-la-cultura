@@ -2,7 +2,7 @@
 
 @section('title')
 <?php 
-  // if (date("Y-m-d") <= $eventLists[0]->date) {
+  // if ($eventLists.size() > 0 && date("Y-m-d") <= $eventLists[0]->date) {
   //   echo "Upcoming";
   // }
   // else {
@@ -18,7 +18,7 @@
 
 @section('content')
 <div class="table-responsive">
-	<table class="table table-bordered table-striped" id="adminEventsTable">
+	<table class="table table-bordered table-striped" id="volunteerEventsTable">
 		<thead>
 			<tr>
 				<th>
@@ -35,9 +35,6 @@
 				</th>
 				<th>
 					ACTIONS
-				</th>
-				<th>
-					???
 				</th>
 			</tr>
 		</thead>
@@ -65,23 +62,7 @@
       				@else
 						<a href = "attendance/{{$eventList->event_id}}" class="btn btn-primary">Take Attendance</a>
 					@endif
-					<span> </span>
 					<a href = "showAttendance/{{$eventList->event_id}}" class="btn btn-info">View Attendance</a>
-					<span> </span>
-				</td>
-				<td>
-					<?php
-						$check = DB::table('attendance')->where('event_id','=',$eventList->event_id)->get();
-					?>
-					@if(count($check)==0)
-					<a href = "edit/{{$eventList->event_id}}" class="btn btn-success">Update</a>
-					@else
-					<button class="btn btn-success" disabled>Update</button>
-					@endif
-					{{ Form::open(['url'=> '/delete' ]) }}
-						<button name = "delete" class="btn btn-danger" onclick="if(!confirm('Are you sure to delete this event?')){return false;}">Delete</button>
-						<input type="hidden" name="event_id" value = "{{$eventList->event_id}}"> 
-					{{ Form::close() }}
 				</td>
 			</tr>
 			@endforeach 

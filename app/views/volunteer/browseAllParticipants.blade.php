@@ -48,10 +48,8 @@ Attendance
 					</td>
 					<td>
 						{{Form::open(['browseAllPart'])}}
-						<input type="hidden" name="part_id" value = "{{ $participant->part_id }}">  
+							<input type="hidden" name="part_id" value = "{{ $participant->part_id }}">  
 							{{ Form::submit("Select", array('class'=>'btn btn-primary')) }}
-
-						<!-- <button class="btn btn-primary">Select</button> -->
 						{{Form::close()}}
 					</td>
 				</tr>

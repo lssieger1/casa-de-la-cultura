@@ -15,7 +15,7 @@ class UsersTableSeeder extends Seeder {
          array('username'=> 'felsey','email'=>'felzy@edrinks.com', 'name' => 'Cammy Felzy', 
             'password' => Hash::make('test1'), 'password_temp' => Hash::make('test1'), 
             'phoneNo' => '5559276543',
-            'user_type' => 2, 
+            'user_type' => 0, 
             'securityQue' => 'What is your favorite vacation spot?', 
             'securityAns' => Hash::make('Boston'),
             'remember_token' => 'yes'),
@@ -28,7 +28,7 @@ class UsersTableSeeder extends Seeder {
             'remember_token' => 'yes'),
          array('username'=> 'blanca','email'=>'blanca@clean.com', 'name' => 'blancaClean', 
             'password' => Hash::make('test'), 'password_temp' => Hash::make('test'), 'phoneNo' => '2358932018',
-            'user_type' => 2, 'securityQue' => 'What is your favorite vacation spot?', 'securityAns' => Hash::make('Gettysburg'),
+            'user_type' => 0, 'securityQue' => 'What is your favorite vacation spot?', 'securityAns' => Hash::make('Gettysburg'),
             'remember_token' => 'yes')  
             ));    
     }

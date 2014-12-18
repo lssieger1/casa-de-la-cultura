@@ -12,13 +12,20 @@ class EventsController extends BaseController{
 		if(Auth::check() && Auth::user()->user_type == 1) {
 		 	return View::make('admin/events', ['eventLists'=>$eventLists]);
 	    }
+	    if(Auth::check() && Auth::user()->user_type == 0) {
+			return View::make('volunteer/events', ['eventLists'=>$eventLists]);
+		}
 		return View::make('public/events',['eventLists'=> $eventLists]);
 	}
+
 	public function showPastEvents(){
 		$eventLists = EventList::with('EventType')->where('date', '<', new DateTime('today'))->orderBy('date','desc')->get();
-		 if(Auth::check() && Auth::user()->user_type == 1) {
-		 	return View::make('admin/events', ['eventLists'=>$eventLists]);
-		 }
+		if(Auth::check() && Auth::user()->user_type == 1) {
+			return View::make('admin/events', ['eventLists'=>$eventLists]);
+		}
+		if(Auth::check() && Auth::user()->user_type == 0) {
+			return View::make('volunteer/events', ['eventLists'=>$eventLists]);
+		}
 		return View::make('public/events',['eventLists'=> $eventLists]);
 	}
 

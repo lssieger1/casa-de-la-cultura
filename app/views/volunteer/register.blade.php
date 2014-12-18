@@ -11,63 +11,63 @@
         <h4 class="modal-title" id="registerParticipantModalLabel">New Participant</h4>
       </div>
       <div class="modal-body">
-
 		{{ Form::open(['route'=> 'participants-created']) }}
 			<div>
-				<div>
-					{{ Form::label('fname', 'First Name', array('class' => 'form-control')) }}
-					{{ Form::text('fname', null, array('placeholder' => 'John', 'class' => 'form-control')) }}
+				<div class="input-group">
+					<span class="input-group-addon">First Name</span>
+					{{ Form::text('fname', null, array('required'=>'required', 'class' => 'form-control')) }}
 				</div>
-				<div>
-					{{ Form::label('mname', 'Middle Name', array('class' => 'form-control')) }}
-					{{ Form::text('mname', null, array('placeholder' => 'James', 'class' => 'form-control')) }}
+				<div class="input-group">
+					<span class="input-group-addon">Middle Name</span>
+					{{ Form::text('mname', null, array('class' => 'form-control')) }}
 				</div>
-				<div>
-					{{ Form::label('lname', 'Last Name', array('class' => 'form-control')) }}
-					{{ Form::text('lname', null, array('placeholder' => 'Smith', 'class' => 'form-control')) }}
+				<div class="input-group">
+					<span class="input-group-addon">Last Name</span>
+					{{ Form::text('lname', null, array('required'=>'required', 'class' => 'form-control')) }}
 				</div>
-				<div>
-					{{ Form::label('gender', 'Gender', array('class' => 'form-control')) }}
-					{{ Form::select('gender', array("Male", "Female", "Other"), null, array('class'=>'form-control')) }}
+				<div class="input-group">
+					<span class="input-group-addon">Gender</span>
+					{{ Form::select('gender', array("Male" => "Male", "Female" => "Female", "Other" => "Other"), 
+							2, array('class'=>'form-control')) }}
 				</div>	
-				<div>
-					{{ Form::label('registerDateOfBirth', 'Date of Birth', array('class' => 'form-control')) }}
-					{{ Form::input('text', 'registerDateOfBirth', null, array('class'=>'form-control')) }}
+				<div class="input-group">
+					<span class="input-group-addon">Date of Birth</span>
+					{{ Form::input('text', 'registerDateOfBirth', null, array('class'=>'form-control', 'id'=>'registerDateOfBirth')) }}
 				</div>
-				<div>
-					{{ Form::label('nationality', 'Nationality', array('class' => 'form-control')) }}
+				<div class="input-group">
+					<span class="input-group-addon">Nationality</span>
 					{{ Form::text('nationality', null, array('class' => 'form-control')) }}
 				</div>
-				<div>
-					{{ Form::label('address', 'Address', array('class' => 'form-control')) }}
+				<div class="input-group">
+					<span class="input-group-addon">Address</span>
 					{{ Form::text('address', null, array('class' => 'form-control')) }}
 				</div>
-				<div>
-					{{ Form::label('city', 'City', array('class' => 'form-control')) }}
+				<div class="input-group">
+					<span class="input-group-addon">City</span>
 					{{ Form::text('city', null, array('class' => 'form-control')) }}
 				</div>
-				<div>
-					{{ Form::label('state', 'State', array('class' => 'form-control')) }}
-					{{ Form::text('state', null, array('class' => 'form-control')) }}
+				<div class="input-group">
+					<span class="input-group-addon">State</span>
+					{{ Form::stateSelect('state', null, array('class' => 'form-control')) }}
 				</div>
-				<div>
-					{{ Form::label('native_lang', 'Native Language', array('class' => 'form-control')) }}
+				<div class="input-group">
+					<span class="input-group-addon">Native Language</span>
 					{{ Form::text('native_lang', null, array('class' => 'form-control')) }}
 				</div>
-				<div>
-					{{ Form::label('other_lang', 'Other Lanuages', array('class' => 'form-control')) }}
+				<div class="input-group">
+					<span class="input-group-addon">Other Languages</span>
 					{{ Form::text('other_lang', null, array('class' => 'form-control')) }}
 				</div>
-				<div>
-					{{ Form::label('guardian', 'Parent/Guardian', array('class' => 'form-control')) }}
+				<div class="input-group">
+					<span class="input-group-addon">Parent/Guardian</span>
 					{{ Form::text('guardian', null, array('class' => 'form-control')) }}
 				</div>
-				<div>
-					{{ Form::label('phoneNo', 'Phone Number', array('class' => 'form-control')) }}
+				<div class="input-group">
+					<span class="input-group-addon">Phone Number</span>
 					{{ Form::text('phoneNo', null, array('class' => 'form-control')) }}
 				</div>
-				<div>
-					{{ Form::label('email', 'Email', array('class' => 'form-control')) }}
+				<div class="input-group">
+					<span class="input-group-addon">Email</span>
 					{{ Form::email('email', null, array('class' => 'form-control')) }}
 				</div>
 				<div>

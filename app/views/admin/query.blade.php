@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-Run Queries
+Generate Report
 @stop
 
 @section('content')
@@ -17,7 +17,7 @@ Run Queries
 				</div>
 				<div class="panel-body">
 					<div>
-						{{ Form::label('eventType', 'Event Type: ', array('class' => 'form-control')) }}
+						{{ Form::label('eventType', 'Program: ', array('class' => 'form-control')) }}
 						{{ Form::select('eventType', (EventType::all()->lists('type_name','type_id')+ array("All","All")), null, array('class' => 'form-control')) }}
 					</div>
 					<div>
@@ -66,7 +66,7 @@ Run Queries
 					</div>
 					<div>
 						{{ Form::label('state', 'State: ', array('class' => 'form-control')) }}
-						{{ Form::text('state', null, array('class' => 'form-control')) }}
+						{{ Form::stateSelect('state', null, array('class' => 'form-control')) }}
 					</div>
 				</div>
 			</div>

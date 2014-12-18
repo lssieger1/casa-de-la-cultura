@@ -17,6 +17,8 @@ class EventList extends Eloquent {
 	public $timestamps = false;
 
 	public static $rules =[
+		'type_id' => 'required',
+		'date' => 'required',
 		'location' => 'required',
 		'other' => 'required_if_attribute: type_id, ==, EventList::count() + 1'
 
