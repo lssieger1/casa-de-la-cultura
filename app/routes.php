@@ -14,10 +14,6 @@
 
 Route::get('/', function()
 {
-	if (Auth::check() && Auth::user()->user_type == 1)
-	{
-		return Redirect::to('/events');
-	}
 	return Redirect::to('/events');
 });
 Route::get('/events','EventsController@index');

@@ -14,7 +14,7 @@ All Users
 @section('content')
 
  <div class="table-responsive">
-    <table class="table table-striped table-bordered" id="attendanceTable">
+    <table class="table table-striped table-bordered" id="allUsersTable">
 		<thead>
 			<tr>
 				<th>
@@ -27,13 +27,10 @@ All Users
 					EMAIL
 				</th>
 				<th>
-					UPDATE INFORMATION
+					ACCOUNT TYPE
 				</th>
 				<th>
-					RESET PASSWORD
-				</th>
-				<th>
-					DELETE USER
+					ACTIONS
 				</th>
 			</tr>
 		</thead>
@@ -41,26 +38,29 @@ All Users
 
 			@foreach ($users as $user)				
 				<tr>
-					<td>
+					<td class="col-sm-3">
 						{{ $user->name }}
 					</td>
-					<td>
+					<td class="col-sm-3">
 						{{ $user->username }}
 					</td>
-					<td>
+					<td class="col-sm-3">
 						{{ $user->email }}
 					</td>
-					<td>
+					<td class="col-sm-3">
+						@if( $user->user_type == 1)
+							Administrator
+						@else
+							Volunteer
+						@endif
+					</td>
+					<td class="col-sm-3">
+						<div class="btn-group-vertical" role="group" aria-label="...">
 							<input type="hidden" name="user_id" value = "{{ $user->id }}">
-							<a class="btn btn-primary" href = 'updateUserInformation/{{ $user->id }}'> Update Information </a>			 
-					</td>
-					<td>
-							<input type="hidden" name="user_id" value = "{{ $user->id }}">				 
+							<a class="btn btn-warning" href = 'updateUserInformation/{{ $user->id }}'> Update Information </a>
 							<a class="btn btn-primary" href = 'resetPassword/{{ $user->id }}'> Reset Password </a>
-					</td>
-					<td>
-							<input type="hidden" name="user_id" value = "{{ $user->id }}">				 
-							<a class="btn btn-primary" href = 'deleteUser/{{ $user->id }}'> Delete User </a>
+							<a class="btn btn-danger" href = 'deleteUser/{{ $user->id }}' onclick="if(!confirm('Are you sure to delete this user?')){return false;}"> Delete User </a>
+						</div>
 					</td>
 				</tr>
 			@endforeach

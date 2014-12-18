@@ -9,12 +9,12 @@
 
     <!-- CSS are placed here -->
     {{ HTML::style('css/bootstrap.css') }}
-    {{ HTML::style('css/bootstrap-theme.css') }}
     {{ HTML::style('css/jquery-ui.css') }}
     {{ HTML::style('//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css') }}
     {{ HTML::style('css/prettyPhoto.css') }}
     {{ HTML::style('css/jquery.dataTables.css') }}
     {{ HTML::style('css/dataTables.tableTools.css') }}
+    {{ HTML::style('css/dataTables.responsive.css') }}
     @yield('style')
     <style>body {
       padding: 108px;
@@ -73,6 +73,9 @@
 
     <!-- Container -->
     <div class="container">
+      <div class="page-header">
+        <h2>@yield('title')</h2>
+      </div>
       <!-- Content -->
       @yield('content')
     </div>
@@ -88,19 +91,96 @@
     {{ HTML::script('js/jquery.dataTables.js') }}
     {{ HTML::script('js/dataTables.bootstrap.js') }}
     {{ HTML::script('js/dataTables.tableTools.js') }}
+    {{ HTML::script('js/dataTables.responsive.js') }}
+    {{ HTML::script('js/dataTAbles.dateSorting.js') }}
 
     <script>
       $(document).ready(function() {
-        $('#adminEventsTable').dataTable();
+        $('#adminEventsTable').dataTable({
+          "responsive" : true,
+          "columnDefs": [
+            { "type": "date-dd-mmm-yyyy", targets: 0 }
+          ],
+          "aoColumns": [
+            null,
+            null,
+            null,
+            null,
+            { "bSearchable" : false },
+            { "bSearchable" : false }
+          ]
+        });
       });
       $(document).ready(function() {
-        $('#attendanceTable').dataTable();
+        $('#volunteerEventsTable').dataTable({
+          "responsive" : true,
+          "order": [[ 0, "desc" ]],
+          "columnDefs": [
+            { "type": "date-dd-mmm-yyyy", targets: 0 }
+          ],
+          "aoColumns": [
+            null,
+            null,
+            null,
+            null,
+            { "bSearchable" : false }
+          ]
+        });
+      });
+      $(document).ready(function() {
+        $('#attendanceTable').dataTable({
+          "responsive" : true,
+          "columnDefs": [
+            { "type": "date-dd-mmm-yyyy", targets: 1 },
+            { "type": "numeric", targets: 2 }
+          ],
+          "aoColumns": [
+            null,
+            null,
+            null,
+            null,
+            { "bSearchable" : false }
+          ]
+        });
       });
       $(document).ready(function() {
         $('#reportResultsTable').dataTable({
           "sDom": 'T<"clear">lfrtip',
           "oTableTools": {
-            "sSwfPath": "{{asset('/swf/copy_csv_xls_pdf.swf')}}"
+            "aButtons": [
+              "xls",
+              "pdf",
+              "print"
+            ]
+          }
+        });
+      });
+      $(document).ready(function() {
+        $('#allUsersTable').dataTable({
+          "responsive" : true,
+          "aoColumns": [
+            null,
+            null,
+            null,
+            null,
+            { "bSearchable" : false }
+          ]
+        });
+      });
+      $(document).ready(function() {
+        $('#showAttendanceTable').dataTable({
+          "responsive" : true,
+          "columnDefs": [
+            { "type": "date-dd-mmm-yyyy", targets: 1 },
+            { "type": "numeric", targets: 2 }
+          ],
+          "sDom": 'T<"clear">lfrtip',
+          "oTableTools": {
+            "aButtons": [
+              "xls",
+              "pdf",
+              "print"
+            ]
           }
         });
       });

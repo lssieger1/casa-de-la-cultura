@@ -25,7 +25,8 @@ class ParticipantsController extends BaseController{
 
 	public function show($event_id){
 		$participants = $this->participant->all();
-		return View::make('volunteer/attendance',['participants'=> $participants, 'event_id'=>$event_id]);
+		$eventList = EventList::with('EventType')->find($event_id);
+		return View::make('volunteer/attendance',['participants'=> $participants, 'event'=>$eventList, 'event_id'=>$event_id]);
 	}
 
 	public function store(){	

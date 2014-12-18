@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-Attendance
+Take Attendance for {{ $event->EventType->type_name }} on {{ $event->get_date() }}
 @stop
 
 @section('style')
@@ -11,104 +11,86 @@ Attendance
 
 @section('content')
 <div class="pull-right">
-	<a href="browseAllParticipants/{{$event_id}}" class="btn btn-default btn-primary">Browse</a>
+	<a href="browseAllParticipants/{{$event_id}}" class="btn btn-default btn-primary">Find other</a>
 </div>
- <div class="table-responsive">
-    <table class="table table-striped table-bordered" id="attendanceTable">
-		<thead>
+<table class="table table-striped table-bordered dt-responsive" id="attendanceTable">
+	<thead>
+		<tr>
+			<th>
+				NAME
+			</th>
+			<th>
+				DATE OF BIRTH
+			</th>
+			<th>
+				PHONE NUMBER
+			</th>
+			<th>
+				ADDRESS
+			</th>
+			<th>
+				LOG OR UPDATE
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach  ($participants as $participant)	
+			<?php 
+				$part_id = $participant->part_id;
+				$type_id = DB::table('events')->where('event_id', '=', $event_id)
+			  									   ->pluck('type_id');
+				//people who attended this type of event
+			    $takenAttendance =  DB::table('attendance')->where('part_id', '=', $part_id)
+			  									   ->where('type_id', '=', $type_id)
+			  									   ->get();
+
+			    $records = DB::table('attendance')->where('part_id', '=', $part_id)
+			  									   ->where('type_id', '=', $type_id)
+			  									   ->where('event_id','=',$event_id)
+			  									   ->first();
+			?>
+			@if($takenAttendance != null)				
 			<tr>
-				<th>
-					NAME
-				</th>
-				<th>
-					DATE OF BIRTH
-				</th>
-				<th>
-					PHONE NUMBER
-				</th>
-				<th>
-					ADDRESS
-				</th>
-				<th>
-					LOG OR UPDATE
-				</th>
+				<td>
+					{{ $participant->fname }} {{ $participant->lname }}  
+				</td>
+				<td>
+					{{ $participant->get_dob() }}
+				</td>
+				<td>
+					{{ $participant->phoneNo }}
+				</td>
+				<td>
+					{{ $participant->address }} {{ $participant->city }} {{ $participant->state }}
+				</td>
+				<td>
+					<div class="btn-group-vertical" role="group" aria-label="...">
+						@if($records === NULL)
+							{{ Form::open(['url'=> '/takeAttendance']) }}
+								<input type="hidden" name="part_id" value = "{{ $participant->part_id }}">
+								<input type="hidden" name="event_id" value = "{{ $event_id }}">
+								<button name="takeAttendance"  class="btn btn-primary">Take Attendance</button>				 
+							{{ Form::close() }}
+
+						@else
+							<button class="btn btn-info" disabled>Attendance Taken</button>
+							{{ Form::open(['url'=> '/deleteAttendance']) }}
+								<input type="hidden" name="part_id" value = "{{ $participant->part_id }}">
+								<input type="hidden" name="event_id" value = "{{ $event_id }}">  
+								<button name="deleteAttendance"  class="btn btn-danger" onclick="if(!confirm('Are you sure to remove this participant from this event?')){return false;}">Delete Attendance</button>
+							{{ Form::close() }}
+						@endif
+						<input type="hidden" name="part_id" value = "{{ $participant->part_id }}">
+						<input type="hidden" name="event_id" value = "{{ $event_id }}"> 
+						<a href="{{$participant->part_id}}/edit" class="btn btn-success">Update</a> 
+					</div>
+				</td>
 			</tr>
-		</thead>
-		<tbody>
-			@foreach  ($participants as $participant)	
-				<?php 
-					$part_id = $participant->part_id;
-					$type_id = DB::table('events')->where('event_id', '=', $event_id)
-				  									   ->pluck('type_id');
-					//people who attended this type of event
-				    $takenAttendance =  DB::table('attendance')->where('part_id', '=', $part_id)
-				  									   ->where('type_id', '=', $type_id)
-				  									   ->get();
-
-				    $records = DB::table('attendance')->where('part_id', '=', $part_id)
-				  									   ->where('type_id', '=', $type_id)
-				  									   ->where('event_id','=',$event_id)
-				  									   ->first();
-				?>
-				@if($takenAttendance != null)				
-				<tr>
-					<td>
-						{{ $participant->fname }} {{ $participant->lname }}  
-					</td>
-					<td>
-						{{ $participant->get_dob() }}
-					</td>
-					<td>
-						{{ $participant->phoneNo }}
-					</td>
-					<td>
-						{{ $participant->address }} {{ $participant->city }} {{ $participant->state }}
-					</td>
-					<td>
-						<table>
-							<tr>
-								<td>
-									@if($records === NULL)
-										{{ Form::open(['url'=> '/takeAttendance']) }}
-												<input type="hidden" name="part_id" value = "{{ $participant->part_id }}">
-												<input type="hidden" name="event_id" value = "{{ $event_id }}">
-												<button name="takeAttendance"  class="btn btn-primary">Take Attendance</button><br>				 
-										{{ Form::close() }}
-
-									@else
-										<button type="button" class="btn btn-primary" disabled>Attendance Taken!</button><br>
-										{{ Form::open(['url'=> '/deleteAttendance']) }}
-												<input type="hidden" name="part_id" value = "{{ $participant->part_id }}">
-												<input type="hidden" name="event_id" value = "{{ $event_id }}">  
-												<button name="deleteAttendance"  class="btn btn-primary">Delete Attendance</button><br>				 
-										{{ Form::close() }}
-									@endif
-								</td>
-								<td>
-									<span>&nbsp;</span>
-								</td>
-								<td>
-									{{ Form::open() }}
-										<input type="hidden" name="part_id" value = "{{ $participant->part_id }}">
-
-										<input type="hidden" name="event_id" value = "{{ $event_id }}"> 
-										<a href = "{{$participant->part_id}}/edit" class="btn btn-primary">Update</a><br> 
-
-										<!-- <button name="updateParticipant"  class="btn btn-primary">Update Info</button>	 -->
-
-									{{ Form::close() }}
-								</td>
-							</tr>
-						</table>
-					</td>
-				</tr>
-				@endif
-			@endforeach
-		</tbody>
-	</table>
-</div>
+			@endif
+		@endforeach
+	</tbody>
+</table>
 <div class="pull-right">
-	<a href="browseAllParticipants/{{$event_id}}" class="btn btn-lg btn-primary">Browse</a>
-
+	<a href="browseAllParticipants/{{$event_id}}" class="btn btn-lg btn-primary">New to this program</a>
 </div>
 @stop

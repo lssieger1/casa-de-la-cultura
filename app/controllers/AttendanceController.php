@@ -11,8 +11,8 @@ class AttendanceController extends BaseController{
         			 ->join('participants', 'participants.part_id', '=', 'attendance.part_id')
            			 ->select('fname', 'lname','dob','phoneNo','address')
             		 ->get();
-
-        return View::make('admin/showAttendance',['attendances'=> $attendances]);
+         $eventList = EventList::with('EventType')->find($event_id);
+        return View::make('admin/showAttendance',['attendances'=> $attendances,'event'=>$eventList]);
 	}
 
 	public function store(){
