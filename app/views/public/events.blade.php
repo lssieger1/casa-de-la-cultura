@@ -2,7 +2,7 @@
 
 @section('title')
 @parent
-Events
+{{ $event }} Events
 @stop
 
 @section('style')
@@ -20,17 +20,8 @@ Events
     {{ Form::submit('Filter') }}
   {{ Form::close() }}
 </div>
-<!-- {{ Form::open()}}
-
-
-<div class="row">
-  Enter populate the values from the database within the div below.
-  <!- Use a for loop to make it cleaner. >
-  <ul> -->
-
 
   @foreach  ($eventLists as $eventList)
- 
   <div class="col-xs-8 col-sm-3">
     <div>
       <label> {{ $eventList->EventType->type_name }}</label>
@@ -52,6 +43,5 @@ Events
       @endif
     </div>
   </div>
-    @endforeach
-  </ul>
+  @endforeach
 @stop

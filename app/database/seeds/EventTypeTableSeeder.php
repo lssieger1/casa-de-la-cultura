@@ -14,4 +14,3 @@ class EventTypeTableSeeder extends Seeder {
         )) ;
     }
 }
-?>

@@ -53,8 +53,7 @@ class ParticipantsController extends BaseController{
 
 	public function browseAll($event_id){
 		$attendance = new Attendance;
-		$type_name = Input::get('eventType');
-		$type_id = DB::table('events')->where('event_id','=',$event_id)->pluck('type_id');//EventList::find($event_id)->type_id;
+		$type_id = DB::table('events')->where('event_id','=',$event_id)->pluck('type_id');
 		$attendance->type_id = $type_id;
 		$attendance->event_id = $event_id;
 		$attendance->part_id = Input::get('part_id');
@@ -64,13 +63,11 @@ class ParticipantsController extends BaseController{
 	}
 
 	public function edit($part_id){
-		$event_id = Input::get("event_id");
 		$participant = Participant::findOrFail($part_id);
 		return View::make('volunteer/edit', ['participant' => $participant]);
 	}
 
 	public function update($event_id,$part_id){
-		$input = Input::all();
 		$participant = Participant::findOrFail($part_id);
 		$participant->fname = Input::get('fname');
 		$participant->mname = Input::get('mname');

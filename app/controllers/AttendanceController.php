@@ -30,9 +30,9 @@ class AttendanceController extends BaseController{
 	public function destroy(){
 		$event_id = Input::get('event_id');
 		$part_id = Input::get('part_id');
-		$attendance = DB::table('attendance')->where('event_id','=',$event_id)
-											->where('part_id','=',$part_id)
-											->delete();
+		DB::table('attendance')->where('event_id','=',$event_id)
+							   ->where('part_id','=',$part_id)
+			 				   ->delete();
 
 		return Redirect::back();
 	}

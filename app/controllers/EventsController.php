@@ -8,18 +8,24 @@ class EventsController extends BaseController{
 	}
 
 	public function index(){
-		$eventLists = EventList::with('EventType')->where('date', '>=', new DateTime('today'))->get();
-		// if(Auth::user()->user_type == 1) {
-		// 	return View::make('admin/events', ['eventLists'=>$eventLists]);
-		// }
-		return View::make('public/events',['eventLists'=> $eventLists]);
+		$eventLists = EventList::with('EventType')->where('date', '>=', new DateTime('today'))->orderBy('date','desc')->get();
+		if(Auth::check() && Auth::user()->user_type == 1) {
+		 	return View::make('admin/events', ['eventLists'=>$eventLists, 'event'=>"Upcoming"]);
+	    }
+	    if(Auth::check() && Auth::user()->user_type == 0) {
+			return View::make('volunteer/events', ['eventLists'=>$eventLists, 'event'=>"Upcoming"]);
+		}
+		return View::make('public/events',['eventLists'=> $eventLists, 'event'=>"Upcoming"]);
 	}
 	public function showPastEvents(){
-		$eventLists = EventList::with('EventType')->where('date', '<', new DateTime('today'))->get();
-		// if(Auth::check() && Auth::user()->user_type == 1) {
-		// 	return View::make('admin/events', ['eventLists'=>$eventLists]);
-		// }
-		return View::make('public/events',['eventLists'=> $eventLists]);
+		$eventLists = EventList::with('EventType')->where('date', '<', new DateTime('today'))->orderBy('date','desc')->get();
+		if(Auth::check() && Auth::user()->user_type == 1) {
+			return View::make('admin/events', ['eventLists'=>$eventLists, 'event'=>"Past"]);
+		}
+		if(Auth::check() && Auth::user()->user_type == 0) {
+			return View::make('volunteer/events', ['eventLists'=>$eventLists, 'event'=>"Past"]);
+		}
+		return View::make('public/events',['eventLists'=> $eventLists, 'event'=>"Past"]);
 	}
 	public function showAdminEvents(){
 		$eventLists = EventList::with('EventType')->where('date', '>=', new DateTime('today'))->get();
@@ -84,7 +90,6 @@ class EventsController extends BaseController{
 	}
 
 	public function update($event_id){
-		$input = Input::all();
 		// if( ! $this->eventList->fill($input)->isValid() ){
 		// 	return Redirect::back()->withErrors($this->eventList->messages);
 		// }
@@ -108,6 +113,6 @@ class EventsController extends BaseController{
 		$eventList->date = date("Y-m-d", strtotime(Input::get('date')));	
 
 		$eventList->save();
-		return Redirect::to('aevents');
+		return Redirect::to('events');
 	}
 }
