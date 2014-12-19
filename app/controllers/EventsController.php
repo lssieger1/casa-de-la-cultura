@@ -32,7 +32,7 @@ class EventsController extends BaseController{
 	public function show(){
 		return View::make('events');
 	}
-	
+
 	public function sortPast(){
 		$eventID = Input::get('event_id');
 		$eventLists = EventList::with('EventType')->where('event_id', '=', $eventID)->
@@ -52,6 +52,16 @@ class EventsController extends BaseController{
 		if($eventID == 0){
 			$eventLists = EventList::with('EventType')->where('date', '>=', new DateTime('today'))->get();
 		}
+		return View::make('public/events', ['eventLists'=> $eventLists]);
+	}
+
+	public function sortDate(){
+		$date = Input::get('time');
+		//$eventLists = EventList::where('date', '=', $date)->get();
+		$theEvent = DB::table('events')->where('date', '=', $date)->pluck('event_id');
+		// $eventLists->type_id = DB::table('events')->where('date','=',$date)->pluck('type_id');
+		$eventLists = EventList::with('EventType')->where('event_id', '=', $theEvent)->get();
+
 		return View::make('public/events', ['eventLists'=> $eventLists]);
 	}
 

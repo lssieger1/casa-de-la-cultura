@@ -29,6 +29,10 @@ Route::get('/pastEventSort', array(
 	'uses' => 'EventsController@sortPast')
 );
 
+Route::get('/eventDate', array(
+	'as' => 'sortDate',
+	'uses' => 'EventsController@sortDate'));
+
 // Authenticated group
 Route::group(array('before' => 'auth'), function() {
 	//volunteer

@@ -42,6 +42,14 @@
       {{ Form::close() }}
   @endif
 </div>
+<div>
+    {{ Form::model($eventLists, array('route' => 'sortDate', 'method' => 'get')) }}
+    {{ Form:: label('dateTime', 'Sort By Date: ')}}
+      {{ Form::input('text', 'time', null, array('id'=>'time')) }}
+      {{ Form::submit('Filter') }}
+      {{ Form::close() }}
+
+</div>
 
   @foreach  ($eventLists as $eventList)
   <div class="col-xs-8 col-sm-3">
@@ -67,3 +75,12 @@
   </div>
   @endforeach
 @stop
+{{ HTML::script('//code.jquery.com/jquery-1.10.2.js') }}
+<script type="text/javascript">
+  $(document).ready(function() {
+    $( "#time" ).datepicker({changeMonth: true,
+                changeYear: true,
+                dateFormat: "yy-mm-dd",
+                yearRange: "-90:+2"});
+  });
+</script>
