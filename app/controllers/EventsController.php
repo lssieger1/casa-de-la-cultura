@@ -41,7 +41,7 @@ class EventsController extends BaseController{
 		if($eventID == 0){
 			$eventLists = EventList::with('EventType')->where('date', '<', new DateTime('today'))->get();
 		}
-		return View::make('public/events', ['eventLists'=> $eventLists]);
+		return View::make('public/events', ['eventLists'=> $eventLists, 'event'=>"Past"]);
 	}
 
 	public function sortFuture(){
@@ -52,7 +52,7 @@ class EventsController extends BaseController{
 		if($eventID == 0){
 			$eventLists = EventList::with('EventType')->where('date', '>=', new DateTime('today'))->get();
 		}
-		return View::make('public/events', ['eventLists'=> $eventLists]);
+		return View::make('public/events', ['eventLists'=> $eventLists, 'event'=>"Upcoming"]);
 	}
 
 	public function sortDate(){
@@ -61,8 +61,8 @@ class EventsController extends BaseController{
 		$theEvent = DB::table('events')->where('date', '=', $date)->pluck('event_id');
 		// $eventLists->type_id = DB::table('events')->where('date','=',$date)->pluck('type_id');
 		$eventLists = EventList::with('EventType')->where('event_id', '=', $theEvent)->get();
-
-		return View::make('public/events', ['eventLists'=> $eventLists]);
+		$event = ($date < new DateTime('today')) ? "Past" : "Upcoming";
+		return View::make('public/events', ['eventLists'=> $eventLists, 'event'=>$event]);
 	}
 
 	public function store(){
