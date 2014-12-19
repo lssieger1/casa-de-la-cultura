@@ -38,13 +38,13 @@ Attendance
 						{{ $participant->fname }} {{ $participant->lname }}  
 					</td>
 					<td>
-						{{ $participant->dob}}
+						{{ $participant->get_dob()}}
 					</td>
 					<td>
 						{{ $participant->phoneNo }}
 					</td>
 					<td>
-						{{ $participant->address }}
+						{{ $participant->address }} {{ $participant->city }} {{ $participant->state }}
 					</td>
 					<td>
 						{{Form::open(['browseAllPart'])}}

@@ -6,6 +6,7 @@ Update Information
 
 @section('content')
 <!-- {{ Form::model($participant, array('route' => array('attendance.update', $participant->part_id), 'method' => 'PUT')) }} -->
+
 {{ Form::model($participant, array('route' => array('attendance.update', $participant->part_id), 'method' => 'PUT')) }}
 	<div>
 		<div class="input-group">
@@ -65,6 +66,7 @@ Update Information
 			<span class="input-group-addon">Email</span>
 			{{ Form::email('email', null, array('class' => 'form-control')) }}
 		</div>
+		{{ Form::hidden('event_id', $event_id,array('class' => 'form-control'))}}
 		<div>
 			{{ Form::submit('Update', array('class' => 'form-control btn-primary')) }}
 		</div>

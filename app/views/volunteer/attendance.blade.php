@@ -11,7 +11,7 @@ Take Attendance for {{ $event->EventType->type_name }} on {{ $event->get_date() 
 
 @section('content')
 <div class="pull-right">
-	<a href="browseAllParticipants/{{$event_id}}" class="btn btn-default btn-primary">Find other</a>
+	<a href="browseAllParticipants/{{$event_id}}" class="btn btn-primary">Find other</a>
 </div>
 <table class="table table-striped table-bordered dt-responsive" id="attendanceTable">
 	<thead>
@@ -81,7 +81,7 @@ Take Attendance for {{ $event->EventType->type_name }} on {{ $event->get_date() 
 						@endif
 						<input type="hidden" name="part_id" value = "{{ $participant->part_id }}">
 						<input type="hidden" name="event_id" value = "{{ $event_id }}"> 
-						<a href="{{$participant->part_id}}/edit" class="btn btn-success">Update</a> 
+						<a href="{{$event_id}}/{{$participant->part_id}}/edit" class="btn btn-success">Update</a> 
 					</div>
 				</td>
 			</tr>
@@ -90,6 +90,6 @@ Take Attendance for {{ $event->EventType->type_name }} on {{ $event->get_date() 
 	</tbody>
 </table>
 <div class="pull-right">
-	<a href="browseAllParticipants/{{$event_id}}" class="btn btn-lg btn-primary">New to this program</a>
+	<a href="browseAllParticipants/{{$event_id}}" class="btn btn-primary">Find other</a>
 </div>
 @stop

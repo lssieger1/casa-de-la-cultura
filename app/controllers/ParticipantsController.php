@@ -63,9 +63,9 @@ class ParticipantsController extends BaseController{
 		return Redirect::to('attendance/'.$event_id.'');
 	}
 
-	public function edit($part_id){
-		$participant = Participant::findOrFail($part_id);
-		return View::make('volunteer/edit', ['participant' => $participant]);
+	public function edit($event_id,$part_id){
+		$participant = Participant::find($part_id);
+		return View::make('volunteer/edit', ['participant' => $participant, 'event_id' => $event_id]);
 	}
 
 	public function update($part_id){
@@ -86,7 +86,9 @@ class ParticipantsController extends BaseController{
 		$participant->state = Input::get('state');
 
 		$participant->save();
-		return Redirect::back();
-		// return Redirect::to('attendance/{$event_id}');
+
+		$event_id = Input::get('event_id');
+		$add = 'attendance/'.$event_id.'';
+		return Redirect::to($add);
 	}
 }
