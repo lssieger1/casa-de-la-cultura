@@ -16,7 +16,7 @@
 
 @section('content')
 <div>
-   @if(Request::is('pastEvents') || Request::is('pastEventSort?*'))
+   @if(Request::is('pastEvents') || Request::is('pastEventSort?*') || Request::is('eventDate'))
     {{ Form::model($eventLists, array('url' => '/pastEventSort', 'method' => 'get')) }}
     {{ Form:: label('event_type', 'Sort by a specific program: ', array('class'=>'whiteColor')) }}
     {{ Form:: select('event_id', (array('All') + EventType::all()->lists('type_name','type_id')
