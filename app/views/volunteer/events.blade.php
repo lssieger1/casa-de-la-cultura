@@ -27,7 +27,7 @@
 					DESCRIPTION
 				</th>
 				<th>
-					ACTIONS
+					ATTENDANCE
 				</th>
 			</tr>
 		</thead>
@@ -50,12 +50,15 @@
 					<?php 
       					$check =  date("Y-m-d");
       				?>
-      				@if($eventList->date > $check)
-      					<button class="btn btn-primary" disabled>Take Attendance</button>
-      				@else
-						<a href = "attendance/{{$eventList->event_id}}" class="btn btn-primary">Take Attendance</a>
-					@endif
-					<a href = "showAttendance/{{$eventList->event_id}}" class="btn btn-info">View Attendance</a>
+      				<div class="btn-group-vertical" role="group">
+	      				@if($eventList->date > $check)
+	      					<button class="btn btn-primary" disabled>Take Attendance</button>
+	      					<button class="btn btn-info" disabled>View Attendance</button>
+	      				@else
+							<a href = "attendance/{{$eventList->event_id}}" class="btn btn-primary">Take Attendance</a>
+							<a href = "showAttendance/{{$eventList->event_id}}" class="btn btn-info">View Attendance</a>
+						@endif
+					</div>
 				</td>
 			</tr>
 			@endforeach 

@@ -3507,13 +3507,14 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   vertical-align: middle;
 }
 .input-group-addon {
+  min-width: 135px;
   padding: 6px 12px;
   font-size: 14px;
   font-weight: normal;
   line-height: 1;
   color: #555;
   text-align: center;
-  background-color: #eee;
+  background-color: #b0e0e6;
   border: 1px solid #ccc;
   border-radius: 4px;
 }

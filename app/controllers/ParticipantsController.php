@@ -74,7 +74,7 @@ class ParticipantsController extends BaseController{
 		$participant->mname = Input::get('mname');
 		$participant->lname = Input::get('lname');
 		$participant->gender = Input::get('gender');
-		$participant->dob = Input::get('dob');
+		$participant->dob =  date("Y-m-d", strtotime(Input::get('dob')));
 		$participant->nationality = Input::get('nationality');
 		$participant->address = Input::get('address');
 		$participant->native_lang = Input::get('native_lang');
@@ -86,6 +86,7 @@ class ParticipantsController extends BaseController{
 		$participant->state = Input::get('state');
 
 		$participant->save();
+
 		$event_id = Input::get('event_id');
 		$add = 'attendance/'.$event_id.'';
 		return Redirect::to($add);

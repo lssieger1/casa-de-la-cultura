@@ -122,7 +122,7 @@ class EventsController extends BaseController{
 		$eventList->date = date("Y-m-d", strtotime(Input::get('date')));	
 		$eventList->save();
 		$check =  date("Y-m-d");
-      	if(Input::get('date') < $check){
+      	if($eventList->date < $check){
 			return Redirect::to('pastEvents');
 		}
 		else{

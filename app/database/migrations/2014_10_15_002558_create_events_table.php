@@ -15,6 +15,7 @@ class CreateEventsTable extends Migration {
 	{
 		Schema::create('events', function(Blueprint $table)
 		{
+			$table->engine='InnoDB';
 			$table->integer('type_id')->unsigned();
 			$table->foreign('type_id')->references('type_id')
 					->on('eventType')

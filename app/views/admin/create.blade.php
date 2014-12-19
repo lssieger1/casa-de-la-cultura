@@ -24,7 +24,7 @@
 			</div>
 			<div class='input-group'>
 				<span class='input-group-addon'>Date</span>
-				{{ Form::input('text', 'eventDate', null, array('class'=>'form-control', 'required'=>'required')) }}
+				{{ Form::input('text', 'eventDate', null, array('class'=>'form-control', 'required'=>'required', 'id'=>'eventDate')) }}
 				{{ $errors->first('date') }}
 			</div>
 			<div class='input-group'>
@@ -56,5 +56,12 @@
 									  changeYear: true,
 									  dateFormat: "dd MM yy",
 									  yearRange: "-2:+2"});
+		var enforceModalFocusFN = $.fn.modal.Constructor.prototype.enforceFocus;
+		$('#createEventModal').on('show.bs.modal', function() {
+			$.fn.modal.Constructor.prototype.enforceFocus = function(){};
+		});
+		$('#createEventModal').on('hide.bs.modal', function() {
+			$.fn.modal.Constructor.prototype.enforceFocus = enforceModalFocusFN;
+		});
 	});
 </script>
