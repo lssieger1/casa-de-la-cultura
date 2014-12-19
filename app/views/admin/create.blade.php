@@ -24,7 +24,7 @@
 			</div>
 			<div class='input-group'>
 				<span class='input-group-addon'>Date</span>
-				{{ Form::input('text', 'eventDate', null, array('class'=>'form-control', 'required'=>'required')) }}
+				{{ Form::input('text', 'eventDate', null, array('class'=>'form-control', 'required'=>'required', 'id'=>'eventDate')) }}
 				{{ $errors->first('date') }}
 			</div>
 			<div class='input-group'>

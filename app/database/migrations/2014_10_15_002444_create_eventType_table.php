@@ -14,6 +14,7 @@ class CreateEventTypeTable extends Migration {
 	{
 		Schema::create('eventtype', function(Blueprint $table)
 		{
+			$table->engine='InnoDB';
 			$table->increments('type_id')->unsigned();
 			$table->string('type_name');
 			$table->timestamps();

@@ -16,63 +16,61 @@ Generate Report
 					</div>
 				</div>
 				<div class="panel-body">
-					<div>
-						{{ Form::label('eventType', 'Program: ', array('class' => 'form-control')) }}
+					<div class="input-group">
+					<span class="input-group-addon">Program</span>
 						{{ Form::select('eventType', (array("All")+EventType::all()->lists('type_name','type_id')), null, array('class' => 'form-control')) }}
 					</div>
-					<div>
-						{{ Form::label('date', 'Event Date: ', array('class' => 'form-control')) }}
+					<div class="input-group">
+					<span class="input-group-addon">Event Date</span>
 						{{ Form::text('fields[]', null, array('class' => 'form-control')) }}
 					</div>
-					<div>
-						{{ Form::label('location', 'Event Location: ', array('class' => 'form-control')) }}
-						{{ Form::text('fields[]', null, array('class' => 'form-control')) }}
+					<div class="input-group">
+					<span class="input-group-addon">Location</span>
+						{{ Form::text('fields[]', null, array('class' => 'form-control', 'id'=>'location')) }}
 					</div>
-					<div>
-						{{ Form::label('gender', 'Gender: ', array('class' => 'form-control')) }}
+					<div class="input-group">
+					<span class="input-group-addon">Gender</span>
 						{{ Form::select('gender', array("None","Male", "Female", "Other"), null, array('class' => 'form-control')) }}
 					</div>
-					<div>
-						{{ Form::label('firstName', 'First Name: ', array('class' => 'form-control')) }}
+					<div class="input-group">
+					<span class="input-group-addon">First Name</span>
 						{{ Form::text('fields[]', null, array('class' => 'form-control')) }}
 					</div>
-					<div>
-						{{ Form::label('middleName', 'Middle Name: ', array('class' => 'form-control')) }}
+					<div class="input-group">
+					<span class="input-group-addon">Middle Name</span>
 						{{ Form::text('fields[]', null, array('class' => 'form-control')) }}
 					</div>
-					<div>
-						{{ Form::label('lastName', 'Last Name: ', array('class' => 'form-control')) }}
+					<div class="input-group">
+					<span class="input-group-addon">Last Name</span>
 						{{ Form::text('fields[]', null, array('class' => 'form-control')) }}
 					</div>
-					<div>
-						{{ Form::label('age','Age range: ', array('class' => 'form-control')) }}
+					<div class="input-group">
+					<span class="input-group-addon">Age Range</span>
 						{{ Form::select('age', (array('All','Under 13', '13-18', '19-21','21+')), 0, array('class' => 'form-control')) }}
 					</div>
-					<div>
-						{{ Form::label('nationality', 'Nationality: ', array('class' => 'form-control')) }}
+					<div class="input-group">
+					<span class="input-group-addon">Nationality</span>
 						{{ Form::text('fields[]', null, array('class' => 'form-control')) }}
 					</div>
-					<div>
-						{{ Form::label('language', 'Language: ', array('class' => 'form-control')) }}
+					<div class="input-group">
+					<span class="input-group-addon">Language</span>
 						{{ Form::text('fields[]', null, array('class' => 'form-control')) }}
 					</div>
-					<div>
-						{{ Form::label('address', 'Address: ', array('class' => 'form-control')) }}
+					<div class="input-group">
+					<span class="input-group-addon">Address</span>
 						{{ Form::text('fields[]', null, array('class' => 'form-control')) }}
 					</div>
-					<div>
-						{{ Form::label('city', 'City: ', array('class' => 'form-control')) }}
+					<div class="input-group">
+					<span class="input-group-addon">City</span>
 						{{ Form::text('fields[]', null, array('class' => 'form-control')) }}
 					</div>
-					<div>
-						{{ Form::label('state', 'State: ', array('class' => 'form-control')) }}
+					<div class="input-group">
+					<span class="input-group-addon">State</span>
 						{{ Form::stateSelect('fields[]', null, array('class' => 'form-control')) }}
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="row">
 		<div class="col-lg-4">
 			<div class="panel panel-default">
 				<div class="panel-heading">

@@ -19,6 +19,9 @@
     <style>body {
       padding: 108px;
     }
+    h2 {
+      color: #FFF !important;
+    }
     </style>
   </head>
 
@@ -34,7 +37,7 @@
             <span class="icon-bar"></span>
           </button>
             <div class="logo">         
-                <a class="navbar-brand" href="{{{ URL::to('/events') }}}"><img src="{{ URL::asset('images/logo.png') }}" width="95%" height="95%" /></a>
+                <a class="navbar-brand" href="{{{ URL::to('/events') }}}"><img src="{{ URL::asset('images/logo.png') }}"/></a>
             </div>
         </div>
 

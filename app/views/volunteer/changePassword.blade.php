@@ -9,7 +9,6 @@ Change Password
 @stop
 
 @section('content')
-<h1>Change Password</h1>
 {{ Form::open(['user-created']) }}
 	<div class='input-group'>
 		<span class='input-group-addon'>Current Password</span>

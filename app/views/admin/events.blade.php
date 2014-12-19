@@ -27,10 +27,10 @@
 					DESCRIPTION
 				</th>
 				<th>
-					ACTIONS
+					ATTENDANCE
 				</th>
 				<th>
-					???
+					ACTIONS
 				</th>
 			</tr>
 		</thead>
@@ -53,22 +53,24 @@
 					<?php 
       					$check =  date("Y-m-d");
       				?>
-      				@if($eventList->date > $check)
-      					<button class="btn btn-primary" disabled>Take Attendance</button>
-      				@else
-						<a href = "attendance/{{$eventList->event_id}}" class="btn btn-primary">Take Attendance</a>
-					@endif
-					<span> </span>
-					<a href = "showAttendance/{{$eventList->event_id}}" class="btn btn-info">View Attendance</a>
-					<span> </span>
+      				<div class="btn-group-vertical" role="group">
+	      				@if($eventList->date > $check)
+	      					<button class="btn btn-primary" disabled>Take Attendance</button>
+	      					<button class="btn btn-info" disabled>View Attendance</button>
+	      				@else
+							<a href = "attendance/{{$eventList->event_id}}" class="btn btn-primary">Take Attendance</a>
+							<a href = "showAttendance/{{$eventList->event_id}}" class="btn btn-info">View Attendance</a>
+						@endif
+					</div>
 				</td>
 				<td>
-
-					<a href = "edit/{{$eventList->event_id}}" class="btn btn-success">Update</a>
-					{{ Form::open(['url'=> '/delete' ]) }}
-						<button name = "delete" class="btn btn-danger" onclick="if(!confirm('Are you sure to delete this event?')){return false;}">Delete</button>
-						<input type="hidden" name="event_id" value = "{{$eventList->event_id}}"> 
-					{{ Form::close() }}
+					<div class="btn-group-vertical" role="group">
+						<a href = "edit/{{$eventList->event_id}}" class="btn btn-success btn-block">Update</a>
+						{{ Form::open(['url'=> '/delete' ]) }}
+							<button name = "delete" class="btn btn-danger btn-block" onclick="if(!confirm('Are you sure to delete this event?')){return false;}">Delete</button>
+							<input type="hidden" name="event_id" value = "{{$eventList->event_id}}"> 
+						{{ Form::close() }}
+					</div>
 				</td>
 			</tr>
 			@endforeach 

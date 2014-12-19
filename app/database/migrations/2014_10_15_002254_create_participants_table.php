@@ -14,6 +14,7 @@ class CreateParticipantsTable extends Migration {
 	{
 		Schema::create('participants', function(Blueprint $table)
 		{
+			$table->engine='InnoDB';
 			$table->increments('part_id')->unsigned();
 			$table->string('fname');
 			$table->string('mname');

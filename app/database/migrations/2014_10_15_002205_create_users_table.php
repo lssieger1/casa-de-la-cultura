@@ -14,6 +14,7 @@ class CreateUsersTable extends Migration {
 	{
 		Schema::create('users', function($table)
 		{
+			$table->engine='InnoDB';
 			$table->increments('id')->unsigned();
 			$table->string('username')->unique();
 			$table->string('email')->unique();
