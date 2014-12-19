@@ -56,7 +56,7 @@ class EventsController extends BaseController{
 	}
 
 	public function sortDate(){
-		$date = Input::get('time');
+		$date =  date("Y-m-d", strtotime(Input::get('time')));
 		//$eventLists = EventList::where('date', '=', $date)->get();
 		$theEvent = DB::table('events')->where('date', '=', $date)->pluck('event_id');
 		// $eventLists->type_id = DB::table('events')->where('date','=',$date)->pluck('type_id');

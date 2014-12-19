@@ -48,9 +48,9 @@
 </div>
 <div>
     {{ Form::model($eventLists, array('route' => 'sortDate', 'method' => 'get')) }}
-    {{ Form:: label('dateTime', 'Sort By Date: ')}}
+    {{ Form:: label('dateTime', 'Sort by a specific date: ', array('class'=>'whiteColor'))}}
       {{ Form::input('text', 'time', null, array('id'=>'time')) }}
-      {{ Form::submit('Filter') }}
+      {{ Form::submit('Filter', array('class'=>'btn btn-small btn-primary')) }}
       {{ Form::close() }}
 
 </div>
@@ -81,7 +81,7 @@
   $(document).ready(function() {
     $( "#time" ).datepicker({changeMonth: true,
                 changeYear: true,
-                dateFormat: "yy-mm-dd",
-                yearRange: "-90:+2"});
+                dateFormat: "dd MM yy",
+                yearRange: "-5:+2"});
   });
 </script>
