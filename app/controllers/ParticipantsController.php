@@ -60,7 +60,7 @@ class ParticipantsController extends BaseController{
 		$attendance->part_id = Input::get('part_id');
 		$attendance->save();
 
-		return Redirect::to('attendance/'.$event_id.'');
+		return Redirect::back();
 	}
 
 	public function edit($event_id,$part_id){

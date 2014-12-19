@@ -10,6 +10,7 @@ Attendance
 @stop
 
 @section('content')
+<a href = "../{{$event_id}}" class="btn btn-primary">Back to general attendance</a>
  <div class="table-responsive">
     <table class="table table-striped table-bordered" id="attendanceTable">
 		<thead>
