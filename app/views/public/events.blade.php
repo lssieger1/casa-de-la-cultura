@@ -2,7 +2,7 @@
 
 @section('title')
 @parent
-
+{{ $event }} Events
 @stop
 
 @section('style')
@@ -50,9 +50,9 @@
   @foreach  ($eventLists as $eventList)
   <div class="col-xs-8 col-sm-3">
     <div>
-      <label> {{ $eventList->EventType->type_name }}</label>
-      <p> {{ $eventList->description }}</p>
+      <label> {{ $eventList->EventType->type_name }}</label><br/>
       <label> {{ $eventList->get_date() }}</label>
+      <p> {{ $eventList->description }}</p>
       <?php 
       $check =  date("Y-m-d");
       ?>

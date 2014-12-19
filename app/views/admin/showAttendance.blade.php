@@ -48,6 +48,4 @@ Attendance for {{ $event->get_date() }} {{ $event->EventType->type_name }}
 		</tbody>
 	</table>
 </div>
-
-{{ HTML::script('jquery-1.11.1.js') }}
 @stop

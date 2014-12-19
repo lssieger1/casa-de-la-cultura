@@ -132,7 +132,7 @@ Generate Report
 						{{ Form::label('emailCB', 'Email') }}
 					</div>
 					<div class='panel-footer'>
-						{{ Form::submit('Submit', array('class' => 'form-control btn-primary')) }}
+						{{ Form::submit('Run Report', array('class' => 'form-control btn-primary')) }}
 					</div>
 				</div>
 			</div>
