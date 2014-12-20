@@ -81,7 +81,7 @@ Generate Report
 				<div class="panel-body">
 					<div>
 						{{ Form::checkbox('cb[]', 'date/Date') }}
-						{{ Form::label('dateCB', 'Event Date') }}
+						{{ Form::label('dateCB', 'Date') }}
 					</div>
 					<div>
 						{{ Form::checkbox('cb[]', 'location/Location') }}
