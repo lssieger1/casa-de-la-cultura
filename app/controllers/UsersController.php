@@ -85,22 +85,35 @@
 			 
 			//no check box is checked
 			if(count($selectedFields) === 0){
-			//only first two input fields is written
-			if($checkInput){				
-				 $a[] = 'type_name';
-				 $a[] = 'date';
-				 $a[] = 'location';
-				 $showFields[] =  'Program name';
-				 $showFields[] = 'Date';
-				 $showFields[] = 'Location';
-				 $queryFields = implode(" , ", $a);
-				 $results = DB::select(DB::raw("SELECT DISTINCT $queryFields FROM events,eventtype
-					 	WHERE eventtype.type_id = events.type_id"));
+				//only first two input fields is written
+				if($checkInput){				
+					 $a[] = 'type_name';
+					 $a[] = 'date';
+					 $a[] = 'location';
+					 $showFields[] =  'Program name';
+					 $showFields[] = 'Date';
+					 $showFields[] = 'Location';
+					 $queryFields = implode(" , ", $a);
+					 $results = DB::select(DB::raw("SELECT DISTINCT $queryFields FROM events,eventtype
+						 	WHERE eventtype.type_id = events.type_id"));
+				}
+				else if(count($built_query) == 0){
+					$a[] = 'fname';
+					$a[] = 'lname';
+					$a[] = 'dob';
+					$a[] = 'address';
+					$showFields[] =  'First name';
+					$showFields[] =  'Last name';
+					$showFields[] =  'Date of Birth';
+					$showFields[] =  'Address';
+					$built_query = implode(" AND ", $built_query);
+					$queryFields = implode(" , ", $a);
+					$results = DB::select(DB::raw("SELECT DISTINCT $queryFields
+						FROM participants,attendance,events,eventtype  
+					 	WHERE participants.part_id = attendance.part_id AND attendance.event_id = events.event_id AND
+					 	eventtype.type_id = events.type_id"));
 				}
 				else{
-					if(count($built_query) == 0){
-						return Redirect::back();
-					}
 					$a[] = 'fname';
 					$a[] = 'lname';
 					$a[] = 'dob';
@@ -116,8 +129,6 @@
 					 	WHERE participants.part_id = attendance.part_id AND attendance.event_id = events.event_id AND
 					 	eventtype.type_id = events.type_id AND $built_query"));
 				}
-
-
 			}
 			elseif($type_id == 0 and $age == 0 and count($built_query) == 0 and $gender == 0){
 				foreach($selectedFields as $selectedField) {

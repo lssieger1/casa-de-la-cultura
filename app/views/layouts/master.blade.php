@@ -47,9 +47,13 @@
           @if(Auth::check())           
               <li><a href="{{{ URL::to('/pastEvents') }}}">Past Events</a></li>
               <li><a href="{{{ URL::to('/events') }}}">Upcoming Events</a></li>
-            <li><a href="#registerParticipantModal" data-toggle="modal">Register Part.</a></li>
+              @if(!Request::is('runQuery'))
+                <li><a href="#registerParticipantModal" data-toggle="modal">Register Part.</a></li>
+              @endif
             @if(Auth::user()->user_type == 1)
-              <li><a href="#createEventModal" data-toggle="modal">New Event</a></li>
+              @if(!Request::is('runQuery'))
+                <li><a href="#createEventModal" data-toggle="modal">New Event</a></li>
+              @endif
               <li><a href="{{{ URL::to('/query') }}}">Run Query</a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
