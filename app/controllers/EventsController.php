@@ -36,10 +36,13 @@ class EventsController extends BaseController{
 	public function sortPast(){
 		$eventID = Input::get('event_id');
 		$eventLists = EventList::with('EventType')->where('event_id', '=', $eventID)->
-													where('date', '<', new DateTime('today'))->get();
+													where('date', '<', new DateTime('today'))->
+													orderBy('date', 'desc')->get();
 		$eventLists->type_id = $eventID;
+		$eventLists->sortByDesc('event_id');
 		if($eventID == 0){
-			$eventLists = EventList::with('EventType')->where('date', '<', new DateTime('today'))->get();
+			$eventLists = EventList::with('EventType')->where('date', '<', new DateTime('today'))->
+			orderBy('date', 'DESC')->get();
 		}
 		return View::make('public/events', ['eventLists'=> $eventLists, 'event'=>"Past"]);
 	}
