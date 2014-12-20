@@ -39,15 +39,7 @@ class ParticipantsController extends BaseController{
 		}		
 		$participant = new Participant;
 		$participant->fill($input);
-		if(Input::get('gender') === 0){
-			$participant->gender = 'Male';
-		}
-		elseif (Input::get('gender') === 1){
-			$participant->gender = 'Female';
-		}
-		else{
-			$participant->gender = 'Other';
-		}
+		$participant->gender = Input::get('gender');
 		$participant->dob = date("Y-m-d", strtotime(Input::get('registerDateOfBirth')));
 		$participant->save();
 

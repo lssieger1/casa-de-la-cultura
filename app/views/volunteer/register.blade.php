@@ -28,7 +28,7 @@
 				<div class="input-group">
 					<span class="input-group-addon">Gender</span>
 					{{ Form::select('gender', array("Male" => "Male", "Female" => "Female", "Other" => "Other"), 
-							2, array('class'=>'form-control')) }}
+							"Other", array('class'=>'form-control')) }}
 				</div>	
 				<div class="input-group">
 					<span class="input-group-addon">Date of Birth</span>
