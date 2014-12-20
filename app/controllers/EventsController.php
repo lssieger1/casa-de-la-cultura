@@ -17,6 +17,8 @@ class EventsController extends BaseController{
 		}
 		return View::make('public/events',['eventLists'=> $eventLists, 'event'=>"Upcoming"]);
 	}
+
+	// returns events that already happened
 	public function showPastEvents(){
 
 		$eventLists = EventList::with('EventType')->where('date', '<', new DateTime('today'))->orderBy('date','desc')->get();
@@ -33,6 +35,7 @@ class EventsController extends BaseController{
 		return View::make('events');
 	}
 
+	// returns events that happened before today's date, sorted by most recent
 	public function sortPast(){
 		$eventID = Input::get('event_id');
 		$eventLists = EventList::with('EventType')->where('event_id', '=', $eventID)->
@@ -47,6 +50,7 @@ class EventsController extends BaseController{
 		return View::make('public/events', ['eventLists'=> $eventLists, 'event'=>"Past"]);
 	}
 
+	// returns events that have not happened yet, sorted by most closest to current date
 	public function sortFuture(){
 		$eventID = Input::get('event_id');
 		$eventLists = EventList::with('EventType')->where('event_id', '=', $eventID)->
@@ -58,6 +62,7 @@ class EventsController extends BaseController{
 		return View::make('public/events', ['eventLists'=> $eventLists, 'event'=>"Upcoming"]);
 	}
 
+	// returns event(s) for given date
 	public function sortDate(){
 		$date =  date("Y-m-d", strtotime(Input::get('time')));
 		//$eventLists = EventList::where('date', '=', $date)->get();
@@ -68,6 +73,7 @@ class EventsController extends BaseController{
 		return View::make('public/events', ['eventLists'=> $eventLists, 'event'=>$event]);
 	}
 
+	// stores info of event when user creates an event.
 	public function store(){
 		
 		$input = Input::all();
@@ -104,6 +110,7 @@ class EventsController extends BaseController{
 		return View::make('admin/edit',['eventList'=> $eventList]);
 	}
 
+	// stores and updates info for editing an event.
 	public function update($event_id){
 		$eventList = EventList::find($event_id);
 		$eventList->location = Input::get('location');
