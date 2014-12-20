@@ -57,23 +57,21 @@
 				$checkInput = 1;
 			}
 			$gender = Input::get('gender');
-			if($gender == 1){
-				$built_query['gender'] = 'gender LIKE  "Male" ';
+			if ($gender == "All") {
+				$built_query['gender'] = 'gender LIKE "%"';	
 			}
-			elseif ($gender == 2) {
-				$built_query['gender'] = 'gender LIKE  "Female" ';
-			}elseif ($gender == 3) {
-				$built_query['gender'] = 'gender LIKE  "Other" ';
+			else {
+				$built_query['gender'] = 'gender LIKE "'. $gender.'"';
 			}
-
+			
 			$age = Input::get('age');
-			if($age == 1){
+			if($age == 2){
 				$built_query['age'] = 'YEAR(CURDATE())-YEAR(dob) BETWEEN 0 AND 12';
-			}elseif($age ==2){
-				$built_query['age'] = 'YEAR(CURDATE())-YEAR(dob) BETWEEN 13 AND 18';
 			}elseif($age == 3){
-				$built_query['age'] = 'YEAR(CURDATE())-YEAR(dob) BETWEEN 19 AND 21';
+				$built_query['age'] = 'YEAR(CURDATE())-YEAR(dob) BETWEEN 13 AND 18';
 			}elseif($age == 4){
+				$built_query['age'] = 'YEAR(CURDATE())-YEAR(dob) BETWEEN 19 AND 21';
+			}elseif($age == 5){
 				$built_query['age'] = 'YEAR(CURDATE())-YEAR(dob) > 21';
 			}
 				

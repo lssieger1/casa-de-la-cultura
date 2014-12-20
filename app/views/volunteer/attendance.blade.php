@@ -11,7 +11,7 @@ Take Attendance for {{ $event->EventType->type_name }} on {{ $event->get_date() 
 
 @section('content')
 <div class="pull-right">
-	<a href="browseAllParticipants/{{$event_id}}" class="btn btn-primary">Find other</a>
+	<a href="browseAllParticipants/{{$event_id}}" class="btn btn-primary">Add new attendee</a>
 </div>
 <table class="table table-striped table-bordered dt-responsive" id="attendanceTable">
 	<thead>
@@ -76,7 +76,7 @@ Take Attendance for {{ $event->EventType->type_name }} on {{ $event->get_date() 
 							{{ Form::open(['url'=> '/deleteAttendance']) }}
 								<input type="hidden" name="part_id" value = "{{ $participant->part_id }}">
 								<input type="hidden" name="event_id" value = "{{ $event_id }}">  
-								<button name="deleteAttendance"  class="btn btn-danger" onclick="if(!confirm('Are you sure to remove this participant from this event?')){return false;}">Delete Attendance</button>
+								<button name="deleteAttendance"  class="btn btn-danger" onclick="if(!confirm('Are you sure you want to remove this participant from this event?')){return false;}">Delete Attendance</button>
 							{{ Form::close() }}
 						@endif
 						<input type="hidden" name="part_id" value = "{{ $participant->part_id }}">
@@ -90,6 +90,6 @@ Take Attendance for {{ $event->EventType->type_name }} on {{ $event->get_date() 
 	</tbody>
 </table>
 <div class="pull-right">
-	<a href="browseAllParticipants/{{$event_id}}" class="btn btn-primary">Find other</a>
+	<a href="browseAllParticipants/{{$event_id}}" class="btn btn-primary">Add new attendee</a>
 </div>
 @stop

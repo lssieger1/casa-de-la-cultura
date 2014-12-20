@@ -20,8 +20,8 @@ class ParticipantsController extends BaseController{
 		}else{
 		    $participants = $this->participant->all();
 		}
-		 
-		return View::make('volunteer/browseAllParticipants',['participants'=> $participants, 'event_id'=>$event_id]);
+		$eventList = EventList::with('EventType')->find($event_id);
+		return View::make('volunteer/browseAllParticipants',['participants'=> $participants, 'event_id'=>$event_id, 'event'=>$eventList]);
 	}
 
 	//Show all participants

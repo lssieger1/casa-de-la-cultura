@@ -8,7 +8,7 @@ class AttendanceController extends BaseController{
 	}
 	public function show($event_id){
         $attendances = Attendance::with('Participant')->where('event_id','=',$event_id)->get();
-         $eventList = EventList::with('EventType')->find($event_id);
+        $eventList = EventList::with('EventType')->find($event_id);
         return View::make('admin/showAttendance',['attendances'=> $attendances,'event'=>$eventList]);
 	}
 

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-Attendance
+Add New Attendees for {{ $event->EventType->type_name }} on {{ $event->get_date() }}
 @stop
 
 @section('style')

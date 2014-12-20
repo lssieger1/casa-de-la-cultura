@@ -4,6 +4,7 @@
 Edit Event
 @stop
 
+
 @section('content')
 	{{ Form::model($eventList, array('route' => array('admin.update', $eventList->event_id), 'method' => 'PUT')) }}
 	<div class='input-group'>

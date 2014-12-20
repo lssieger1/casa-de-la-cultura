@@ -67,7 +67,7 @@
 					<div class="btn-group-vertical" role="group">
 						<a href = "edit/{{$eventList->event_id}}" class="btn btn-success btn-block">Update</a>
 						{{ Form::open(['url'=> '/delete' ]) }}
-							<button name = "delete" class="btn btn-danger btn-block" onclick="if(!confirm('Are you sure to delete this event?')){return false;}">Delete</button>
+							<button name = "delete" class="btn btn-danger btn-block" onclick="if(!confirm('Are you sure you want to delete this event?')){return false;}">Delete</button>
 							<input type="hidden" name="event_id" value = "{{$eventList->event_id}}"> 
 						{{ Form::close() }}
 					</div>

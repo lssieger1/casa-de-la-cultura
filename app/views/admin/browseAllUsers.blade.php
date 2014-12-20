@@ -59,7 +59,7 @@ All Users
 							<input type="hidden" name="user_id" value = "{{ $user->id }}">
 							<a class="btn btn-warning" href = 'updateUserInformation/{{ $user->id }}'> Update Information </a>
 							<a class="btn btn-primary" href = 'resetPassword/{{ $user->id }}'> Reset Password </a>
-							<a class="btn btn-danger" href = 'deleteUser/{{ $user->id }}' onclick="if(!confirm('Are you sure to delete this user?')){return false;}"> Delete User </a>
+							<a class="btn btn-danger" href = 'deleteUser/{{ $user->id }}' onclick="if(!confirm('Are you sure you want to delete this user?')){return false;}"> Delete User </a>
 						</div>
 					</td>
 				</tr>
